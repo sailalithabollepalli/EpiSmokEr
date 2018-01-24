@@ -7,7 +7,6 @@ An R Package for the estimation of smoking status based on whole blood 450K meth
 - Prediction of smoking status based on the whole blood methylation data.
 - Results provided in html and csv format.
 ## Installation
-***
 To install EpiSmokEr, start R and then type the following commands:
 ```{r eval=FALSE}
 source("http://bioconductor.org/biocLite.R")
