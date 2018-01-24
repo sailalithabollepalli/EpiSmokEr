@@ -29,11 +29,6 @@ This vignette gives a overview on how to use the **EpiSmokEr** R package. **EpiS
 
 ## Four options in EpiSmokEr
 - **Multinomial LASSO method (MLM)** provides smoking probabilities for each individual and **predicts smoking status**. MLM uses weights of 121 CpGs selected by multinomial LASSO approach. In addition to these 121 CpGs, sex and intercept terms are also used in the calculation.
-These coefficients can be viewed using:
-```{r}
-read.table(file = 'inst/extdata/MLM_coefficients.tsv', sep = '\t', header = TRUE)
-```
-
 - **Elliott method (EM)** provides smoking score calculated using 187 CpGs [@elliott].
 
 - **Zhang method (ZM)** provides methylation score calculated using 4 CpGs [@zhang].
