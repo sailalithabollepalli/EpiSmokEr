@@ -6,7 +6,7 @@ output:
   rmarkdown::html_vignette:
     toc: true
 bibliography: epismoker.bib
-fontsize: 14pt
+fontsize: 16pt
 vignette: >
   %\VignetteIndexEntry{EpiSmokEr - Epigenetic Smoking status Estimator- R package}
   %\VignetteEngine{knitr::rmarkdown}
@@ -18,21 +18,28 @@ suppressPackageStartupMessages({
   library("knitr")
   library("EpiSmokEr")
   library("minfi")
-  library("dplyr")
-  library("ggplot2")
-  library("reshape2") })
+})
 ```
 
 # Introduction
 ***
-This vignette gives a overview on how to use the **EpiSmokEr** R package. **EpiSmokEr** provides four options to calculate smoking score and predict smoking status from whole blood Infinium HumanMethylation450 data.
+This vignette gives an overview on how to use the **EpiSmokEr** R package. 
 
 ## Four options in EpiSmokEr
-- **Multinomial LASSO method (MLM)** provides smoking probabilities for each individual and **predicts smoking status**. MLM uses weights of 121 CpGs selected by multinomial LASSO approach. In addition to these 121 CpGs, sex and intercept terms are also used in the calculation.
-- **Elliott method (EM)** provides smoking score calculated using 187 CpGs [@elliott].
+**EpiSmokEr** provides four options to calculate smoking score and predicts smoking status from whole blood Infinium HumanMethylation450 data.
 
-- **Zhang method (ZM)** provides methylation score calculated using 4 CpGs [@zhang].
-- **all** a comprehensive approach which provides results from all the three methods described above.
+1. **Multinomial LASSO method (MLM)** provides smoking probabilities for each individual and **predicts smoking status** of the individual. MLM uses weights of 121 CpGs selected by multinomial LASSO approach for each class of smoking status i.e current, former and never smokers. In addition to these 121 CpGs, sex and intercept terms are also used in the calculation.
+These coefficients selected by MLM can be viewed as follows:
+```{r}
+load(system.file("extdata", "MLM_coefficients.rda", package= "EpiSmokEr"))
+knitr::kable(head(MLM_coefficients, caption = "121 CpGs and coefficients selected by Multinomial LASSO approach"))
+```
+
+2. **Elliott method (EM)** provides smoking score calculated using 187 CpGs [@elliott].
+
+3. **Zhang method (ZM)** provides methylation score calculated using 4 CpGs [@zhang].
+
+4. **all** a comprehensive approach which provides results from all the three methods described above.
 
 ## Features of **EpiSmokEr**
 - Can perform smoking score calculation starting from idat files.
@@ -40,8 +47,6 @@ This vignette gives a overview on how to use the **EpiSmokEr** R package. **EpiS
 - Smoking score calculation using three methods.
 - Prediction of smoking status based on the whole blood methylation data.
 - Results provided in html and csv format.
-
-Examples demonstrating th features above can be found in the [demo/](tests) directory.
 
 # Installation
 ***
@@ -55,23 +60,23 @@ install_github("sailalithabollepalli/EpiSmokEr")
 
 # Input Data
 ***
-  To generate the smoking scores from the whole blood methylaion, EpiSmokEr simply requires methylation data as an input.
+To generate the smoking scores from the whole blood methylaion, EpiSmokEr simply requires methylation data as an input.
 Input data could be either raw methylation data in the form of idat files or a normalised methylation matrix in the beta scale ranging in between o and 1.
 For MLM method, a sample sheet with **sex** status is needed to complement the methylation data.
 
-To demonstrate the working of the EpiSmokEr we chose a peripheral blood leukocytes dataset from GEO [GSE42861][@geo](http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=gse42861). We use only 6 samples from this dataset to minimise the package size and running time.
+To demonstrate the working of the EpiSmokEr we chose a peripheral blood leukocytes dataset from GEO [GSE42861](http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=gse42861)[@geo]. We use only 6 samples from this dataset to minimise the package size and running time.
 
 #### Following data objects are provided along with the package and are used in the examples below.
 - Raw data: idat files of 6 subjects from GSE42861.
 - Methylation matrix: A subset of 1000 CpG probes from the normalised methylation matrix (which contained all the CpGs required by EpiSmokEr).
 - A sample sheet with gender information
 
-First we will show how to use idat files as input data
 We will now show 2 ways of providing input data:
   
 ## 1. From idat files
 Here input data are in the form of idat files. `minfi`[@minfi] package is used to read the idat files.
-color and channel specific normalisation was performed on the reference dataset and quantiles are saved from these are used internally to adjust the distribution using a suite of customised functions. beta values are calculated.
+**normaliseData** function has a suite of customised internal functions to normalise and calculate beta values from the idat files.
+Color and channel specific normalisation was performed on the training dataset used in the MLM appraoch. Quantiles from this training dataset are used to adjust the distribution of your input data comparable to the training dataset. Following the normalisation, beta values are calculated.
 
 ### Please note:
 - Sample sheet must be included in the same folder as the idat files.
@@ -81,11 +86,11 @@ color and channel specific normalisation was performed on the reference dataset 
 ```{r}
 dataset <- normalizeData(idatPath = system.file("extdata", package = "EpiSmokEr"))
 samplesheet <- read.csv(system.file("extdata", "samplesheet_GSE42861.csv", package="EpiSmokEr"), header=TRUE, sep=",")
-samplesheet
+knitr::kable(head(samplesheet, 5))
 ```
 
 ## 2. From methylation matrix
-Normalised methylation matrix can also be used as an input to EpiSmokEr.
+A data matrix of normalised methylation values in beta scale, with rows labelling the CpG probe ids and columns labelling the sample names, can also be used as an input to EpiSmokEr. Here we use the methylation matrix from the same 6 samples to demonstrate how methylation matrix can be used as input. 
 ```{r, include= FALSE}
 data("dummyBetaData")
 ```
@@ -93,7 +98,7 @@ Methylation matrix looks likes this. Methylation values are in beta scale rangin
 ```{r}
 head(dummyBetaData)
 ```
-
+Samplesheet must contain the column **sex**, in the format of 1 and 2 representing men and women respectively.
 ```{r, echo=FALSE, results='asis'}
 samplesheet <- read.csv(system.file("extdata", "samplesheet_GSE42861.csv", package="EpiSmokEr"), header=TRUE, sep=",")
 knitr::kable(head(samplesheet, 5))
@@ -101,27 +106,33 @@ knitr::kable(head(samplesheet, 5))
 
 # Smoking Score calculation and predicton of smoking status
 ***
-Once we have the methylation data, we can then proceed with smoking status estimation. EpiSmokEr provides four options
+Once we have the methylation data, we can then proceed with smoking status estimation. 
+EpiSmokEr provides four options:
 
 ### 1. Multinomial LASSO method (MLM)
+In this method weights of 121 CpGs selected by Multinomial LASSO approach, and sex and intercept terms are used in the calculation of smoking probabilities for each individual. We get smoking probabilities for the three smoking status classes, i.e current, former and never smokers. Predicted smoking status of an individual is the class having the highest probability. 
 ```{r}
 result <- epismoker(dataset=dummyBetaData, samplesheet = samplesheet, method = "MLM")
 result
+# PredictedSmokingStatus represents the smoking status class assigned to the individual based on the calculated smoking probabilities.
 ```
 
 ### 2. Elliott method (EM)
+In this method 187 CpGs are used to calculate smoking score as expained in [@elliott].
 ```{r}
 result <- epismoker(dataset = dataset, method = "EM")
 result
 ```
 
 ### 3. Zhang method (ZM)
+In this method 4 CpGs are used to calculate methylation score as expained in [@zhang].
 ```{r}
 result <- epismoker(dataset = dataset,  method = "ZM")
 result
 ```
 
-### 4. Compreshensive approach
+### 4. Compreshensive approach (all)
+All three methods are run in this option and results are integrated into a single result object.
 ```{r}
 result <- epismoker(dataset = dataset, samplesheet = samplesheet, method = "all")
 result
@@ -129,16 +140,18 @@ result
 
 # Generate Results
 ***
-Results can be saved as html and csv files using **generateReport** function. A **Results** folder will be created in the working directory. 
-**generateReport** takes result object and method used in epismoker function. Users have to provide a name for the html file. 
+Results can be saved as html and csv files using **generateReport** function. A **Results** folder will be created in the **current working directory**. 
 
-#### Please note that result object from epismoker function must be saved as **result**.
-In the example below result object from the **all** option of **epismoker** function has been saved to **result** variable, which will be passed onto generateReport function.
+**generateReport** takes result object and method used in epismoker function. Users have to provide a name for the output html file. 
+
+#### Please note that result object from epismoker function must be saved as variable **result**.
+
+In the example below result object from the **all** option of **epismoker** function has been saved to **result** variable, which will be passed onto generateReport function. 
 
 ```{r}
+setwd(system.file(package = "EpiSmokEr")) # set the directory where you want the result files to be saved
 generateReport(resObj = result, outputFileName = "Result", method = "all")
 ```
-
 
 # References 
 ***

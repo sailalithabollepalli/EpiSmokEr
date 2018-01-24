@@ -4,7 +4,7 @@
 \name{dummyBetaData}
 \alias{dummyBetaData}
 \title{dummyBetaData}
-\format{A dataframe with 1000 rows and 15 columns, containing methylation values in beta scale ranging between 0 and 1.}
+\format{A dataframe with 1000 rows and 6 columns, containing methylation values in beta scale ranging between 0 and 1.}
 \source{
 \href{http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=gse42861}{GEO Repository}
 }
@@ -12,7 +12,7 @@
 data(dummyBetaData)
 }
 \description{
-dummyBetaData is a subset of 15 control subjects from the epigenome-wide association study performed in peripheral-blood DNA in 354
+dummyBetaData is a subset of 6 control subjects from the epigenome-wide association study performed in peripheral-blood DNA in 354
 anti-citrullinated protein antibody-associated rheumatoid arthritis cases and 337 controls. To minimise the package size and running time
 we have used a subset of 1000 CpG probes from the methylation matrix (which contained all the CpGs required by EpiSmokEr).
 }
