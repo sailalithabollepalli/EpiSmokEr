@@ -9,7 +9,7 @@ Description:EpiSmokEr package provides a suite of methods to calcualte smoking s
       the smoking score and predict the smoking status of an individual based on the methylation data. For more information and demonstration of
       the working of the package, see 
 Depends: 
-  R (>= 3.4.1),
+  R (>= 3.2.0),
   htmlTable,
   IlluminaHumanMethylation450kmanifest,
   minfi,
