@@ -1,0 +1,19 @@
+---
+output:
+pdf_document: default
+html_document: default
+---
+# EpiSmokEr Results
+Date: `r format(Sys.time(), '%d %B, %Y')` 
+#'
+#' @importFrom htmlTable txtRound
+#' @importFrom htmlTable htmlTable
+```{r echo=FALSE, results="asis"}
+out <- htmlTable::txtRound(result, 2, excl.cols=1)
+write.csv(out, file.path(outputDir, "EpiSmokEr_Results_MLM.csv"), row.names=FALSE)
+
+out <- suppressWarnings( htmlTable::htmlTable(out, rnames=FALSE,  escape.html = FALSE))
+print(out,type="html",useViewer=TRUE)
+```
+
+

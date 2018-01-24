@@ -1,0 +1,26 @@
+Package: EpiSmokEr
+Title: Epigenetic Smoking status Estimator
+Version: 0.1.0
+Author: person(“Sailalitha", "Bollepalli", email = "sailalitha.bollepalli@helsinki.fi", role ="aut")
+Maintainer: Sailalitha Bollepalli <sailalitha.bollepalli@helsinki.fi>
+Description:EpiSmokEr package provides a suite of methods to calcualte smoking score using whole blood 450k methylation data.
+      Input could be either raw methylation data in the form of idat files or a methylation matrix in the beta scale ranging in between o and 1. 
+      A sample sheet is needed with gender information to complement the methylation data. Four options are available in the package to calculate 
+      the smoking score and predict the smoking status of an individual based on the methylation data. For more information and demonstration of
+      the working of the package, see 
+Depends: 
+  R (>= 3.4.1),
+  htmlTable,
+  IlluminaHumanMethylation450kmanifest,
+  minfi,
+  rmarkdown
+Suggests:
+  Biobase,
+  knitr, 
+  roxygen2
+VignetteBuilder: knitr
+License: GNU General Public License 3
+Encoding: UTF-8
+LazyData: true
+biocViews: DNAMethylation, 450k MethylationArray, Epigenetics, Smoking status prediction
+RoxygenNote: 6.0.1.9000
