@@ -1,8 +1,10 @@
 ---
 title: "EpiSmokEr - Epigenetic Smoking status Estimator- R package"
 author: "Sailalitha Bollepalli"
-date: "Last update: `r Sys.Date()`"
-output: github_document
+date: "Last updated on: `r Sys.Date()`"
+output:
+  rmarkdown::html_vignette:
+    toc: true
 bibliography: epismoker.bib
 fontsize: 14pt
 vignette: >
@@ -26,7 +28,12 @@ suppressPackageStartupMessages({
 This vignette gives a overview on how to use the **EpiSmokEr** R package. **EpiSmokEr** provides four options to calculate smoking score and predict smoking status from whole blood Infinium HumanMethylation450 data.
 
 ## Four options in EpiSmokEr
-- **Multinomial LASSO method (MLM)** provides smoking probabilities for each individual and **predicts smoking status**. 121 CpGs identified by multinomial LASSO approach and
+- **Multinomial LASSO method (MLM)** provides smoking probabilities for each individual and **predicts smoking status**. MLM uses weights of 121 CpGs selected by multinomial LASSO approach. In addition to these 121 CpGs, sex and intercept terms are also used in the calculation.
+These coefficients can be viewed using:
+```{r}
+read.table(file = 'inst/extdata/MLM_coefficients.tsv', sep = '\t', header = TRUE)
+```
+
 - **Elliott method (EM)** provides smoking score calculated using 187 CpGs [@elliott].
 
 - **Zhang method (ZM)** provides methylation score calculated using 4 CpGs [@zhang].
@@ -67,8 +74,7 @@ To demonstrate the working of the EpiSmokEr we chose a peripheral blood leukocyt
 First we will show how to use idat files as input data
 We will now show 2 ways of providing input data:
   
-## 1.From idat files
-
+## 1. From idat files
 Here input data are in the form of idat files. `minfi`[@minfi] package is used to read the idat files.
 color and channel specific normalisation was performed on the reference dataset and quantiles are saved from these are used internally to adjust the distribution using a suite of customised functions. beta values are calculated.
 
@@ -81,8 +87,6 @@ color and channel specific normalisation was performed on the reference dataset 
 dataset <- normalizeData(idatPath = system.file("extdata", package = "EpiSmokEr"))
 samplesheet <- read.csv(system.file("extdata", "samplesheet_GSE42861.csv", package="EpiSmokEr"), header=TRUE, sep=",")
 samplesheet
-result <- epismoker(dataset = dataset, samplesheet = samplesheet, method = "MLM")
-generateReport(resObj=result,outputFile = "Result", method = "EM")
 ```
 
 ## 2. From methylation matrix
@@ -90,7 +94,7 @@ Normalised methylation matrix can also be used as an input to EpiSmokEr.
 ```{r, include= FALSE}
 data("dummyBetaData")
 ```
-Methylation matrix looks likes this. They are in beta scale ragining betweeen 0 and 1.
+Methylation matrix looks likes this. Methylation values are in beta scale ranging betweeen 0 and 1.
 ```{r}
 head(dummyBetaData)
 ```
@@ -129,7 +133,17 @@ result
 ```
 
 # Generate Results
-****
+***
+Results can be saved as html and csv files using **generateReport** function. A **Results** folder will be created in the working directory. 
+**generateReport** takes result object and method used in epismoker function. Users have to provide a name for the html file. 
+
+#### Please note that result object from epismoker function must be saved as **result**.
+In the example below result object from the **all** option of **epismoker** function has been saved to **result** variable, which will be passed onto generateReport function.
+
+```{r}
+generateReport(resObj = result, outputFileName = "Result", method = "all")
+```
+
 
 # References 
 ***
