@@ -23,7 +23,7 @@ library(htmlTable)
 library(rmarkdown)
 ```
 ## Vignette
-Please refer to the [vignettee]() for step by step demonstration of functions in **EpiSmokEr** package using example data. 
+Please refer to the [vignettee](https://github.com/sailalithabollepalli/EpiSmokEr/blob/master/vignettes/epismoker.html) for step by step demonstration of functions in **EpiSmokEr** package. 
 
 
 
