@@ -6,7 +6,7 @@ An R Package for the estimation of smoking status based on whole blood 450K meth
 - Smoking score calculation using three methods.
 - Prediction of smoking status based on the whole blood methylation data.
 - Results provided in html and csv format.
-# Installation
+## Installation
 ***
 To install EpiSmokEr, start R and then type the following commands:
 ```{r eval=FALSE}
@@ -15,4 +15,17 @@ install.packages("devtools") # if you don't have the package, run install.packag
 library(devtools)
 install_github("sailalithabollepalli/EpiSmokEr")
 ```
-An [introduction vignette]() has been written to describe the usage of **EpiSmokEr** R package.
+## Dependencies
+**EpiSmokEr** depends on the following packages:
+```{r eval=FALSE}
+library(IlluminaHumanMethylation450kmanifest)
+library(minfi)
+library(htmlTable)
+library(rmarkdown)
+```
+## Vignette
+Please refer to the [vignettee]() for step by step demonstration of functions in **EpiSmokEr** package using example data. 
+
+
+
+
