@@ -150,7 +150,7 @@ Results can be saved as html and csv files using **generateReport** function. A 
 a. In the R environment, result object from **epismoker** function must be saved to the variable **result**.
 b. In order to create the **Results** folder, set the working directory path to the folder where you have permission to write.
 
-In the example below result object from the **all** option of **epismoker** function has been saved to **result** variable, which will be passed onto generateReport function. On executing **generateReport** function, a **Results** folder will be created in the current working directory, with a html file named "Results_comprehensive.html". An example of "Results_comprehensive.html" file can be found under [vignettes](EpiSmokEr/tree/master/vignettes).
+In the example below result object from the **all** option of **epismoker** function has been saved to **result** variable, which will be passed onto generateReport function. On executing **generateReport** function, a **Results** folder will be created in the current working directory, with a html file named "Results_comprehensive.html". Result files generated from the example below can be found under the **Results** folder.
 
 ```{r}
 setwd(system.file(package = "EpiSmokEr")) # set the directory where you want the result files to be saved
