@@ -13,17 +13,29 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r, include = FALSE}
-suppressPackageStartupMessages({
-  library("knitr")
-  library("EpiSmokEr")
-  library("minfi")
-})
-```
-
 # Introduction
 ***
 This vignette gives an overview on how to use the **EpiSmokEr** R package. 
+
+## Installation
+To install EpiSmokEr, start R and then type the following commands:
+```{r eval=FALSE}
+source("http://bioconductor.org/biocLite.R")
+install.packages("devtools") # if you don't have the package, run install.packages("devtools")
+library(devtools)
+install_github("sailalithabollepalli/EpiSmokEr")
+```
+
+After installing **EpiSmokEr** load the packages along with its dependencies:
+```{r}
+suppressPackageStartupMessages({
+library(EpiSmokEr)  
+library(IlluminaHumanMethylation450kmanifest)
+library(minfi)
+library(htmlTable)
+library(rmarkdown)
+})
+```
 
 ## Four options in EpiSmokEr
 **EpiSmokEr** provides four options to calculate smoking score and predicts smoking status from whole blood Infinium HumanMethylation450 data.

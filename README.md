@@ -13,6 +13,7 @@ source("http://bioconductor.org/biocLite.R")
 install.packages("devtools") # if you don't have the package, run install.packages("devtools")
 library(devtools)
 install_github("sailalithabollepalli/EpiSmokEr")
+library(EpiSmokEr)
 ```
 ## Dependencies
 **EpiSmokEr** depends on the following packages:
