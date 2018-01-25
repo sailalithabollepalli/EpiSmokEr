@@ -1,16 +1,13 @@
 <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" class="gr__"><head>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-
-<head>
-
-<meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="pandoc" />
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="generator" content="pandoc">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<meta name="author" content="Sailalitha Bollepalli" />
+<meta name="author" content="Sailalitha Bollepalli">
 
 
 <title>EpiSmokEr - Epigenetic Smoking status Estimator- R package</title>
@@ -58,11 +55,106 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 
 
-<link href="data:text/css;charset=utf-8,body%20%7B%0Abackground%2Dcolor%3A%20%23fff%3B%0Amargin%3A%201em%20auto%3B%0Amax%2Dwidth%3A%20700px%3B%0Aoverflow%3A%20visible%3B%0Apadding%2Dleft%3A%202em%3B%0Apadding%2Dright%3A%202em%3B%0Afont%2Dfamily%3A%20%22Open%20Sans%22%2C%20%22Helvetica%20Neue%22%2C%20Helvetica%2C%20Arial%2C%20sans%2Dserif%3B%0Afont%2Dsize%3A%2014px%3B%0Aline%2Dheight%3A%201%2E35%3B%0A%7D%0A%23header%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0A%23TOC%20%7B%0Aclear%3A%20both%3B%0Amargin%3A%200%200%2010px%2010px%3B%0Apadding%3A%204px%3B%0Awidth%3A%20400px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Aborder%2Dradius%3A%205px%3B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Afont%2Dsize%3A%2013px%3B%0Aline%2Dheight%3A%201%2E3%3B%0A%7D%0A%23TOC%20%2Etoctitle%20%7B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dsize%3A%2015px%3B%0Amargin%2Dleft%3A%205px%3B%0A%7D%0A%23TOC%20ul%20%7B%0Apadding%2Dleft%3A%2040px%3B%0Amargin%2Dleft%3A%20%2D1%2E5em%3B%0Amargin%2Dtop%3A%205px%3B%0Amargin%2Dbottom%3A%205px%3B%0A%7D%0A%23TOC%20ul%20ul%20%7B%0Amargin%2Dleft%3A%20%2D2em%3B%0A%7D%0A%23TOC%20li%20%7B%0Aline%2Dheight%3A%2016px%3B%0A%7D%0Atable%20%7B%0Amargin%3A%201em%20auto%3B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dcolor%3A%20%23DDDDDD%3B%0Aborder%2Dstyle%3A%20outset%3B%0Aborder%2Dcollapse%3A%20collapse%3B%0A%7D%0Atable%20th%20%7B%0Aborder%2Dwidth%3A%202px%3B%0Apadding%3A%205px%3B%0Aborder%2Dstyle%3A%20inset%3B%0A%7D%0Atable%20td%20%7B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dstyle%3A%20inset%3B%0Aline%2Dheight%3A%2018px%3B%0Apadding%3A%205px%205px%3B%0A%7D%0Atable%2C%20table%20th%2C%20table%20td%20%7B%0Aborder%2Dleft%2Dstyle%3A%20none%3B%0Aborder%2Dright%2Dstyle%3A%20none%3B%0A%7D%0Atable%20thead%2C%20table%20tr%2Eeven%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Ap%20%7B%0Amargin%3A%200%2E5em%200%3B%0A%7D%0Ablockquote%20%7B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Apadding%3A%200%2E25em%200%2E75em%3B%0A%7D%0Ahr%20%7B%0Aborder%2Dstyle%3A%20solid%3B%0Aborder%3A%20none%3B%0Aborder%2Dtop%3A%201px%20solid%20%23777%3B%0Amargin%3A%2028px%200%3B%0A%7D%0Adl%20%7B%0Amargin%2Dleft%3A%200%3B%0A%7D%0Adl%20dd%20%7B%0Amargin%2Dbottom%3A%2013px%3B%0Amargin%2Dleft%3A%2013px%3B%0A%7D%0Adl%20dt%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Aul%20%7B%0Amargin%2Dtop%3A%200%3B%0A%7D%0Aul%20li%20%7B%0Alist%2Dstyle%3A%20circle%20outside%3B%0A%7D%0Aul%20ul%20%7B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0Apre%2C%20code%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0Aborder%2Dradius%3A%203px%3B%0Acolor%3A%20%23333%3B%0Awhite%2Dspace%3A%20pre%2Dwrap%3B%20%0A%7D%0Apre%20%7B%0Aborder%2Dradius%3A%203px%3B%0Amargin%3A%205px%200px%2010px%200px%3B%0Apadding%3A%2010px%3B%0A%7D%0Apre%3Anot%28%5Bclass%5D%29%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Acode%20%7B%0Afont%2Dfamily%3A%20Consolas%2C%20Monaco%2C%20%27Courier%20New%27%2C%20monospace%3B%0Afont%2Dsize%3A%2085%25%3B%0A%7D%0Ap%20%3E%20code%2C%20li%20%3E%20code%20%7B%0Apadding%3A%202px%200px%3B%0A%7D%0Adiv%2Efigure%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0Aimg%20%7B%0Abackground%2Dcolor%3A%20%23FFFFFF%3B%0Apadding%3A%202px%3B%0Aborder%3A%201px%20solid%20%23DDDDDD%3B%0Aborder%2Dradius%3A%203px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Amargin%3A%200%205px%3B%0A%7D%0Ah1%20%7B%0Amargin%2Dtop%3A%200%3B%0Afont%2Dsize%3A%2035px%3B%0Aline%2Dheight%3A%2040px%3B%0A%7D%0Ah2%20%7B%0Aborder%2Dbottom%3A%204px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Apadding%2Dbottom%3A%202px%3B%0Afont%2Dsize%3A%20145%25%3B%0A%7D%0Ah3%20%7B%0Aborder%2Dbottom%3A%202px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Afont%2Dsize%3A%20120%25%3B%0A%7D%0Ah4%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23f7f7f7%3B%0Amargin%2Dleft%3A%208px%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Ah5%2C%20h6%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23ccc%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Aa%20%7B%0Acolor%3A%20%230033dd%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0Aa%3Ahover%20%7B%0Acolor%3A%20%236666ff%3B%20%7D%0Aa%3Avisited%20%7B%0Acolor%3A%20%23800080%3B%20%7D%0Aa%3Avisited%3Ahover%20%7B%0Acolor%3A%20%23BB00BB%3B%20%7D%0Aa%5Bhref%5E%3D%22http%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0Aa%5Bhref%5E%3D%22https%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0A%0Acode%20%3E%20span%2Ekw%20%7B%20color%3A%20%23555%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Edt%20%7B%20color%3A%20%23902000%3B%20%7D%20%0Acode%20%3E%20span%2Edv%20%7B%20color%3A%20%2340a070%3B%20%7D%20%0Acode%20%3E%20span%2Ebn%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Efl%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Ech%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Est%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Eco%20%7B%20color%3A%20%23888888%3B%20font%2Dstyle%3A%20italic%3B%20%7D%20%0Acode%20%3E%20span%2Eot%20%7B%20color%3A%20%23007020%3B%20%7D%20%0Acode%20%3E%20span%2Eal%20%7B%20color%3A%20%23ff0000%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Efu%20%7B%20color%3A%20%23900%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%20code%20%3E%20span%2Eer%20%7B%20color%3A%20%23a61717%3B%20background%2Dcolor%3A%20%23e3d2d2%3B%20%7D%20%0A" rel="stylesheet" type="text/css" />
+<link href="data:text/css;charset=utf-8,body%20%7B%0Abackground%2Dcolor%3A%20%23fff%3B%0Amargin%3A%201em%20auto%3B%0Amax%2Dwidth%3A%20700px%3B%0Aoverflow%3A%20visible%3B%0Apadding%2Dleft%3A%202em%3B%0Apadding%2Dright%3A%202em%3B%0Afont%2Dfamily%3A%20%22Open%20Sans%22%2C%20%22Helvetica%20Neue%22%2C%20Helvetica%2C%20Arial%2C%20sans%2Dserif%3B%0Afont%2Dsize%3A%2014px%3B%0Aline%2Dheight%3A%201%2E35%3B%0A%7D%0A%23header%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0A%23TOC%20%7B%0Aclear%3A%20both%3B%0Amargin%3A%200%200%2010px%2010px%3B%0Apadding%3A%204px%3B%0Awidth%3A%20400px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Aborder%2Dradius%3A%205px%3B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Afont%2Dsize%3A%2013px%3B%0Aline%2Dheight%3A%201%2E3%3B%0A%7D%0A%23TOC%20%2Etoctitle%20%7B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dsize%3A%2015px%3B%0Amargin%2Dleft%3A%205px%3B%0A%7D%0A%23TOC%20ul%20%7B%0Apadding%2Dleft%3A%2040px%3B%0Amargin%2Dleft%3A%20%2D1%2E5em%3B%0Amargin%2Dtop%3A%205px%3B%0Amargin%2Dbottom%3A%205px%3B%0A%7D%0A%23TOC%20ul%20ul%20%7B%0Amargin%2Dleft%3A%20%2D2em%3B%0A%7D%0A%23TOC%20li%20%7B%0Aline%2Dheight%3A%2016px%3B%0A%7D%0Atable%20%7B%0Amargin%3A%201em%20auto%3B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dcolor%3A%20%23DDDDDD%3B%0Aborder%2Dstyle%3A%20outset%3B%0Aborder%2Dcollapse%3A%20collapse%3B%0A%7D%0Atable%20th%20%7B%0Aborder%2Dwidth%3A%202px%3B%0Apadding%3A%205px%3B%0Aborder%2Dstyle%3A%20inset%3B%0A%7D%0Atable%20td%20%7B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dstyle%3A%20inset%3B%0Aline%2Dheight%3A%2018px%3B%0Apadding%3A%205px%205px%3B%0A%7D%0Atable%2C%20table%20th%2C%20table%20td%20%7B%0Aborder%2Dleft%2Dstyle%3A%20none%3B%0Aborder%2Dright%2Dstyle%3A%20none%3B%0A%7D%0Atable%20thead%2C%20table%20tr%2Eeven%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Ap%20%7B%0Amargin%3A%200%2E5em%200%3B%0A%7D%0Ablockquote%20%7B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Apadding%3A%200%2E25em%200%2E75em%3B%0A%7D%0Ahr%20%7B%0Aborder%2Dstyle%3A%20solid%3B%0Aborder%3A%20none%3B%0Aborder%2Dtop%3A%201px%20solid%20%23777%3B%0Amargin%3A%2028px%200%3B%0A%7D%0Adl%20%7B%0Amargin%2Dleft%3A%200%3B%0A%7D%0Adl%20dd%20%7B%0Amargin%2Dbottom%3A%2013px%3B%0Amargin%2Dleft%3A%2013px%3B%0A%7D%0Adl%20dt%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Aul%20%7B%0Amargin%2Dtop%3A%200%3B%0A%7D%0Aul%20li%20%7B%0Alist%2Dstyle%3A%20circle%20outside%3B%0A%7D%0Aul%20ul%20%7B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0Apre%2C%20code%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0Aborder%2Dradius%3A%203px%3B%0Acolor%3A%20%23333%3B%0Awhite%2Dspace%3A%20pre%2Dwrap%3B%20%0A%7D%0Apre%20%7B%0Aborder%2Dradius%3A%203px%3B%0Amargin%3A%205px%200px%2010px%200px%3B%0Apadding%3A%2010px%3B%0A%7D%0Apre%3Anot%28%5Bclass%5D%29%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Acode%20%7B%0Afont%2Dfamily%3A%20Consolas%2C%20Monaco%2C%20%27Courier%20New%27%2C%20monospace%3B%0Afont%2Dsize%3A%2085%25%3B%0A%7D%0Ap%20%3E%20code%2C%20li%20%3E%20code%20%7B%0Apadding%3A%202px%200px%3B%0A%7D%0Adiv%2Efigure%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0Aimg%20%7B%0Abackground%2Dcolor%3A%20%23FFFFFF%3B%0Apadding%3A%202px%3B%0Aborder%3A%201px%20solid%20%23DDDDDD%3B%0Aborder%2Dradius%3A%203px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Amargin%3A%200%205px%3B%0A%7D%0Ah1%20%7B%0Amargin%2Dtop%3A%200%3B%0Afont%2Dsize%3A%2035px%3B%0Aline%2Dheight%3A%2040px%3B%0A%7D%0Ah2%20%7B%0Aborder%2Dbottom%3A%204px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Apadding%2Dbottom%3A%202px%3B%0Afont%2Dsize%3A%20145%25%3B%0A%7D%0Ah3%20%7B%0Aborder%2Dbottom%3A%202px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Afont%2Dsize%3A%20120%25%3B%0A%7D%0Ah4%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23f7f7f7%3B%0Amargin%2Dleft%3A%208px%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Ah5%2C%20h6%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23ccc%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Aa%20%7B%0Acolor%3A%20%230033dd%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0Aa%3Ahover%20%7B%0Acolor%3A%20%236666ff%3B%20%7D%0Aa%3Avisited%20%7B%0Acolor%3A%20%23800080%3B%20%7D%0Aa%3Avisited%3Ahover%20%7B%0Acolor%3A%20%23BB00BB%3B%20%7D%0Aa%5Bhref%5E%3D%22http%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0Aa%5Bhref%5E%3D%22https%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0A%0Acode%20%3E%20span%2Ekw%20%7B%20color%3A%20%23555%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Edt%20%7B%20color%3A%20%23902000%3B%20%7D%20%0Acode%20%3E%20span%2Edv%20%7B%20color%3A%20%2340a070%3B%20%7D%20%0Acode%20%3E%20span%2Ebn%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Efl%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Ech%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Est%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Eco%20%7B%20color%3A%20%23888888%3B%20font%2Dstyle%3A%20italic%3B%20%7D%20%0Acode%20%3E%20span%2Eot%20%7B%20color%3A%20%23007020%3B%20%7D%20%0Acode%20%3E%20span%2Eal%20%7B%20color%3A%20%23ff0000%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Efu%20%7B%20color%3A%20%23900%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%20code%20%3E%20span%2Eer%20%7B%20color%3A%20%23a61717%3B%20background%2Dcolor%3A%20%23e3d2d2%3B%20%7D%20%0A" rel="stylesheet" type="text/css">
 
-</head>
+<script type="text/javascript" src="EpiSmokEr%20-%20Epigenetic%20Smoking%20status%20Estimator-%20R%20package_files/MathJax.js"></script><style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 5px 0px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; -khtml-border-radius: 5px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 1px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: .7em}
+.MathJax_MenuRadioCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuLabel {padding: 1px 2em 3px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #DDDDDD; margin: 4px 3px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: #606872; color: white}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1px; bottom: 2px; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
 
-<body>
+<body data-gr-c-s-loaded="true"><div id="MathJax_Message" style="display: none;"></div>
 
 
 
@@ -98,16 +190,23 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <div id="introduction" class="section level1">
 <h1>Introduction</h1>
-<hr />
+<hr>
 <p>This vignette gives an overview on how to use the <strong>EpiSmokEr</strong> R package.</p>
 <div id="four-options-in-epismoker" class="section level2">
 <h2>Four options in EpiSmokEr</h2>
-<p><strong>EpiSmokEr</strong> provides four options to calculate smoking score and predicts smoking status from whole blood Infinium HumanMethylation450 data.</p>
+<p><strong>EpiSmokEr</strong> provides four options to calculate smoking
+ score and predicts smoking status from whole blood Infinium 
+HumanMethylation450 data.</p>
 <ol style="list-style-type: decimal">
-<li><strong>Multinomial LASSO method (MLM)</strong> provides smoking probabilities for each individual and <strong>predicts smoking status</strong> of the individual. MLM uses weights of 121 CpGs selected by multinomial LASSO approach for each class of smoking status i.e current, former and never smokers. In addition to these 121 CpGs, sex and intercept terms are also used in the calculation. These coefficients selected by MLM can be viewed as follows:</li>
+<li><strong>Multinomial LASSO method (MLM)</strong> provides smoking probabilities for each individual and <strong>predicts smoking status</strong>
+ of the individual. MLM uses weights of 121 CpGs selected by multinomial
+ LASSO approach for each class of smoking status i.e current, former and
+ never smokers. In addition to these 121 CpGs, sex and intercept terms 
+are also used in the calculation. These coefficients selected by MLM can
+ be viewed as follows:</li>
 </ol>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>(<span class="kw">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;MLM_coefficients.rda&quot;</span>, <span class="dt">package=</span> <span class="st">&quot;EpiSmokEr&quot;</span>))
-knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">head</span>(MLM_coefficients, <span class="dt">caption =</span> <span class="st">&quot;121 CpGs and coefficients selected by Multinomial LASSO approach&quot;</span>))</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>(<span class="kw">system.file</span>(<span class="st">"extdata"</span>, <span class="st">"MLM_coefficients.rda"</span>, <span class="dt">package=</span> <span class="st">"EpiSmokEr"</span>))
+knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">head</span>(MLM_coefficients, <span class="dt">caption =</span> <span class="st">"121 CpGs and coefficients selected by Multinomial LASSO approach"</span>))</code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -175,43 +274,56 @@ knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">he
 </div>
 <div id="installation" class="section level1">
 <h1>Installation</h1>
-<hr />
+<hr>
 <p>To install EpiSmokEr, start R and then type the following commands:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">source</span>(<span class="st">&quot;http://bioconductor.org/biocLite.R&quot;</span>)
-<span class="kw">install.packages</span>(<span class="st">&quot;devtools&quot;</span>) <span class="co"># if you don't have the package, run install.packages(&quot;devtools&quot;)</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">source</span>(<span class="st">"http://bioconductor.org/biocLite.R"</span>)
+<span class="kw">install.packages</span>(<span class="st">"devtools"</span>) <span class="co"># if you don't have the package, run install.packages("devtools")</span>
 <span class="kw">library</span>(devtools)
-<span class="kw">install_github</span>(<span class="st">&quot;sailalithabollepalli/EpiSmokEr&quot;</span>)</code></pre></div>
+<span class="kw">install_github</span>(<span class="st">"sailalithabollepalli/EpiSmokEr"</span>)</code></pre></div>
 </div>
 <div id="input-data" class="section level1">
 <h1>Input Data</h1>
-<hr />
-<p>To generate the smoking scores from the whole blood methylaion, EpiSmokEr simply requires methylation data as an input. Input data could be either raw methylation data in the form of idat files or a normalised methylation matrix in the beta scale ranging in between o and 1. For MLM method, a sample sheet with <strong>sex</strong> status is needed to complement the methylation data.</p>
+<hr>
+<p>To generate the smoking scores from the whole blood methylaion, 
+EpiSmokEr simply requires methylation data as an input. Input data could
+ be either raw methylation data in the form of idat files or a 
+normalised methylation matrix in the beta scale ranging in between o and
+ 1. For MLM method, a sample sheet with <strong>sex</strong> status is needed to complement the methylation data.</p>
 <p>To demonstrate the working of the EpiSmokEr we chose a peripheral blood leukocytes dataset from GEO <a href="http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=gse42861">GSE42861</a><span class="citation">(Yun Liu and Feinberg. 2013)</span>. We use only 6 samples from this dataset to minimise the package size and running time.</p>
 <div id="following-data-objects-are-provided-along-with-the-package-and-are-used-in-the-examples-below." class="section level4">
 <h4>Following data objects are provided along with the package and are used in the examples below.</h4>
 <ul>
 <li>Raw data: idat files of 6 subjects from GSE42861.</li>
-<li>Methylation matrix: A subset of 1000 CpG probes from the normalised methylation matrix (which contained all the CpGs required by EpiSmokEr).</li>
+<li>Methylation matrix: A subset of 1000 CpG probes from the normalised 
+methylation matrix (which contained all the CpGs required by EpiSmokEr).</li>
 <li>A sample sheet with gender information</li>
 </ul>
 <p>We will now show 2 ways of providing input data:</p>
 </div>
 <div id="from-idat-files" class="section level2">
 <h2>1. From idat files</h2>
-<p>Here input data are in the form of idat files. <code>minfi</code><span class="citation">(Aryee et al. 2014)</span> package is used to read the idat files. <strong>normaliseData</strong> function has a suite of customised internal functions to normalise and calculate beta values from the idat files. Color and channel specific normalisation was performed on the training dataset used in the MLM appraoch. Quantiles from this training dataset are used to adjust the distribution of your input data comparable to the training dataset. Following the normalisation, beta values are calculated.</p>
+<p>Here input data are in the form of idat files. <code>minfi</code><span class="citation">(Aryee et al. 2014)</span> package is used to read the idat files. <strong>normaliseData</strong>
+ function has a suite of customised internal functions to normalise and 
+calculate beta values from the idat files. Color and channel specific 
+normalisation was performed on the training dataset used in the MLM 
+appraoch. Quantiles from this training dataset are used to adjust the 
+distribution of your input data comparable to the training dataset. 
+Following the normalisation, beta values are calculated.</p>
 <div id="please-note" class="section level3">
 <h3>Please note:</h3>
 <ul>
 <li>Sample sheet must be included in the same folder as the idat files.</li>
-<li>Rownames of samplesheet must match the names of the samples i.e idat files, to facilitate matching of phenotype data with the corresponding methylation data.</li>
+<li>Rownames of samplesheet must match the names of the samples i.e idat
+ files, to facilitate matching of phenotype data with the corresponding 
+methylation data.</li>
 <li>For MLM method, sample sheet should include a column with gender information marked as <strong>sex</strong>, in the format of 1 and 2 representing men and women respectively.</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dataset &lt;-<span class="st"> </span><span class="kw">normalizeData</span>(<span class="dt">idatPath =</span> <span class="kw">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;EpiSmokEr&quot;</span>))</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dataset &lt;-<span class="st"> </span><span class="kw">normalizeData</span>(<span class="dt">idatPath =</span> <span class="kw">system.file</span>(<span class="st">"extdata"</span>, <span class="dt">package =</span> <span class="st">"EpiSmokEr"</span>))</code></pre></div>
 <pre><code>## Loading reference data quantiles.</code></pre>
 <pre><code>## [read.450k.sheet] Found the following CSV files:
-## [1] &quot;/run/user/1002/gvfs/sftp:host=atlas.fimm.fi/fs/projects/kaprio_group/kaprio2/kaprio2/Sailalitha/Smoking_DILGOM/EpiSmokEr/inst/extdata/samplesheet_GSE42861.csv&quot;</code></pre>
+## [1] "/home/sbollepa/R/x86_64-pc-linux-gnu-library/3.2/EpiSmokEr/extdata/samplesheet_GSE42861.csv"</code></pre>
 <pre><code>## Dataset has 6 samples.</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">samplesheet &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="kw">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;samplesheet_GSE42861.csv&quot;</span>, <span class="dt">package=</span><span class="st">&quot;EpiSmokEr&quot;</span>), <span class="dt">header=</span><span class="ot">TRUE</span>, <span class="dt">sep=</span><span class="st">&quot;,&quot;</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">samplesheet &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="kw">system.file</span>(<span class="st">"extdata"</span>, <span class="st">"samplesheet_GSE42861.csv"</span>, <span class="dt">package=</span><span class="st">"EpiSmokEr"</span>), <span class="dt">header=</span><span class="ot">TRUE</span>, <span class="dt">sep=</span><span class="st">","</span>)
 knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">head</span>(samplesheet, <span class="dv">5</span>))</code></pre></div>
 <table>
 <thead>
@@ -278,7 +390,11 @@ knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">he
 </div>
 <div id="from-methylation-matrix" class="section level2">
 <h2>2. From methylation matrix</h2>
-<p>A data matrix of normalised methylation values in beta scale, with rows labelling the CpG probe ids and columns labelling the sample names, can also be used as an input to EpiSmokEr. Here we use the methylation matrix from the same 6 samples to demonstrate how methylation matrix can be used as input.</p>
+<p>A data matrix of normalised methylation values in beta scale, with 
+rows labelling the CpG probe ids and columns labelling the sample names,
+ can also be used as an input to EpiSmokEr. Here we use the methylation 
+matrix from the same 6 samples to demonstrate how methylation matrix can
+ be used as input.</p>
 <p>Methylation matrix looks likes this. Methylation values are in beta scale ranging betweeen 0 and 1.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(dummyBetaData)</code></pre></div>
 <pre><code>##            GSM1051533_7800246024_R03C02 GSM1051534_7800246024_R04C02
@@ -367,12 +483,17 @@ knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">he
 </div>
 <div id="smoking-score-calculation-and-predicton-of-smoking-status" class="section level1">
 <h1>Smoking Score calculation and predicton of smoking status</h1>
-<hr />
+<hr>
 <p>Once we have the methylation data, we can then proceed with smoking status estimation. EpiSmokEr provides four options:</p>
 <div id="multinomial-lasso-method-mlm" class="section level3">
 <h3>1. Multinomial LASSO method (MLM)</h3>
-<p>In this method weights of 121 CpGs selected by Multinomial LASSO approach, and sex and intercept terms are used in the calculation of smoking probabilities for each individual. We get smoking probabilities for the three smoking status classes, i.e current, former and never smokers. Predicted smoking status of an individual is the class having the highest probability.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">result &lt;-<span class="st"> </span><span class="kw">epismoker</span>(<span class="dt">dataset=</span>dummyBetaData, <span class="dt">samplesheet =</span> samplesheet, <span class="dt">method =</span> <span class="st">&quot;MLM&quot;</span>)</code></pre></div>
+<p>In this method weights of 121 CpGs selected by Multinomial LASSO 
+approach, and sex and intercept terms are used in the calculation of 
+smoking probabilities for each individual. We get smoking probabilities 
+for the three smoking status classes, i.e current, former and never 
+smokers. Predicted smoking status of an individual is the class having 
+the highest probability.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">result &lt;-<span class="st"> </span><span class="kw">epismoker</span>(<span class="dt">dataset=</span>dummyBetaData, <span class="dt">samplesheet =</span> samplesheet, <span class="dt">method =</span> <span class="st">"MLM"</span>)</code></pre></div>
 <pre><code>## ============================================</code></pre>
 <pre><code>## &lt;&lt;&lt;&lt;&lt; Multinomial LASSO Method Started &gt;&gt;&gt;&gt;&gt;</code></pre>
 <pre><code>## ============================================</code></pre>
@@ -416,7 +537,7 @@ knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">he
 <div id="elliott-method-em" class="section level3">
 <h3>2. Elliott method (EM)</h3>
 <p>In this method 187 CpGs are used to calculate smoking score as expained in <span class="citation">(Hannah R Elliott and Relton 2014)</span>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">result &lt;-<span class="st"> </span><span class="kw">epismoker</span>(<span class="dt">dataset =</span> dataset, <span class="dt">method =</span> <span class="st">&quot;EM&quot;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">result &lt;-<span class="st"> </span><span class="kw">epismoker</span>(<span class="dt">dataset =</span> dataset, <span class="dt">method =</span> <span class="st">"EM"</span>)</code></pre></div>
 <pre><code>## =================================</code></pre>
 <pre><code>## &lt;&lt;&lt;&lt;&lt; Elliot Method Started &gt;&gt;&gt;&gt;&gt;</code></pre>
 <pre><code>## =================================</code></pre>
@@ -427,17 +548,17 @@ knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">he
 <pre><code>## ====================================</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">result</code></pre></div>
 <pre><code>##                                                SampleName smokingscore_EM
-## GSM1051533_7800246024_R03C02 GSM1051533_7800246024_R03C02        4.500902
-## GSM1051534_7800246024_R04C02 GSM1051534_7800246024_R04C02       -1.502479
-## GSM1051538_7800246085_R02C01 GSM1051538_7800246085_R02C01       -1.510252
-## GSM1051539_7800246085_R03C01 GSM1051539_7800246085_R03C01       -4.419647
-## GSM1051584_7800246137_R01C01 GSM1051584_7800246137_R01C01       -3.581115
-## GSM1051585_7800246137_R02C01 GSM1051585_7800246137_R02C01       -7.182718</code></pre>
+## GSM1051533_7800246024_R03C02 GSM1051533_7800246024_R03C02        4.500634
+## GSM1051534_7800246024_R04C02 GSM1051534_7800246024_R04C02       -1.503511
+## GSM1051538_7800246085_R02C01 GSM1051538_7800246085_R02C01       -1.509669
+## GSM1051539_7800246085_R03C01 GSM1051539_7800246085_R03C01       -4.421008
+## GSM1051584_7800246137_R01C01 GSM1051584_7800246137_R01C01       -3.580632
+## GSM1051585_7800246137_R02C01 GSM1051585_7800246137_R02C01       -7.181807</code></pre>
 </div>
 <div id="zhang-method-zm" class="section level3">
 <h3>3. Zhang method (ZM)</h3>
 <p>In this method 4 CpGs are used to calculate methylation score as expained in <span class="citation">(Yan Zhang and Brenner 2016)</span>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">result &lt;-<span class="st"> </span><span class="kw">epismoker</span>(<span class="dt">dataset =</span> dataset,  <span class="dt">method =</span> <span class="st">&quot;ZM&quot;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">result &lt;-<span class="st"> </span><span class="kw">epismoker</span>(<span class="dt">dataset =</span> dataset,  <span class="dt">method =</span> <span class="st">"ZM"</span>)</code></pre></div>
 <pre><code>## ================================</code></pre>
 <pre><code>## &lt;&lt;&lt;&lt;&lt; Zhang Method Started &gt;&gt;&gt;&gt;&gt;</code></pre>
 <pre><code>## =================================</code></pre>
@@ -447,17 +568,17 @@ knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">he
 <pre><code>## ==================================</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">result</code></pre></div>
 <pre><code>##                                                SampleName smokingscore_ZM
-## GSM1051533_7800246024_R03C02 GSM1051533_7800246024_R03C02       -4.715746
-## GSM1051534_7800246024_R04C02 GSM1051534_7800246024_R04C02       -9.335457
-## GSM1051538_7800246085_R02C01 GSM1051538_7800246085_R02C01       -7.284265
-## GSM1051539_7800246085_R03C01 GSM1051539_7800246085_R03C01       -7.734404
-## GSM1051584_7800246137_R01C01 GSM1051584_7800246137_R01C01       -7.947743
-## GSM1051585_7800246137_R02C01 GSM1051585_7800246137_R02C01       -9.250529</code></pre>
+## GSM1051533_7800246024_R03C02 GSM1051533_7800246024_R03C02       -4.715420
+## GSM1051534_7800246024_R04C02 GSM1051534_7800246024_R04C02       -9.335569
+## GSM1051538_7800246085_R02C01 GSM1051538_7800246085_R02C01       -7.284968
+## GSM1051539_7800246085_R03C01 GSM1051539_7800246085_R03C01       -7.734289
+## GSM1051584_7800246137_R01C01 GSM1051584_7800246137_R01C01       -7.947709
+## GSM1051585_7800246137_R02C01 GSM1051585_7800246137_R02C01       -9.250375</code></pre>
 </div>
 <div id="compreshensive-approach-all" class="section level3">
 <h3>4. Compreshensive approach (all)</h3>
 <p>All three methods are run in this option and results are integrated into a single result object.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">result &lt;-<span class="st"> </span><span class="kw">epismoker</span>(<span class="dt">dataset =</span> dataset, <span class="dt">samplesheet =</span> samplesheet, <span class="dt">method =</span> <span class="st">&quot;all&quot;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">result &lt;-<span class="st"> </span><span class="kw">epismoker</span>(<span class="dt">dataset =</span> dataset, <span class="dt">samplesheet =</span> samplesheet, <span class="dt">method =</span> <span class="st">"all"</span>)</code></pre></div>
 <pre><code>## =================================</code></pre>
 <pre><code>## &lt;&lt;&lt;&lt;&lt; Elliot Method Started &gt;&gt;&gt;&gt;&gt;</code></pre>
 <pre><code>## =================================</code></pre>
@@ -484,31 +605,31 @@ knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">he
 <pre><code>## ============================================</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">result</code></pre></div>
 <pre><code>##                     SampleName smokingscore_EM smokingscore_ZM logCoeff_CS
-## 1 GSM1051533_7800246024_R03C02        4.500902       -4.715746   1.2702760
-## 2 GSM1051534_7800246024_R04C02       -1.502479       -9.335457  -1.2368722
-## 3 GSM1051538_7800246085_R02C01       -1.510252       -7.284265  -0.7930324
-## 4 GSM1051539_7800246085_R03C01       -4.419647       -7.734404  -1.2174390
-## 5 GSM1051584_7800246137_R01C01       -3.581115       -7.947743  -0.7365828
-## 6 GSM1051585_7800246137_R02C01       -7.182718       -9.250529  -1.5288395
+## 1 GSM1051533_7800246024_R03C02        4.500634       -4.715420   1.2701624
+## 2 GSM1051534_7800246024_R04C02       -1.503511       -9.335569  -1.2369971
+## 3 GSM1051538_7800246085_R02C01       -1.509669       -7.284968  -0.7930036
+## 4 GSM1051539_7800246085_R03C01       -4.421008       -7.734289  -1.2176206
+## 5 GSM1051584_7800246137_R01C01       -3.580632       -7.947709  -0.7366244
+## 6 GSM1051585_7800246137_R02C01       -7.181807       -9.250375  -1.5288205
 ##   logCoeff_NS logCoeff_FS PredictedSmokingStatus   probs_CS  probs_FS
-## 1   0.7726094  -2.0428854         Current Smoker 0.60814357 0.3697194
-## 2   0.2628466   0.9740256           Never Smoker 0.06847283 0.3067877
-## 3   0.3562035   0.4368288           Never Smoker 0.13198645 0.4165203
-## 4   0.4713524   0.7460866           Never Smoker 0.07386978 0.3998523
-## 5   0.5097401   0.2268427          Former Smoker 0.14088097 0.4899181
-## 6   0.6706557   0.8581838           Never Smoker 0.04784343 0.4315696
+## 1   0.7723681  -2.0425306         Current Smoker 0.60816599 0.3696858
+## 2   0.2630512   0.9739459           Never Smoker 0.06846397 0.3068491
+## 3   0.3562098   0.4367939           Never Smoker 0.13199148 0.4165268
+## 4   0.4714242   0.7461964           Never Smoker 0.07385097 0.3998518
+## 5   0.5099345   0.2266899          Former Smoker 0.14087048 0.4899972
+## 6   0.6705270   0.8582935           Never Smoker 0.04784421 0.4315130
 ##     probs_NS PredictedSmokingStatus2
-## 1 0.02213698          Current Smoker
-## 2 0.62473951            Never Smoker
-## 3 0.45149327            Never Smoker
-## 4 0.52627792            Never Smoker
-## 5 0.36920089           Former Smoker
-## 6 0.52058695            Never Smoker</code></pre>
+## 1 0.02214817          Current Smoker
+## 2 0.62468696            Never Smoker
+## 3 0.45148173            Never Smoker
+## 4 0.52629723            Never Smoker
+## 5 0.36913231           Former Smoker
+## 6 0.52064278            Never Smoker</code></pre>
 </div>
 </div>
 <div id="generate-results" class="section level1">
 <h1>Generate Results</h1>
-<hr />
+<hr>
 <p>Results can be saved as html and csv files using <strong>generateReport</strong> function. A <strong>Results</strong> folder will be created in the <strong>current working directory</strong>. If <strong>Results</strong> folder already exists, result files will be appended to this folder.</p>
 <p><strong>generateReport</strong> takes <strong>result object (resObj)</strong> and <strong>method</strong> used in epismoker function. Users have to provide a name for the output html file.</p>
 <div id="please-note-that" class="section level4">
@@ -517,11 +638,14 @@ knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">he
 <li>In the R environment, result object from <strong>epismoker</strong> function must be saved to the variable <strong>result</strong>.</li>
 <li>In order to create the <strong>Results</strong> folder, set the working directory path to the folder where you have permission to write.</li>
 </ol>
-<p>In the example below result object from the <strong>all</strong> option of <strong>epismoker</strong> function has been saved to <strong>result</strong> variable, which will be passed onto generateReport function. On executing <strong>generateReport</strong> function, a <strong>Results</strong> folder will be created in the current working directory, with a html file named “Results_comprehensive.html”. Result files generated from the example below can be found under the <strong>Results</strong> folder.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">setwd</span>(<span class="kw">system.file</span>(<span class="dt">package =</span> <span class="st">&quot;EpiSmokEr&quot;</span>)) <span class="co"># set the directory where you want the result files to be saved</span>
-<span class="kw">generateReport</span>(<span class="dt">resObj =</span> result, <span class="dt">outputFileName =</span> <span class="st">&quot;Results_comprehensive&quot;</span>, <span class="dt">method =</span> <span class="st">&quot;all&quot;</span>)</code></pre></div>
+<p>In the example below result object from the <strong>all</strong> option of <strong>epismoker</strong> function has been saved to <strong>result</strong> variable, which will be passed onto generateReport function. On executing <strong>generateReport</strong> function, a <strong>Results</strong>
+ folder will be created in the current working directory, with a html 
+file named “Results_comprehensive.html”. Result files generated from the
+ example below can be found under the <strong>Results</strong> folder.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">setwd</span>(<span class="kw">system.file</span>(<span class="dt">package =</span> <span class="st">"EpiSmokEr"</span>)) <span class="co"># set the directory where you want the result files to be saved</span>
+<span class="kw">generateReport</span>(<span class="dt">resObj =</span> result, <span class="dt">outputFileName =</span> <span class="st">"Results_comprehensive"</span>, <span class="dt">method =</span> <span class="st">"all"</span>)</code></pre></div>
 <pre><code>## ====================================================================================================================</code></pre>
-<pre><code>## Saving results as html and csv files to /run/user/1002/gvfs/sftp:host=atlas.fimm.fi/fs/projects/kaprio_group/kaprio2/kaprio2/Sailalitha/Smoking_DILGOM/EpiSmokEr/Results</code></pre>
+<pre><code>## Saving results as html and csv files to /home/sbollepa/R/x86_64-pc-linux-gnu-library/3.2/Results</code></pre>
 <pre><code>## ====================================================================================================================</code></pre>
 <pre><code>## 
 ## 
@@ -530,68 +654,63 @@ knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">he
   |                                                                       
   |                                                                 |   0%
   |                                                                       
-  |.........                                                        |  14%
+  |.............                                                    |  20%
 ##    inline R code fragments
 ## 
 ## 
   |                                                                       
-  |...................                                              |  29%
+  |..........................                                       |  40%
 ## label: unnamed-chunk-13 (with options) 
-## List of 3
+## List of 2
 ##  $ echo   : logi FALSE
-##  $ include: logi FALSE
-##  $ results: chr &quot;asis&quot;
+##  $ results: chr "asis"
 ## 
 ## 
   |                                                                       
-  |............................                                     |  43%
+  |.......................................                          |  60%
 ##   ordinary text without R code
 ## 
 ## 
   |                                                                       
-  |.....................................                            |  57%
+  |....................................................             |  80%
 ## label: unnamed-chunk-14 (with options) 
 ## List of 2
 ##  $ echo   : logi FALSE
-##  $ results: chr &quot;asis&quot;
-## 
-## 
-  |                                                                       
-  |..............................................                   |  71%
-##   ordinary text without R code
-## 
-## 
-  |                                                                       
-  |........................................................         |  86%
-## label: unnamed-chunk-15 (with options) 
-## List of 1
-##  $ results: chr &quot;markup&quot;
+##  $ results: chr "asis"
 ## 
 ## 
   |                                                                       
   |.................................................................| 100%
 ##   ordinary text without R code</code></pre>
 <pre><code>## output file: all.knit.md</code></pre>
-<pre><code>## /usr/bin/pandoc +RTS -K512m -RTS all.utf8.md --to html --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash --output pandoc147358fd2415.html --smart --email-obfuscation none --self-contained --standalone --section-divs --template /home/sbollepa/R/x86_64-pc-linux-gnu-library/3.2/rmarkdown/rmd/h/default.html --no-highlight --variable highlightjs=1 --variable 'theme:bootstrap' --include-in-header /tmp/RtmpSdJKTI/rmarkdown-str14735d2285f4.html --mathjax --variable 'mathjax-url:https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'</code></pre>
+<pre><code>## /usr/bin/pandoc +RTS -K512m -RTS all.utf8.md --to html --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash --output /home/sbollepa/R/x86_64-pc-linux-gnu-library/3.2/Results/Results_comprehensive.html --smart --email-obfuscation none --self-contained --standalone --section-divs --template /home/sbollepa/R/x86_64-pc-linux-gnu-library/3.2/rmarkdown/rmd/h/default.html --no-highlight --variable highlightjs=1 --variable 'theme:bootstrap' --include-in-header /tmp/RtmpPZfkZa/rmarkdown-str1f2648b489a3.html --mathjax --variable 'mathjax-url:https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'</code></pre>
 <pre><code>## 
-## Output created: /run/user/1002/gvfs/sftp:host=atlas.fimm.fi/fs/projects/kaprio_group/kaprio2/kaprio2/Sailalitha/Smoking_DILGOM/EpiSmokEr/Results/Results_comprehensive.html</code></pre>
+## Output created: /home/sbollepa/R/x86_64-pc-linux-gnu-library/3.2/Results/Results_comprehensive.html</code></pre>
 </div>
 </div>
 <div id="references" class="section level1">
 <h1>References</h1>
-<hr />
+<hr>
 <div id="refs" class="references">
 <div id="ref-minfi">
-<p>Aryee, Martin J., Andrew E. Jaffe, Hector Corrada-Bravo, Christine Ladd-Acosta, Andrew P. Feinberg, Kasper D. Hansen, and Rafael A. Irizarry. 2014. “Minfi: A Flexible and Comprehensive Bioconductor Package for the Analysis of Infinium Dna Methylation Microarrays.” <em>Bioinformatics</em> 30 (10): 1363–9. doi:<a href="https://doi.org/10.1093/bioinformatics/btu049">10.1093/bioinformatics/btu049</a>.</p>
+<p>Aryee, Martin J., Andrew E. Jaffe, Hector Corrada-Bravo, Christine 
+Ladd-Acosta, Andrew P. Feinberg, Kasper D. Hansen, and Rafael A. 
+Irizarry. 2014. “Minfi: A Flexible and Comprehensive Bioconductor 
+Package for the Analysis of Infinium Dna Methylation Microarrays.” <em>Bioinformatics</em> 30 (10): 1363–9. doi:<a href="https://doi.org/10.1093/bioinformatics/btu049">10.1093/bioinformatics/btu049</a>.</p>
 </div>
 <div id="ref-elliott">
-<p>Hannah R Elliott, Wendy L McArdle, Therese Tillin, and Caroline L Relton. 2014. “Differences in Smoking Associated Dna Methylation Patterns in South Asians and Europeans.” <em>Clinical Epigenetics</em> 6 (1). doi:<a href="https://doi.org/10.1186/1868-7083-6-4">10.1186/1868-7083-6-4</a>.</p>
+<p>Hannah R Elliott, Wendy L McArdle, Therese Tillin, and Caroline L 
+Relton. 2014. “Differences in Smoking Associated Dna Methylation 
+Patterns in South Asians and Europeans.” <em>Clinical Epigenetics</em> 6 (1). doi:<a href="https://doi.org/10.1186/1868-7083-6-4">10.1186/1868-7083-6-4</a>.</p>
 </div>
 <div id="ref-zhang">
-<p>Yan Zhang, Kai-Uwe Saum, Ines Florath, and Hermann Brenner. 2016. “Self-Reported Smoking, Serum Cotinine, and Blood Dna Methylation.” <em>Environmental Research</em> 146. doi:<a href="https://doi.org/https://doi.org/10.1016/j.envres.2016.01.026">https://doi.org/10.1016/j.envres.2016.01.026</a>.</p>
+<p>Yan Zhang, Kai-Uwe Saum, Ines Florath, and Hermann Brenner. 2016. 
+“Self-Reported Smoking, Serum Cotinine, and Blood Dna Methylation.” <em>Environmental Research</em> 146. doi:<a href="https://doi.org/https://doi.org/10.1016/j.envres.2016.01.026">https://doi.org/10.1016/j.envres.2016.01.026</a>.</p>
 </div>
 <div id="ref-geo">
-<p>Yun Liu, Leonid Padyukov, Martin J Aryee, and Andrew P Feinberg. 2013. “Epigenome-Wide Association Data Implicate Dna Methylation as an Intermediary of Genetic Risk in Rheumatoid Arthritis.” <em>Nature Biotechnology</em> 31: 142–47. doi:<a href="https://doi.org/doi:10.1038/nbt.2487">doi:10.1038/nbt.2487</a>.</p>
+<p>Yun Liu, Leonid Padyukov, Martin J Aryee, and Andrew P Feinberg. 
+2013. “Epigenome-Wide Association Data Implicate Dna Methylation as an 
+Intermediary of Genetic Risk in Rheumatoid Arthritis.” <em>Nature Biotechnology</em> 31: 142–47. doi:<a href="https://doi.org/doi:10.1038/nbt.2487">doi:10.1038/nbt.2487</a>.</p>
 </div>
 </div>
 </div>
@@ -608,5 +727,6 @@ knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">he
   })();
 </script>
 
-</body>
-</html>
+
+
+</body></html>

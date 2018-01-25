@@ -1,7 +1,0 @@
-"SampleName","logCoeff_CS","logCoeff_NS","logCoeff_FS","PredictedSmokingStatus","probs_CS","probs_FS","probs_NS","PredictedSmokingStatus2"
-"GSM1051533_7800246024_R03C02","1.27","0.77","-2.04","Current Smoker","0.61","0.37","0.02","Current Smoker"
-"GSM1051534_7800246024_R04C02","-1.24","0.26","0.97","Never Smoker","0.07","0.31","0.62","Never Smoker"
-"GSM1051538_7800246085_R02C01","-0.79","0.36","0.44","Never Smoker","0.13","0.42","0.45","Never Smoker"
-"GSM1051539_7800246085_R03C01","-1.22","0.47","0.75","Never Smoker","0.07","0.40","0.53","Never Smoker"
-"GSM1051584_7800246137_R01C01","-0.74","0.51","0.23","Former Smoker","0.14","0.49","0.37","Former Smoker"
-"GSM1051585_7800246137_R02C01","-1.53","0.67","0.86","Never Smoker","0.05","0.43","0.52","Never Smoker"
