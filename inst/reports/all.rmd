@@ -1,12 +1,19 @@
 ---
+title: "EpiSmokEr - Epigenetic Smoking status Estimator- R package"
 output:
-pdf_document: default
-html_document: default
+  rmarkdown::html_vignette:
+    toc: true
+fontsize: 16pt
+vignette: >
+  %\VignetteIndexEntry{EpiSmokEr - Epigenetic Smoking status Estimator- R package}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
-# EpiSmokEr Results
+
+# Results from Comprehensive approach (all)
 Date: `r format(Sys.time(), '%d %B, %Y')` 
 
-```{r echo=FALSE, results="asis"}
+```{r echo=FALSE, include=FALSE, results="asis"}
 out <- htmlTable::txtRound(result, 2, excl.cols=1)
 write.csv(out, file.path(outputDir, "EpiSmokEr_Results_all.csv"), row.names=FALSE)
 ```
@@ -21,6 +28,11 @@ for (col in cols_2_clr){
 out <- suppressWarnings( htmlTable::htmlTable(out1, cgroup = c("","Elliott Method","Zhang Method","Multinomial LASSO Method",rep(NA,7)),n.cgroup = c(rep(1,3),8,rep(FALSE,7)), rnames=FALSE, col.columns = c(rep("none",3),rep("#EFEFF0", 8)),
  align="rrr|r", escape.html = FALSE))
 print(out,type="html",useViewer=TRUE)
+```
+
+## R session information
+```{r, results="markup"}
+sessionInfo()
 ```
 
 

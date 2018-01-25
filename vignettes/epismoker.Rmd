@@ -89,6 +89,8 @@ samplesheet <- read.csv(system.file("extdata", "samplesheet_GSE42861.csv", packa
 knitr::kable(head(samplesheet, 5))
 ```
 
+Now the **dataset** object can be passed on to the **epismoker** function to calculate smoking score and smoking status using four options available.
+
 ## 2. From methylation matrix
 A data matrix of normalised methylation values in beta scale, with rows labelling the CpG probe ids and columns labelling the sample names, can also be used as an input to EpiSmokEr. Here we use the methylation matrix from the same 6 samples to demonstrate how methylation matrix can be used as input. 
 ```{r, include= FALSE}
@@ -140,17 +142,19 @@ result
 
 # Generate Results
 ***
-Results can be saved as html and csv files using **generateReport** function. A **Results** folder will be created in the **current working directory**. 
+Results can be saved as html and csv files using **generateReport** function. A **Results** folder will be created in the **current working directory**. If **Results** folder already exists, result files will be appended to this folder.
 
-**generateReport** takes result object and method used in epismoker function. Users have to provide a name for the output html file. 
+**generateReport** takes **result object (resObj)** and **method** used in epismoker function. Users have to provide a name for the output html file. 
 
-#### Please note that result object from epismoker function must be saved as variable **result**.
+#### Please note that
+a. In the R environment, result object from **epismoker** function must be saved to the variable **result**.
+b. In order to create the **Results** folder, set the working directory path to the folder where you have permission to write.
 
-In the example below result object from the **all** option of **epismoker** function has been saved to **result** variable, which will be passed onto generateReport function. 
+In the example below result object from the **all** option of **epismoker** function has been saved to **result** variable, which will be passed onto generateReport function. On executing **generateReport** function, a **Results** folder will be created in the current working directory, with a html file named "Results_comprehensive.html". "Results_comprehensive.html" file looks like [this](EpiSmokEr/vignettes/Results_comprehenive.html).
 
 ```{r}
 setwd(system.file(package = "EpiSmokEr")) # set the directory where you want the result files to be saved
-generateReport(resObj = result, outputFileName = "Result", method = "all")
+generateReport(resObj = result, outputFileName = "Results_comprehensive", method = "all")
 ```
 
 # References 

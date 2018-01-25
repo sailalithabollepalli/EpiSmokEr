@@ -49,9 +49,9 @@
 #' data(CS_final_coefs, FS_final_coefs, NS_final_coefs)
 #' result <- epismoker(dataset = dummyBetaData, samplesheet = samplesheet, ref.Zhang = Zhangetal_cpgs, ref.Elliott =  Illig_data,
 #'                     ref.CS = CS_final_coefs, ref.FS = FS_final_coefs, ref.NS = NS_final_coefs, method = "all")
-#' generateReport(result, outputFileName = "results_all", method = "all")
+#' generateReport(result, outputFileName = "Results_comprehensive", method = "all")
 #' ## result contains smoking score calculated from all the three methods ( "EM", "ZM", "MLM").
-#' ## A html file named "results_all.html" is generated in the Results folder.
+#' ## A html file named "Results_comprehensive.html" is generated in the Results folder.
 #' ## A csv file saved to the Results folder.
 #'
 #' @importFrom htmlTable htmlTable
@@ -77,7 +77,7 @@ renderReport <- function(rmdPath, outputFileName) {
   rmdPath <- normalizePath(rmdPath)
   mainDir <- dirname(getwd())
   outputDir <- file.path(mainDir, "Results")
-  suppressWarnings(ifelse(!dir.exists(outputDir), dir.create(outputDir), FALSE))
+  suppressWarnings(ifelse(!dir.exists(outputDir), dir.create(outputDir,showWarnings = TRUE), FALSE))
   outputDir <- normalizePath(outputDir)
   message("====================================================================================================================")
   message(sprintf("Saving results as html and csv files to %s", outputDir))
