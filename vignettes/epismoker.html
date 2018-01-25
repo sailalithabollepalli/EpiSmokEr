@@ -427,12 +427,12 @@ knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">he
 <pre><code>## ====================================</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">result</code></pre></div>
 <pre><code>##                                                SampleName smokingscore_EM
-## GSM1051533_7800246024_R03C02 GSM1051533_7800246024_R03C02        4.500287
-## GSM1051534_7800246024_R04C02 GSM1051534_7800246024_R04C02       -1.502993
-## GSM1051538_7800246085_R02C01 GSM1051538_7800246085_R02C01       -1.510290
-## GSM1051539_7800246085_R03C01 GSM1051539_7800246085_R03C01       -4.420176
-## GSM1051584_7800246137_R01C01 GSM1051584_7800246137_R01C01       -3.580248
-## GSM1051585_7800246137_R02C01 GSM1051585_7800246137_R02C01       -7.182845</code></pre>
+## GSM1051533_7800246024_R03C02 GSM1051533_7800246024_R03C02        4.500775
+## GSM1051534_7800246024_R04C02 GSM1051534_7800246024_R04C02       -1.502647
+## GSM1051538_7800246085_R02C01 GSM1051538_7800246085_R02C01       -1.509815
+## GSM1051539_7800246085_R03C01 GSM1051539_7800246085_R03C01       -4.420365
+## GSM1051584_7800246137_R01C01 GSM1051584_7800246137_R01C01       -3.580144
+## GSM1051585_7800246137_R02C01 GSM1051585_7800246137_R02C01       -7.182343</code></pre>
 </div>
 <div id="zhang-method-zm" class="section level3">
 <h3>3. Zhang method (ZM)</h3>
@@ -447,12 +447,12 @@ knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">he
 <pre><code>## ==================================</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">result</code></pre></div>
 <pre><code>##                                                SampleName smokingscore_ZM
-## GSM1051533_7800246024_R03C02 GSM1051533_7800246024_R03C02       -4.715723
-## GSM1051534_7800246024_R04C02 GSM1051534_7800246024_R04C02       -9.335696
-## GSM1051538_7800246085_R02C01 GSM1051538_7800246085_R02C01       -7.285033
-## GSM1051539_7800246085_R03C01 GSM1051539_7800246085_R03C01       -7.734379
-## GSM1051584_7800246137_R01C01 GSM1051584_7800246137_R01C01       -7.948031
-## GSM1051585_7800246137_R02C01 GSM1051585_7800246137_R02C01       -9.250385</code></pre>
+## GSM1051533_7800246024_R03C02 GSM1051533_7800246024_R03C02       -4.714879
+## GSM1051534_7800246024_R04C02 GSM1051534_7800246024_R04C02       -9.335361
+## GSM1051538_7800246085_R02C01 GSM1051538_7800246085_R02C01       -7.284551
+## GSM1051539_7800246085_R03C01 GSM1051539_7800246085_R03C01       -7.733890
+## GSM1051584_7800246137_R01C01 GSM1051584_7800246137_R01C01       -7.947692
+## GSM1051585_7800246137_R02C01 GSM1051585_7800246137_R02C01       -9.250532</code></pre>
 </div>
 <div id="compreshensive-approach-all" class="section level3">
 <h3>4. Compreshensive approach (all)</h3>
@@ -484,26 +484,26 @@ knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">he
 <pre><code>## ============================================</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">result</code></pre></div>
 <pre><code>##                     SampleName smokingscore_EM smokingscore_ZM logCoeff_CS
-## 1 GSM1051533_7800246024_R03C02        4.500287       -4.715723   1.2703105
-## 2 GSM1051534_7800246024_R04C02       -1.502993       -9.335696  -1.2368920
-## 3 GSM1051538_7800246085_R02C01       -1.510290       -7.285033  -0.7929044
-## 4 GSM1051539_7800246085_R03C01       -4.420176       -7.734379  -1.2173398
-## 5 GSM1051584_7800246137_R01C01       -3.580248       -7.948031  -0.7366032
-## 6 GSM1051585_7800246137_R02C01       -7.182845       -9.250385  -1.5290424
+## 1 GSM1051533_7800246024_R03C02        4.500775       -4.714879   1.2703919
+## 2 GSM1051534_7800246024_R04C02       -1.502647       -9.335361  -1.2369496
+## 3 GSM1051538_7800246085_R02C01       -1.509815       -7.284551  -0.7928637
+## 4 GSM1051539_7800246085_R03C01       -4.420365       -7.733890  -1.2172875
+## 5 GSM1051584_7800246137_R01C01       -3.580144       -7.947692  -0.7366855
+## 6 GSM1051585_7800246137_R02C01       -7.182343       -9.250532  -1.5288988
 ##   logCoeff_NS logCoeff_FS PredictedSmokingStatus   probs_CS  probs_FS
-## 1   0.7726142  -2.0429247         Current Smoker 0.60815127 0.3697131
-## 2   0.2629144   0.9739776           Never Smoker 0.06847219 0.3068117
-## 3   0.3563739   0.4365304           Never Smoker 0.13200953 0.4166108
-## 4   0.4711555   0.7461843           Never Smoker 0.07387859 0.3997816
-## 5   0.5095150   0.2270882          Former Smoker 0.14088127 0.4898189
-## 6   0.6709352   0.8581072           Never Smoker 0.04783032 0.4316596
+## 1   0.7725224  -2.0429143         Current Smoker 0.60819116 0.3696733
+## 2   0.2628229   0.9741267           Never Smoker 0.06846406 0.3067648
+## 3   0.3563445   0.4365192           Never Smoker 0.13201647 0.4166035
+## 4   0.4713928   0.7458947           Never Smoker 0.07388641 0.3998979
+## 5   0.5097312   0.2269544          Former Smoker 0.14086335 0.4899028
+## 6   0.6705010   0.8583979           Never Smoker 0.04783858 0.4314848
 ##     probs_NS PredictedSmokingStatus2
-## 1 0.02213563          Current Smoker
-## 2 0.62471611            Never Smoker
-## 3 0.45137970            Never Smoker
-## 4 0.52633984            Never Smoker
-## 5 0.36929986           Former Smoker
-## 6 0.52051009            Never Smoker</code></pre>
+## 1 0.02213551          Current Smoker
+## 2 0.62477109            Never Smoker
+## 3 0.45138002            Never Smoker
+## 4 0.52621569            Never Smoker
+## 5 0.36923385           Former Smoker
+## 6 0.52067663            Never Smoker</code></pre>
 </div>
 </div>
 <div id="generate-results" class="section level1">
@@ -517,7 +517,7 @@ knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">he
 <li>In the R environment, result object from <strong>epismoker</strong> function must be saved to the variable <strong>result</strong>.</li>
 <li>In order to create the <strong>Results</strong> folder, set the working directory path to the folder where you have permission to write.</li>
 </ol>
-<p>In the example below result object from the <strong>all</strong> option of <strong>epismoker</strong> function has been saved to <strong>result</strong> variable, which will be passed onto generateReport function. On executing <strong>generateReport</strong> function, a <strong>Results</strong> folder will be created in the current working directory, with a html file named “Results_comprehensive.html”. “Results_comprehensive.html” file looks like <a href="EpiSmokEr/vignettes/Results_comprehenive.html">this</a>.</p>
+<p>In the example below result object from the <strong>all</strong> option of <strong>epismoker</strong> function has been saved to <strong>result</strong> variable, which will be passed onto generateReport function. On executing <strong>generateReport</strong> function, a <strong>Results</strong> folder will be created in the current working directory, with a html file named “Results_comprehensive.html”. An example of “Results_comprehensive.html” file can be found under vignettes.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">setwd</span>(<span class="kw">system.file</span>(<span class="dt">package =</span> <span class="st">&quot;EpiSmokEr&quot;</span>)) <span class="co"># set the directory where you want the result files to be saved</span>
 <span class="kw">generateReport</span>(<span class="dt">resObj =</span> result, <span class="dt">outputFileName =</span> <span class="st">&quot;Results_comprehensive&quot;</span>, <span class="dt">method =</span> <span class="st">&quot;all&quot;</span>)</code></pre></div>
 <pre><code>## ====================================================================================================================</code></pre>
@@ -572,7 +572,7 @@ knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">he
   |.................................................................| 100%
 ##   ordinary text without R code</code></pre>
 <pre><code>## output file: all.knit.md</code></pre>
-<pre><code>## /usr/bin/pandoc +RTS -K512m -RTS all.utf8.md --to html --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash --output pandoc14734eb65431.html --smart --email-obfuscation none --self-contained --standalone --section-divs --template /home/sbollepa/R/x86_64-pc-linux-gnu-library/3.2/rmarkdown/rmd/h/default.html --no-highlight --variable highlightjs=1 --variable 'theme:bootstrap' --include-in-header /tmp/RtmpSdJKTI/rmarkdown-str147346e1245e.html --mathjax --variable 'mathjax-url:https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'</code></pre>
+<pre><code>## /usr/bin/pandoc +RTS -K512m -RTS all.utf8.md --to html --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash --output pandoc147312b19aee.html --smart --email-obfuscation none --self-contained --standalone --section-divs --template /home/sbollepa/R/x86_64-pc-linux-gnu-library/3.2/rmarkdown/rmd/h/default.html --no-highlight --variable highlightjs=1 --variable 'theme:bootstrap' --include-in-header /tmp/RtmpSdJKTI/rmarkdown-str147361236e79.html --mathjax --variable 'mathjax-url:https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'</code></pre>
 <pre><code>## 
 ## Output created: /run/user/1002/gvfs/sftp:host=atlas.fimm.fi/fs/projects/kaprio_group/kaprio2/kaprio2/Sailalitha/Smoking_DILGOM/EpiSmokEr/Results/Results_comprehensive.html</code></pre>
 </div>
