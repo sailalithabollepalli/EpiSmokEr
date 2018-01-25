@@ -1,4 +1,4 @@
-"cpgs"	"reference_never_median_beta_discovery"	"reference_never_median_beta_replication"	"reference_never_median_beta_all"	"discovery_effect"	"replication_effect"	"all_effect"	"abs_all_effect"	"weights"
+	"cpgs"	"reference_never_median_beta_discovery"	"reference_never_median_beta_replication"	"reference_never_median_beta_all"	"discovery_effect"	"replication_effect"	"all_effect"	"abs_all_effect"	"weights"
 "1"	"cg09469355"	0.3299	0.3021	0.316	-1.7622	-1.6099	-1.68605	1.68605	0.428574391837545
 "2"	"cg08884752"	0.6803	0.5889	0.6346	-4.0125	-2.81979999999999	-3.41615	3.41615	0.868345783740593
 "3"	"cg12547807"	0.1885	0.1623	0.1754	-2.1385	-1.4614	-1.79995	1.79995	0.457526453300904
