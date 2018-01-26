@@ -18,6 +18,11 @@ out <- htmlTable::txtRound(result, 2, excl.cols=1)
 write.csv(out, file.path(outputDir, "EpiSmokEr_Results_MLM.csv"), row.names=FALSE)
 
 out <- suppressWarnings( htmlTable::htmlTable(out, rnames=FALSE,  escape.html = FALSE))
-print(out,type="html",useViewer=TRUE)
+print(out,type="html", useViewer= FALSE)
+```
+
+## R session information
+```{r, results="markup"}
+sessionInfo()
 ```
 
