@@ -1,9 +1,16 @@
 ---
+title: "EpiSmokEr - Epigenetic Smoking status Estimator- R package"
 output:
-pdf_document: default
-html_document: default
+  rmarkdown::html_vignette:
+    toc: true
+fontsize: 16pt
+vignette: >
+  %\VignetteIndexEntry{EpiSmokEr - Epigenetic Smoking status Estimator- R package}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
-# EpiSmokEr Results
+
+# Results from Multinomial LASSO Method (MLM)
 Date: `r format(Sys.time(), '%d %B, %Y')` 
 
 ```{r echo=FALSE, results="asis"}

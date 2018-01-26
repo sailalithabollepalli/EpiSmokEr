@@ -33,5 +33,3 @@ print(out,type="html",useViewer=TRUE)
 ```{r, results="markup"}
 sessionInfo()
 ```
-
-
