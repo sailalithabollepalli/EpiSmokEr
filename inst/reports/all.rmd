@@ -13,7 +13,7 @@ vignette: >
 # Results from Comprehensive approach (all)
 Date: `r format(Sys.time(), '%d %B, %Y')` 
 
-```{r echo=FALSE, include=FALSE, results="asis"}
+```{r echo=FALSE, results="asis"}
 out <- htmlTable::txtRound(result, 2, excl.cols=1)
 write.csv(out, file.path(outputDir, "EpiSmokEr_Results_all.csv"), row.names=FALSE)
 ```
