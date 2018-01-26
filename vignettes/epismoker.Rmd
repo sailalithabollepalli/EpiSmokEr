@@ -17,26 +17,6 @@ vignette: >
 ***
 This vignette gives an overview on how to use the **EpiSmokEr** R package. 
 
-## Installation
-To install EpiSmokEr, start R and then type the following commands:
-```{r eval=FALSE}
-source("http://bioconductor.org/biocLite.R")
-install.packages("devtools") # if you don't have the package, run install.packages("devtools")
-library(devtools)
-install_github("sailalithabollepalli/EpiSmokEr")
-```
-
-After installing **EpiSmokEr** load the packages along with its dependencies:
-```{r}
-suppressPackageStartupMessages({
-library(EpiSmokEr)  
-library(IlluminaHumanMethylation450kmanifest)
-library(minfi)
-library(htmlTable)
-library(rmarkdown)
-})
-```
-
 ## Four options in EpiSmokEr
 **EpiSmokEr** provides four options to calculate smoking score and predicts smoking status from whole blood Infinium HumanMethylation450 data.
 
@@ -70,10 +50,21 @@ library(devtools)
 install_github("sailalithabollepalli/EpiSmokEr")
 ```
 
+After installing **EpiSmokEr**, load the package along with its dependencies:
+```{r}
+suppressPackageStartupMessages({
+library(EpiSmokEr)  
+library(IlluminaHumanMethylation450kmanifest)
+library(minfi)
+library(htmlTable)
+library(rmarkdown)
+})
+```
+
 # Input Data
 ***
 To generate the smoking scores from the whole blood methylaion, EpiSmokEr simply requires methylation data as an input.
-Input data could be either raw methylation data in the form of idat files or a normalised methylation matrix in the beta scale ranging in between o and 1.
+Input data could be either raw methylation data in the form of idat files or a normalised methylation matrix in the beta scale ranging in between 0 and 1.
 For MLM method, a sample sheet with **sex** status is needed to complement the methylation data.
 
 To demonstrate the working of the EpiSmokEr we chose a peripheral blood leukocytes dataset from GEO [GSE42861](http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=gse42861)[@geo]. We use only 6 samples from this dataset to minimise the package size and running time.
@@ -162,7 +153,7 @@ Results can be saved as html and csv files using **generateReport** function. A 
 a. In the R environment, result object from **epismoker** function must be saved to the variable **result**.
 b. In order to create the **Results** folder, set the working directory path to the folder where you have permission to write.
 
-In the example below result object from the **all** option of **epismoker** function has been saved to **result** variable, which will be passed onto generateReport function. On executing **generateReport** function, a **Results** folder will be created in the current working directory, with a html file named "Results_comprehensive.html". Result files generated from the example below can be found under the **Results** folder.
+In the example below result object from the **all** option of **epismoker** function has been saved to **result** variable, which will be passed onto generateReport function. On executing **generateReport** function, a **Results** folder will be created in the current working directory, with a html file named "Results_comprehensive.html". Result files generated from the example below can be found in the **Results** folder of the package.
 
 ```{r}
 setwd(system.file(package = "EpiSmokEr")) # set the directory where you want the result files to be saved
