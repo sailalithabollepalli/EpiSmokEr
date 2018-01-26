@@ -7,7 +7,7 @@ Description:EpiSmokEr package provides a suite of methods to calcualte smoking s
       Input could be either raw methylation data in the form of idat files or a methylation matrix in the beta scale ranging in between o and 1. 
       A sample sheet is needed with gender information to complement the methylation data. Four options are available in the package to calculate 
       the smoking score and predict the smoking status of an individual based on the methylation data. For more information and demonstration of
-      the working of the package, see 
+      the working of the package, see [vignettee](http://htmlpreview.github.io/?https://github.com/sailalithabollepalli/EpiSmokEr/blob/master/vignettes/epismoker.html) 
 Depends: 
   R (>= 3.0.0),
   htmlTable,
