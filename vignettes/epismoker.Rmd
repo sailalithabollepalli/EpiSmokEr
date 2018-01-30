@@ -79,7 +79,7 @@ We will now show 2 ways of providing input data:
 ## 1. From idat files
 Here input data are in the form of idat files. `minfi`[@minfi] package is used to read the idat files.
 **normaliseData** function has a suite of customised internal functions to normalise and calculate beta values from the idat files.
-Color and channel specific normalisation was performed on the training dataset used in the MLM appraoch. Quantiles from this training dataset are used to adjust the distribution of your input data comparable to the training dataset. Following the normalisation, beta values are calculated.
+Color and channel specific normalisation was performed on the training dataset used in the MLM approach. Quantiles from this training dataset are used to adjust the distribution of your input data comparable to the training dataset. Following the normalisation, beta values are calculated.
 
 ### Please note:
 - Sample sheet must be included in the same folder as the idat files.
