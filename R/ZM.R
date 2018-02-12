@@ -28,7 +28,8 @@ ZM <- function(dataset, ref.Zhang = Zhangetal_cpgs){
   dataset_ZM <- dataset
   cpgs <- intersect(rownames(dataset_ZM) , names(ref.Zhang))
   message(sprintf("Dataset has %s of %s CpGs required for Zhang et al method",length(cpgs),length(ref.Zhang)))
-  dataset_ZM <- dataset_ZM[names(ref.Zhang),]
+  dataset_ZM <- dataset_ZM[cpgs,]
+  ref.Zhang <- ref.Zhang[cpgs]
   # check if the order colnames of dataset equal to names(weights)
   stopifnot(rownames(dataset_ZM) == names(ref.Zhang))
   res_ZM <- setNames(data.frame(colnames(dataset_ZM),apply(dataset_ZM,2,SmokingScore, ref.Zhang)), c("SampleName","smokingscore_ZM"))
