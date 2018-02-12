@@ -56,9 +56,9 @@ MLM <- function(dataset, samplesheet, ref.CS = CS_final_coefs, ref.FS = FS_final
   coeffs <- setNames(data.frame( logCoeff_CS, logCoeff_FS, logCoeff_NS), c("logCoeff_CS", "logCoeff_FS", "logCoeff_NS"))
   coeffs_probs <- setNames(data.frame(probs_CS, probs_FS, probs_NS), c("probs_CS", "probs_FS", "probs_NS"))
   #results <- setNames(data.frame(cbind(coeffs,getSmokingStatus(coeffs[,c(1:3)]), as.character(sampleSheet$SmokingStatus), rownames(coeffs))),
-  #                              c("logCoeff_CS", "logCoeff_NS", "logCoeff_FS","PredictedSmokingStatus", "SmokingStatus","SampleName"))
+  #                              c("logCoeff_CS", "logCoeff_FS", "logCoeff_NS","PredictedSmokingStatus", "SmokingStatus","SampleName"))
   res_MLM <- setNames(data.frame(cbind( rownames(coeffs),coeffs,getSmokingStatus(coeffs[,c(1:3)]),coeffs_probs,getSmokingStatus2(coeffs_probs[,c(1:3)]))),
-                      c("SampleName","logCoeff_CS","logCoeff_NS","logCoeff_FS","PredictedSmokingStatus","probs_CS","probs_FS","probs_NS","PredictedSmokingStatus2"))
+                      c("SampleName","logCoeff_CS","logCoeff_FS","logCoeff_NS","PredictedSmokingStatus","probs_CS","probs_FS","probs_NS","PredictedSmokingStatus2"))
   message("============================================")
   message("<<<<< Multinomial LASSO Method Completed >>>>>")
   message("============================================")
