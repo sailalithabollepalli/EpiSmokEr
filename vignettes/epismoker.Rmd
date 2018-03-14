@@ -15,7 +15,9 @@ vignette: >
 
 # Introduction
 ***
-This vignette gives an overview of how to use the **EpiSmokEr** R package. Several independent studies have reported the high impact of smoking on DNA methylation with current, never and former smokers exhibiting different methylation profiles.Recently, usage of DNA methylation as a proxy measure to estimate smoking status has been proposed [@elliott].**EpiSmokEr** serves as a comprehensive package with four options to estimate smoking status based on methylation data.
+Several independent studies have reported the high impact of smoking on DNA methylation with current, never and former smokers exhibiting different methylation profiles. Recently, usage of DNA methylation as a proxy measure to estimate smoking status has been proposed [@elliott]. **EpiSmokEr** serves as a comprehensive package with four options to estimate smoking status based on methylation data.
+
+This vignette gives an overview of how to use the **EpiSmokEr** R package. 
 
 ## Four options in EpiSmokEr
 **EpiSmokEr** provides four options to calculate smoking score and predicts smoking status from whole blood Infinium HumanMethylation450 data.
