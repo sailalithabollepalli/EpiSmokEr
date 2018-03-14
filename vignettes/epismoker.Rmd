@@ -15,7 +15,7 @@ vignette: >
 
 # Introduction
 ***
-This vignette gives an overview on how to use the **EpiSmokEr** R package. 
+This vignette gives an overview of how to use the **EpiSmokEr** R package. Several independent studies have reported the high impact of smoking on DNA methylation with current, never and former smokers exhibiting different methylation profiles.Recently, usage of DNA methylation as a proxy measure to estimate smoking status has been proposed [@elliott].**EpiSmokEr** serves as a comprehensive package with four options to estimate smoking status based on methylation data.
 
 ## Four options in EpiSmokEr
 **EpiSmokEr** provides four options to calculate smoking score and predicts smoking status from whole blood Infinium HumanMethylation450 data.
@@ -27,9 +27,10 @@ load(system.file("extdata", "MLM_coefficients.rda", package= "EpiSmokEr"))
 knitr::kable(head(MLM_coefficients, caption = "121 CpGs and coefficients selected by Multinomial LASSO approach"))
 ```
 
-2. **Elliott method (EM)** provides smoking score calculated using 187 CpGs [@elliott].
+2. **Elliott method (EM)** provides smoking score calculated based on the approach outlined in [@elliott]. Elliott *et al* computed smoking scores using 187 smoking-associated CpGs identified in an EWAS comparing current Vs never smokers [@zellinger]. For a detailed explanation of smoking score calculation please refer to [@elliott]. Briefly, weights and reference beta values are obtained from Zellinger *et al*. For each of the 187 CpG sites, the absolute difference between cohort beta value and reference beta value is calculated and then multiplied by the corresponding weight. A smoking score is then obtained by summation across all the 187 CpG site scores.
 
-3. **Zhang method (ZM)** provides methylation score calculated using 4 CpGs [@zhang].
+3. **Zhang method (ZM)** provides methylation score calculated using 4 CpGs.
+Zhang *et al * developed the methylation score for discriminating current smokers from never smokers, and former smokers from never smokers using a stepwise selection of logistic regression models [@zhang]. Weights of 4 CpGs provided by Zhang *et al* were used to obtain methylation scores.
 
 4. **all** a comprehensive approach which provides results from all the three methods described above.
 
@@ -49,7 +50,13 @@ install.packages("devtools") # if you don't have the package, run install.packag
 library(devtools)
 install_github("sailalithabollepalli/EpiSmokEr")
 ```
-
+**EpiSmokEr** depends on the following packages:
+```{r eval=FALSE}
+library(IlluminaHumanMethylation450kmanifest)
+library(minfi)
+library(htmlTable)
+library(rmarkdown)
+```
 After installing **EpiSmokEr**, load the package along with its dependencies:
 ```{r}
 suppressPackageStartupMessages({
