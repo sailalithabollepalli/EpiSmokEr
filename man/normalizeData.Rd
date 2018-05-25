@@ -4,20 +4,21 @@
 \alias{normalizeData}
 \title{Color and channel specific quantile normalisation}
 \usage{
-normalizeData(idatPath)
+normalizeData(RGset = RGset, normMethod = c("QN", "ILM", "SQN", "ALL"))
 }
 \arguments{
-\item{idatPath}{Requires a path to the folder with the idat files and sample sheet included.}
+\item{RGset}{and normMethod
+Requires a RGset object and the normalisation method}
 }
 \value{
 dataset
-A dataframe with normalised beta values (M/U+M+100)
+A dataframe with normalised beta values (M/U+M+100) applying one of the chosen normalisation methods
 }
 \description{
 normalizeData function performs color and channel specific quantile normalisation.
 }
 \examples{
-dataset <- normalizeData(idatPath = system.file("extdata", package = "EpiSmokEr"))
+dataset <- normalizeData(RGset, normMethod="QN")
 ## dataset is a data matrix with normalised methylation values in beta scale ranging between 0 and 1.
 
 }

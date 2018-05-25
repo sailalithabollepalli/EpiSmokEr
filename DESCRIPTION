@@ -12,7 +12,8 @@ Depends:
   R (>= 3.0.0),
   htmlTable,
   IlluminaHumanMethylation450kmanifest,
-  minfi,
+  IlluminaHumanMethylation450kanno.ilmn12.hg19,
+  minfi (>= 1.24.0),
   rmarkdown
 Suggests:
   Biobase,

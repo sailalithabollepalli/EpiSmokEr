@@ -64,7 +64,7 @@
 #' ## result contains smoking score from all the three methods
 #' @export
 #'
-epismoker <- function(dataset, samplesheet, ref.Elliott= Illig_data, ref.Zhang = Zhangetal_cpgs, ref.CS = CS_final_coefs, ref.FS = FS_final_coefs, ref.NS = NS_final_coefs, method = c("MLM","EM", "ZM", "all"))
+epismoker <- function(dataset, dataset_QN, dataset_ILM, dataset_SQN, samplesheet, ref.Elliott= Illig_data, ref.Zhang = Zhangetal_cpgs, ref.CS = CS_final_coefs, ref.FS = FS_final_coefs, ref.NS = NS_final_coefs, method = c("MLM","EM", "ZM", "all"))
 {
   method <- match.arg(method)
   if (!method %in% c("MLM","EM", "ZM", "all"))
@@ -75,6 +75,6 @@ epismoker <- function(dataset, samplesheet, ref.Elliott= Illig_data, ref.Zhang =
     result <- EM(dataset, ref.Elliott)
   } else if (method == "ZM") {
     result <-ZM(dataset, ref.Zhang)
-  } else result <- all( dataset, samplesheet, ref.Elliott,ref.Zhang,ref.CS,ref.FS,ref.NS)
+  } else result <- all( dataset, dataset_QN, dataset_ILM, dataset_SQN, samplesheet, ref.Elliott,ref.Zhang,ref.CS,ref.FS,ref.NS)
   return(result)
 }

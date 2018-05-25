@@ -14,7 +14,7 @@ vignette: >
 Date: `r format(Sys.time(), '%d %B, %Y')` 
 
 ```{r echo=FALSE, results="asis"}
-out <- htmlTable::txtRound(result, 2, excl.cols=1)
+out <- htmlTable::txtRound(result_ZM, 2, excl.cols=1)
 write.csv(out, file.path(outputDir, "EpiSmokEr_Results_ZhangMethod.csv"), row.names=FALSE)
 out = htmlTable::htmlTable(out, escape.html=FALSE, rnames=FALSE)
 print(out,type="html",useViewer= FALSE)

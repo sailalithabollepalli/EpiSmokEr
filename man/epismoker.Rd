@@ -5,10 +5,10 @@
 \alias{EpiSmokEr}
 \title{Epigenetic Smoking status Estimator}
 \usage{
-epismoker(dataset, samplesheet, ref.Elliott = Illig_data,
-  ref.Zhang = Zhangetal_cpgs, ref.CS = CS_final_coefs,
-  ref.FS = FS_final_coefs, ref.NS = NS_final_coefs, method = c("MLM",
-  "EM", "ZM", "all"))
+epismoker(dataset, dataset_QN, dataset_ILM, dataset_SQN, samplesheet,
+  ref.Elliott = Illig_data, ref.Zhang = Zhangetal_cpgs,
+  ref.CS = CS_final_coefs, ref.FS = FS_final_coefs,
+  ref.NS = NS_final_coefs, method = c("MLM", "EM", "ZM", "all"))
 }
 \arguments{
 \item{dataset}{A data matrix of normalised methylation values in beta scale, with rows labelling the CpG probe ids and columns labelling the sample names.

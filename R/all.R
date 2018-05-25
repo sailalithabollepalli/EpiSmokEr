@@ -45,13 +45,37 @@
 #' ## result contains smoking score calculated from all the three methods ( "EM", "ZM", "MLM").
 #' @export
 #'
-all<- function(dataset, samplesheet, ref.Elliott, ref.Zhang, ref.CS, ref.FS, ref.NS ) {
-  SmokingScore_EM <- EM(dataset, ref.Elliott)
+all<- function(dataset, dataset_QN, dataset_ILM, dataset_SQN, samplesheet, ref.Elliott, ref.Zhang, ref.CS, ref.FS, ref.NS ) {
+  if(missing (dataset)) {
+    SmokingScore_EM <- EM(dataset_SQN, ref.Elliott)
+
+  } else {
+    SmokingScore_EM <- EM(dataset, ref.Elliott)
+  }
+
+  if(missing (dataset)) {
+    SmokingScore_ZM <- ZM(dataset_ILM, ref.Zhang)
+
+  } else {
+
   SmokingScore_ZM <- ZM(dataset, ref.Zhang)
-  SmokingScore_MLM <-MLM(dataset, samplesheet,ref.CS, ref.FS, ref.NS)
+  }
+
+  if (missing(dataset)){
+    SmokingScore_MLM <- MLM(dataset_QN, samplesheet,ref.CS, ref.FS, ref.NS)
+
+  }else{
+    SmokingScore_MLM <- MLM(dataset, samplesheet,ref.CS, ref.FS, ref.NS)
+  }
+
+
   cmbnd_result <- Reduce(mergeFun, list(SmokingScore_EM, SmokingScore_ZM,SmokingScore_MLM))
   return (cmbnd_result)
 }
+
+
+
+
 
 mergeFun <- function(df1, df2){
   df <- merge(df1, df2, by= "SampleName", all=FALSE)
