@@ -161,7 +161,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <h1 class="title toc-ignore">EpiSmokEr - Epigenetic Smoking status Estimator- R package</h1>
 <h4 class="author"><em>Sailalitha Bollepalli</em></h4>
-<h4 class="date"><em>Last updated on: 2018-03-14</em></h4>
+<h4 class="date"><em>Last updated on: 2018-05-25</em></h4>
 
 
 <div id="TOC">
@@ -171,17 +171,16 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><a href="#features-of-epismoker">Features of <strong>EpiSmokEr</strong></a></li>
 </ul></li>
 <li><a href="#installation">Installation</a></li>
-<li><a href="#input-data">Input Data</a><ul>
-<li><a href="#from-idat-files">1. From idat files</a><ul>
-<li><a href="#please-note">Please note:</a></li>
-</ul></li>
-<li><a href="#from-methylation-matrix">2. From methylation matrix</a></li>
-</ul></li>
+<li><a href="#input-data">Input Data</a></li>
 <li><a href="#smoking-score-calculation-and-predicton-of-smoking-status">Smoking Score calculation and predicton of smoking status</a><ul>
+<li><a href="#a.-from-idat-files">A. From idat files</a><ul>
+<li><a href="#please-note">Please note:</a></li>
 <li><a href="#multinomial-lasso-method-mlm">1. Multinomial LASSO method (MLM)</a></li>
 <li><a href="#elliott-method-em">2. Elliott method (EM)</a></li>
 <li><a href="#zhang-method-zm">3. Zhang method (ZM)</a></li>
 <li><a href="#compreshensive-approach-all">4. Compreshensive approach (all)</a></li>
+</ul></li>
+<li><a href="#b.-from-methylation-matrix">B. From methylation matrix</a></li>
 </ul></li>
 <li><a href="#generate-results">Generate Results</a></li>
 <li><a href="#references">References</a></li>
@@ -293,6 +292,7 @@ selection of logistic regression models <span class="citation">(Zhang et al. 201
 <span class="kw">install_github</span>(<span class="st">"sailalithabollepalli/EpiSmokEr"</span>)</code></pre></div>
 <p><strong>EpiSmokEr</strong> depends on the following packages:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(IlluminaHumanMethylation450kmanifest)
+<span class="kw">library</span>(IlluminaHumanMethylation450kanno.ilmn12.hg19)
 <span class="kw">library</span>(minfi)
 <span class="kw">library</span>(htmlTable)
 <span class="kw">library</span>(rmarkdown)</code></pre></div>
@@ -300,6 +300,7 @@ selection of logistic regression models <span class="citation">(Zhang et al. 201
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">suppressPackageStartupMessages</span>({
 <span class="kw">library</span>(EpiSmokEr)  
 <span class="kw">library</span>(IlluminaHumanMethylation450kmanifest)
+<span class="kw">library</span>(IlluminaHumanMethylation450kanno.ilmn12.hg19)
 <span class="kw">library</span>(minfi)
 <span class="kw">library</span>(htmlTable)
 <span class="kw">library</span>(rmarkdown)
@@ -322,10 +323,14 @@ normalised methylation matrix in the beta scale ranging in between 0 and
 methylation matrix (which contained all the CpGs required by EpiSmokEr).</li>
 <li>A sample sheet with gender information</li>
 </ul>
-<p>We will now show 2 ways of providing input data:</p>
 </div>
-<div id="from-idat-files" class="section level2">
-<h2>1. From idat files</h2>
+</div>
+<div id="smoking-score-calculation-and-predicton-of-smoking-status" class="section level1">
+<h1>Smoking Score calculation and predicton of smoking status</h1>
+<hr>
+<p>We will now show 2 ways of providing input data to predict smoking status:</p>
+<div id="a.-from-idat-files" class="section level2">
+<h2>A. From idat files</h2>
 <p>Here input data are in the form of idat files. <code>minfi</code><span class="citation">(Aryee et al. 2014)</span> package is used to read the idat files. <strong>normaliseData</strong>
  function has a suite of customised internal functions to normalise and 
 calculate beta values from the idat files. Color and channel specific 
@@ -342,12 +347,12 @@ Following the normalisation, beta values are calculated.</p>
 methylation data.</li>
 <li>For MLM method, sample sheet should include a column with gender information marked as <strong>sex</strong>, in the format of 1 and 2 representing men and women respectively.</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dataset &lt;-<span class="st"> </span><span class="kw">normalizeData</span>(<span class="dt">idatPath =</span> <span class="kw">system.file</span>(<span class="st">"extdata"</span>, <span class="dt">package =</span> <span class="st">"EpiSmokEr"</span>))</code></pre></div>
-<pre><code>## Loading reference data quantiles.</code></pre>
-<pre><code>## [read.450k.sheet] Found the following CSV files:
-## [1] "/home/sbollepa/R/x86_64-pc-linux-gnu-library/3.2/EpiSmokEr/extdata/samplesheet_GSE42861.csv"</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">rawdata &lt;-<span class="st"> </span><span class="kw">loadData</span>(<span class="dt">idatPath =</span> <span class="kw">system.file</span>(<span class="st">"extdata"</span>, <span class="dt">package =</span> <span class="st">"EpiSmokEr"</span>))</code></pre></div>
+<pre><code>## Loading idat files.</code></pre>
+<pre><code>## [read.metharray.sheet] Found the following CSV files:</code></pre>
+<pre><code>## [1] "/home/sbollepa/R/x86_64-pc-linux-gnu-library/3.4/EpiSmokEr/extdata/samplesheet_GSE42861.csv"</code></pre>
 <pre><code>## Dataset has 6 samples.</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">samplesheet &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="kw">system.file</span>(<span class="st">"extdata"</span>, <span class="st">"samplesheet_GSE42861.csv"</span>, <span class="dt">package=</span><span class="st">"EpiSmokEr"</span>), <span class="dt">header=</span><span class="ot">TRUE</span>, <span class="dt">sep=</span><span class="st">","</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">samplesheet &lt;-<span class="kw">read.csv</span>(<span class="kw">system.file</span>(<span class="st">"extdata"</span>, <span class="st">"samplesheet_GSE42861.csv"</span>, <span class="dt">package=</span><span class="st">"EpiSmokEr"</span>), <span class="dt">header=</span><span class="ot">TRUE</span>, <span class="dt">sep=</span><span class="st">","</span>)
 knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">head</span>(samplesheet, <span class="dv">5</span>))</code></pre></div>
 <table>
 <thead>
@@ -409,11 +414,204 @@ knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">he
 </tr>
 </tbody>
 </table>
+<p>When raw methylation data is available (idat files) then it is highly
+ recommended to use the same normalisation method implemented in the 
+original article which proposed that specific smoking-score method. All 
+the three smoking score methods (MLM, ZM and EM) we have considered here
+ uses 3 different normalisation methods (QN, SQN and ILM). Therefore we 
+provide three normalisation options to normalise the datasets 
+accordingly and then calculate the smoking score following that specific
+ method.</p>
+<p>Quantiles saved from color, channel and probe based quantile 
+normalisation implemented on the training dataset will be used to 
+normalise data for MLM.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dataset_QN &lt;-<span class="st"> </span><span class="kw">normalizeData</span>(<span class="dt">RGset=</span>rawdata, <span class="dt">normMethod =</span> <span class="st">"QN"</span>) </code></pre></div>
+<pre><code>## Loading RGset object.</code></pre>
+<pre><code>## Dataset has 6 samples.</code></pre>
+<p>To use EM, dataset is normalised using subset quantile normalization <span class="citation">(Touleimat and Tost 2012)</span>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dataset_SQN &lt;-<span class="st"> </span><span class="kw">normalizeData</span>(<span class="dt">RGset=</span>rawdata, <span class="dt">normMethod =</span> <span class="st">"SQN"</span>)</code></pre></div>
+<pre><code>## Loading RGset object.</code></pre>
+<pre><code>## Dataset has 6 samples.</code></pre>
+<pre><code>## [preprocessQuantile] Mapping to genome.</code></pre>
+<pre><code>## [preprocessQuantile] Fixing outliers.</code></pre>
+<pre><code>## [preprocessQuantile] Quantile normalizing.</code></pre>
+<p>To use ZM, data were normalized to internal controls provided by 
+Illumina (Illumina normalization) and no additional background 
+correction was done.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dataset_ILM &lt;-<span class="st"> </span><span class="kw">normalizeData</span>(<span class="dt">RGset=</span>rawdata, <span class="dt">normMethod =</span> <span class="st">"ILM"</span>)</code></pre></div>
+<pre><code>## Loading RGset object.</code></pre>
+<pre><code>## Dataset has 6 samples.</code></pre>
+<p>All the three normalisation methods can be performed using option “ALL”. However, the result <strong>dataset_ALL</strong> is saved as a list.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dataset_ALL &lt;-<span class="st"> </span><span class="kw">normalizeData</span>(<span class="dt">RGset=</span>rawdata, <span class="dt">normMethod =</span> <span class="st">"ALL"</span>)</code></pre></div>
+<pre><code>## Loading RGset object.</code></pre>
+<pre><code>## Dataset has 6 samples.</code></pre>
+<pre><code>## [preprocessQuantile] Mapping to genome.</code></pre>
+<pre><code>## [preprocessQuantile] Fixing outliers.</code></pre>
+<pre><code>## [preprocessQuantile] Quantile normalizing.</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(dataset_ALL)</code></pre></div>
+<pre><code>## List of 3
+##  $ dataset_QN : num [1:452088, 1:6] 0.206 0.469 0.811 0.859 0.886 ...
+##   ..- attr(*, "dimnames")=List of 2
+##   .. ..$ : chr [1:452088] "cg00000165" "cg00000363" "cg00001364" "cg00001446" ...
+##   .. ..$ : chr [1:6] "GSM1051533_7800246024_R03C02" "GSM1051534_7800246024_R04C02" "GSM1051538_7800246085_R02C01" "GSM1051539_7800246085_R03C01" ...
+##  $ dataset_ILM: num [1:485512, 1:6] 0.8349 0.304 0.8729 0.0317 0.8256 ...
+##   ..- attr(*, "dimnames")=List of 2
+##   .. ..$ : chr [1:485512] "cg00050873" "cg00212031" "cg00213748" "cg00214611" ...
+##   .. ..$ : chr [1:6] "GSM1051533_7800246024_R03C02" "GSM1051534_7800246024_R04C02" "GSM1051538_7800246085_R02C01" "GSM1051539_7800246085_R03C01" ...
+##  $ dataset_SQN: num [1:485512, 1:6] 0.772 0.471 0.109 0.265 0.132 ...
+##   ..- attr(*, "dimnames")=List of 2
+##   .. ..$ : chr [1:485512] "cg13869341" "cg14008030" "cg12045430" "cg20826792" ...
+##   .. ..$ : chr [1:6] "GSM1051533_7800246024_R03C02" "GSM1051534_7800246024_R04C02" "GSM1051538_7800246085_R02C01" "GSM1051539_7800246085_R03C01" ...</code></pre>
+<p>Individual normalised datasets can be obtained from <strong>dataset_ALL</strong> as follows:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dataset_QN &lt;-<span class="st"> </span>dataset_ALL<span class="op">$</span>dataset_QN
+dataset_ILM &lt;-<span class="st"> </span>dataset_ALL<span class="op">$</span>dataset_ILM
+dataset_SQN &lt;-<span class="st"> </span>dataset_ALL<span class="op">$</span>dataset_SQN</code></pre></div>
 <p>Now the <strong>dataset</strong> object can be passed on to the <strong>epismoker</strong> function to calculate smoking score and smoking status using four options available.</p>
+<p>Once we have normalised the methylation data, we can then proceed 
+with smoking status estimation. EpiSmokEr provides four options:</p>
+</div>
+<div id="multinomial-lasso-method-mlm" class="section level3">
+<h3>1. Multinomial LASSO method (MLM)</h3>
+<p>In this method weights of 121 CpGs selected by Multinomial LASSO 
+approach, and sex and intercept terms are used in the calculation of 
+smoking probabilities for each individual. We get smoking probabilities 
+for the three smoking status classes, i.e current, former and never 
+smokers. Predicted smoking status of an individual is the class having 
+the highest probability.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">result_MLM &lt;-<span class="st"> </span><span class="kw">epismoker</span>(<span class="dt">dataset=</span>dataset_QN, <span class="dt">samplesheet =</span> samplesheet, <span class="dt">method =</span> <span class="st">"MLM"</span>)</code></pre></div>
+<pre><code>## ============================================</code></pre>
+<pre><code>## &lt;&lt;&lt;&lt;&lt; Multinomial LASSO Method Started &gt;&gt;&gt;&gt;&gt;</code></pre>
+<pre><code>## ============================================</code></pre>
+<pre><code>## Dataset has 121 of 121 CpGs required for smoking status estimation.
+## Dataset has 121 of 121 CpGs required for smoking status estimation.
+## Dataset has 121 of 121 CpGs required for smoking status estimation.</code></pre>
+<pre><code>## ============================================</code></pre>
+<pre><code>## &lt;&lt;&lt;&lt;&lt; Multinomial LASSO Method Completed &gt;&gt;&gt;&gt;&gt;</code></pre>
+<pre><code>## ============================================</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">result_MLM</code></pre></div>
+<pre><code>##                                                SampleName logCoeff_CS
+## GSM1051533_7800246024_R03C02 GSM1051533_7800246024_R03C02   1.2703029
+## GSM1051534_7800246024_R04C02 GSM1051534_7800246024_R04C02  -1.2369244
+## GSM1051538_7800246085_R02C01 GSM1051538_7800246085_R02C01  -0.7931725
+## GSM1051539_7800246085_R03C01 GSM1051539_7800246085_R03C01  -1.2172066
+## GSM1051584_7800246137_R01C01 GSM1051584_7800246137_R01C01  -0.7368372
+## GSM1051585_7800246137_R02C01 GSM1051585_7800246137_R02C01  -1.5291671
+##                              logCoeff_FS logCoeff_NS
+## GSM1051533_7800246024_R03C02   0.7725372  -2.0428401
+## GSM1051534_7800246024_R04C02   0.2630344   0.9738900
+## GSM1051538_7800246085_R02C01   0.3566026   0.4365699
+## GSM1051539_7800246085_R03C01   0.4711146   0.7460920
+## GSM1051584_7800246137_R01C01   0.5099384   0.2268987
+## GSM1051585_7800246137_R02C01   0.6708411   0.8583260
+##                              PredictedSmokingStatus   probs_CS  probs_FS
+## GSM1051533_7800246024_R03C02         Current Smoker 0.60816562 0.3696962
+## GSM1051534_7800246024_R04C02           Never Smoker 0.06847135 0.3068547
+## GSM1051538_7800246085_R02C01           Never Smoker 0.13196388 0.4166737
+## GSM1051539_7800246085_R03C01           Never Smoker 0.07389249 0.3997872
+## GSM1051584_7800246137_R01C01          Former Smoker 0.14083359 0.4899751
+## GSM1051585_7800246137_R02C01           Never Smoker 0.04782113 0.4315899
+##                                probs_NS PredictedSmokingStatus2
+## GSM1051533_7800246024_R03C02 0.02213819          Current Smoker
+## GSM1051534_7800246024_R04C02 0.62467399            Never Smoker
+## GSM1051538_7800246085_R02C01 0.45136243            Never Smoker
+## GSM1051539_7800246085_R03C01 0.52632026            Never Smoker
+## GSM1051584_7800246137_R01C01 0.36919129           Former Smoker
+## GSM1051585_7800246137_R02C01 0.52058894            Never Smoker</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># PredictedSmokingStatus represents the smoking status class assigned to the individual based on the calculated smoking probabilities.</span></code></pre></div>
+</div>
+<div id="elliott-method-em" class="section level3">
+<h3>2. Elliott method (EM)</h3>
+<p>In this method 187 CpGs are used to calculate smoking score as expained in <span class="citation">(Elliott et al. 2014)</span>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">result_EM &lt;-<span class="st"> </span><span class="kw">epismoker</span>(<span class="dt">dataset =</span> dataset_SQN, <span class="dt">method =</span> <span class="st">"EM"</span>)</code></pre></div>
+<pre><code>## =================================</code></pre>
+<pre><code>## &lt;&lt;&lt;&lt;&lt; Elliot Method Started &gt;&gt;&gt;&gt;&gt;</code></pre>
+<pre><code>## =================================</code></pre>
+<pre><code>## Dataset has 187 of 187 CpGs required for smoking status estimation.</code></pre>
+<pre><code>## ====================================</code></pre>
+<pre><code>## &lt;&lt;&lt;&lt;&lt; Elliot Method Completed &gt;&gt;&gt;&gt;&gt;</code></pre>
+<pre><code>## ====================================</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">result_EM</code></pre></div>
+<pre><code>##                                                SampleName smokingscore_EM
+## GSM1051533_7800246024_R03C02 GSM1051533_7800246024_R03C02       7.5861170
+## GSM1051534_7800246024_R04C02 GSM1051534_7800246024_R04C02       1.1805043
+## GSM1051538_7800246085_R02C01 GSM1051538_7800246085_R02C01       1.1677897
+## GSM1051539_7800246085_R03C01 GSM1051539_7800246085_R03C01      -2.0578117
+## GSM1051584_7800246137_R01C01 GSM1051584_7800246137_R01C01      -0.2134197
+## GSM1051585_7800246137_R02C01 GSM1051585_7800246137_R02C01      -4.7081811</code></pre>
+</div>
+<div id="zhang-method-zm" class="section level3">
+<h3>3. Zhang method (ZM)</h3>
+<p>In this method 4 CpGs are used to calculate methylation score as expained in <span class="citation">(Zhang et al. 2016)</span>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">result_ZM &lt;-<span class="st"> </span><span class="kw">epismoker</span>(<span class="dt">dataset =</span> dataset_ILM,  <span class="dt">method =</span> <span class="st">"ZM"</span>)</code></pre></div>
+<pre><code>## ================================</code></pre>
+<pre><code>## &lt;&lt;&lt;&lt;&lt; Zhang Method Started &gt;&gt;&gt;&gt;&gt;</code></pre>
+<pre><code>## =================================</code></pre>
+<pre><code>## Dataset has 4 of 4 CpGs required for Zhang et al method</code></pre>
+<pre><code>## ==================================</code></pre>
+<pre><code>## &lt;&lt;&lt;&lt;&lt; Zhang Method Completed &gt;&gt;&gt;&gt;&gt;</code></pre>
+<pre><code>## ==================================</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">result_ZM</code></pre></div>
+<pre><code>##                                                SampleName smokingscore_ZM
+## GSM1051533_7800246024_R03C02 GSM1051533_7800246024_R03C02       -4.284498
+## GSM1051534_7800246024_R04C02 GSM1051534_7800246024_R04C02       -8.993818
+## GSM1051538_7800246085_R02C01 GSM1051538_7800246085_R02C01       -6.732453
+## GSM1051539_7800246085_R03C01 GSM1051539_7800246085_R03C01       -7.180410
+## GSM1051584_7800246137_R01C01 GSM1051584_7800246137_R01C01       -7.068201
+## GSM1051585_7800246137_R02C01 GSM1051585_7800246137_R02C01       -8.731180</code></pre>
+</div>
+<div id="compreshensive-approach-all" class="section level3">
+<h3>4. Compreshensive approach (all)</h3>
+<p>All three methods are run in this option and results are integrated into a single result object.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">result_All &lt;-<span class="st"> </span><span class="kw">epismoker</span>(<span class="dt">dataset_QN=</span>dataset_QN, <span class="dt">dataset_ILM=</span>dataset_ILM, <span class="dt">dataset_SQN=</span>dataset_SQN, <span class="dt">samplesheet =</span> samplesheet, <span class="dt">method =</span> <span class="st">"all"</span>)</code></pre></div>
+<pre><code>## =================================</code></pre>
+<pre><code>## &lt;&lt;&lt;&lt;&lt; Elliot Method Started &gt;&gt;&gt;&gt;&gt;</code></pre>
+<pre><code>## =================================</code></pre>
+<pre><code>## Dataset has 187 of 187 CpGs required for smoking status estimation.</code></pre>
+<pre><code>## ====================================</code></pre>
+<pre><code>## &lt;&lt;&lt;&lt;&lt; Elliot Method Completed &gt;&gt;&gt;&gt;&gt;</code></pre>
+<pre><code>## ====================================</code></pre>
+<pre><code>## ================================</code></pre>
+<pre><code>## &lt;&lt;&lt;&lt;&lt; Zhang Method Started &gt;&gt;&gt;&gt;&gt;</code></pre>
+<pre><code>## =================================</code></pre>
+<pre><code>## Dataset has 4 of 4 CpGs required for Zhang et al method</code></pre>
+<pre><code>## ==================================</code></pre>
+<pre><code>## &lt;&lt;&lt;&lt;&lt; Zhang Method Completed &gt;&gt;&gt;&gt;&gt;</code></pre>
+<pre><code>## ==================================</code></pre>
+<pre><code>## ============================================</code></pre>
+<pre><code>## &lt;&lt;&lt;&lt;&lt; Multinomial LASSO Method Started &gt;&gt;&gt;&gt;&gt;</code></pre>
+<pre><code>## ============================================</code></pre>
+<pre><code>## Dataset has 121 of 121 CpGs required for smoking status estimation.
+## Dataset has 121 of 121 CpGs required for smoking status estimation.
+## Dataset has 121 of 121 CpGs required for smoking status estimation.</code></pre>
+<pre><code>## ============================================</code></pre>
+<pre><code>## &lt;&lt;&lt;&lt;&lt; Multinomial LASSO Method Completed &gt;&gt;&gt;&gt;&gt;</code></pre>
+<pre><code>## ============================================</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">result_All</code></pre></div>
+<pre><code>##                     SampleName smokingscore_EM smokingscore_ZM logCoeff_CS
+## 1 GSM1051533_7800246024_R03C02       7.5861170       -4.284498   1.2703029
+## 2 GSM1051534_7800246024_R04C02       1.1805043       -8.993818  -1.2369244
+## 3 GSM1051538_7800246085_R02C01       1.1677897       -6.732453  -0.7931725
+## 4 GSM1051539_7800246085_R03C01      -2.0578117       -7.180410  -1.2172066
+## 5 GSM1051584_7800246137_R01C01      -0.2134197       -7.068201  -0.7368372
+## 6 GSM1051585_7800246137_R02C01      -4.7081811       -8.731180  -1.5291671
+##   logCoeff_FS logCoeff_NS PredictedSmokingStatus   probs_CS  probs_FS
+## 1   0.7725372  -2.0428401         Current Smoker 0.60816562 0.3696962
+## 2   0.2630344   0.9738900           Never Smoker 0.06847135 0.3068547
+## 3   0.3566026   0.4365699           Never Smoker 0.13196388 0.4166737
+## 4   0.4711146   0.7460920           Never Smoker 0.07389249 0.3997872
+## 5   0.5099384   0.2268987          Former Smoker 0.14083359 0.4899751
+## 6   0.6708411   0.8583260           Never Smoker 0.04782113 0.4315899
+##     probs_NS PredictedSmokingStatus2
+## 1 0.02213819          Current Smoker
+## 2 0.62467399            Never Smoker
+## 3 0.45136243            Never Smoker
+## 4 0.52632026            Never Smoker
+## 5 0.36919129           Former Smoker
+## 6 0.52058894            Never Smoker</code></pre>
 </div>
 </div>
-<div id="from-methylation-matrix" class="section level2">
-<h2>2. From methylation matrix</h2>
+<div id="b.-from-methylation-matrix" class="section level2">
+<h2>B. From methylation matrix</h2>
 <p>A data matrix of normalised methylation values in beta scale, with 
 rows labelling the CpG probe ids and columns labelling the sample names,
  can also be used as an input to EpiSmokEr. Here we use the methylation 
@@ -503,20 +701,6 @@ matrix from the same 6 samples to demonstrate how methylation matrix can
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-<div id="smoking-score-calculation-and-predicton-of-smoking-status" class="section level1">
-<h1>Smoking Score calculation and predicton of smoking status</h1>
-<hr>
-<p>Once we have the methylation data, we can then proceed with smoking status estimation. EpiSmokEr provides four options:</p>
-<div id="multinomial-lasso-method-mlm" class="section level3">
-<h3>1. Multinomial LASSO method (MLM)</h3>
-<p>In this method weights of 121 CpGs selected by Multinomial LASSO 
-approach, and sex and intercept terms are used in the calculation of 
-smoking probabilities for each individual. We get smoking probabilities 
-for the three smoking status classes, i.e current, former and never 
-smokers. Predicted smoking status of an individual is the class having 
-the highest probability.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">result &lt;-<span class="st"> </span><span class="kw">epismoker</span>(<span class="dt">dataset=</span>dummyBetaData, <span class="dt">samplesheet =</span> samplesheet, <span class="dt">method =</span> <span class="st">"MLM"</span>)</code></pre></div>
 <pre><code>## ============================================</code></pre>
 <pre><code>## &lt;&lt;&lt;&lt;&lt; Multinomial LASSO Method Started &gt;&gt;&gt;&gt;&gt;</code></pre>
@@ -527,128 +711,85 @@ the highest probability.</p>
 <pre><code>## ============================================</code></pre>
 <pre><code>## &lt;&lt;&lt;&lt;&lt; Multinomial LASSO Method Completed &gt;&gt;&gt;&gt;&gt;</code></pre>
 <pre><code>## ============================================</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">result</code></pre></div>
-<pre><code>##                                                SampleName logCoeff_CS
-## GSM1051533_7800246024_R03C02 GSM1051533_7800246024_R03C02   1.2702918
-## GSM1051534_7800246024_R04C02 GSM1051534_7800246024_R04C02  -1.2368503
-## GSM1051538_7800246085_R02C01 GSM1051538_7800246085_R02C01  -0.7930341
-## GSM1051539_7800246085_R03C01 GSM1051539_7800246085_R03C01  -1.2171854
-## GSM1051584_7800246137_R01C01 GSM1051584_7800246137_R01C01  -0.7365582
-## GSM1051585_7800246137_R02C01 GSM1051585_7800246137_R02C01  -1.5289141
-##                              logCoeff_FS logCoeff_NS
-## GSM1051533_7800246024_R03C02   0.7725532  -2.0428449
-## GSM1051534_7800246024_R04C02   0.2630556   0.9737947
-## GSM1051538_7800246085_R02C01   0.3566457   0.4363884
-## GSM1051539_7800246085_R03C01   0.4711646   0.7460208
-## GSM1051584_7800246137_R01C01   0.5093674   0.2271908
-## GSM1051585_7800246137_R02C01   0.6706812   0.8582329
-##                              PredictedSmokingStatus   probs_CS  probs_FS
-## GSM1051533_7800246024_R03C02         Current Smoker 0.60815944 0.3697025
-## GSM1051534_7800246024_R04C02           Never Smoker 0.06847971 0.3068759
-## GSM1051538_7800246085_R02C01           Never Smoker 0.13198818 0.4167107
-## GSM1051539_7800246085_R03C01           Never Smoker 0.07389524 0.3998136
-## GSM1051584_7800246137_R01C01          Former Smoker 0.14089157 0.4897603
-## GSM1051585_7800246137_R02C01           Never Smoker 0.04783828 0.4315664
-##                                probs_NS PredictedSmokingStatus2
-## GSM1051533_7800246024_R03C02 0.02213811          Current Smoker
-## GSM1051534_7800246024_R04C02 0.62464439            Never Smoker
-## GSM1051538_7800246085_R02C01 0.45130115            Never Smoker
-## GSM1051539_7800246085_R03C01 0.52629117            Never Smoker
-## GSM1051584_7800246137_R01C01 0.36934810           Former Smoker
-## GSM1051585_7800246137_R02C01 0.52059534            Never Smoker</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># PredictedSmokingStatus represents the smoking status class assigned to the individual based on the calculated smoking probabilities.</span></code></pre></div>
-</div>
-<div id="elliott-method-em" class="section level3">
-<h3>2. Elliott method (EM)</h3>
-<p>In this method 187 CpGs are used to calculate smoking score as expained in <span class="citation">(Elliott et al. 2014)</span>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">result &lt;-<span class="st"> </span><span class="kw">epismoker</span>(<span class="dt">dataset =</span> dataset, <span class="dt">method =</span> <span class="st">"EM"</span>)</code></pre></div>
-<pre><code>## =================================</code></pre>
-<pre><code>## &lt;&lt;&lt;&lt;&lt; Elliot Method Started &gt;&gt;&gt;&gt;&gt;</code></pre>
-<pre><code>## =================================</code></pre>
-<pre><code>## Dataset has 185 of 187 CpGs required for smoking status estimation.</code></pre>
-<pre><code>## cg23090529 is missing from the input dataset.cg25953130 is missing from the input dataset.</code></pre>
-<pre><code>## ====================================</code></pre>
-<pre><code>## &lt;&lt;&lt;&lt;&lt; Elliot Method Completed &gt;&gt;&gt;&gt;&gt;</code></pre>
-<pre><code>## ====================================</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">result</code></pre></div>
-<pre><code>##                                                SampleName smokingscore_EM
-## GSM1051533_7800246024_R03C02 GSM1051533_7800246024_R03C02        4.500604
-## GSM1051534_7800246024_R04C02 GSM1051534_7800246024_R04C02       -1.502780
-## GSM1051538_7800246085_R02C01 GSM1051538_7800246085_R02C01       -1.509839
-## GSM1051539_7800246085_R03C01 GSM1051539_7800246085_R03C01       -4.419618
-## GSM1051584_7800246137_R01C01 GSM1051584_7800246137_R01C01       -3.579253
-## GSM1051585_7800246137_R02C01 GSM1051585_7800246137_R02C01       -7.181968</code></pre>
-</div>
-<div id="zhang-method-zm" class="section level3">
-<h3>3. Zhang method (ZM)</h3>
-<p>In this method 4 CpGs are used to calculate methylation score as expained in <span class="citation">(Zhang et al. 2016)</span>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">result &lt;-<span class="st"> </span><span class="kw">epismoker</span>(<span class="dt">dataset =</span> dataset,  <span class="dt">method =</span> <span class="st">"ZM"</span>)</code></pre></div>
-<pre><code>## ================================</code></pre>
-<pre><code>## &lt;&lt;&lt;&lt;&lt; Zhang Method Started &gt;&gt;&gt;&gt;&gt;</code></pre>
-<pre><code>## =================================</code></pre>
-<pre><code>## Dataset has 4 of 4 CpGs required for Zhang et al method</code></pre>
-<pre><code>## ==================================</code></pre>
-<pre><code>## &lt;&lt;&lt;&lt;&lt; Zhang Method Completed &gt;&gt;&gt;&gt;&gt;</code></pre>
-<pre><code>## ==================================</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">result</code></pre></div>
-<pre><code>##                                                SampleName smokingscore_ZM
-## GSM1051533_7800246024_R03C02 GSM1051533_7800246024_R03C02       -4.715491
-## GSM1051534_7800246024_R04C02 GSM1051534_7800246024_R04C02       -9.335457
-## GSM1051538_7800246085_R02C01 GSM1051538_7800246085_R02C01       -7.284763
-## GSM1051539_7800246085_R03C01 GSM1051539_7800246085_R03C01       -7.734281
-## GSM1051584_7800246137_R01C01 GSM1051584_7800246137_R01C01       -7.947451
-## GSM1051585_7800246137_R02C01 GSM1051585_7800246137_R02C01       -9.250647</code></pre>
-</div>
-<div id="compreshensive-approach-all" class="section level3">
-<h3>4. Compreshensive approach (all)</h3>
-<p>All three methods are run in this option and results are integrated into a single result object.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">result &lt;-<span class="st"> </span><span class="kw">epismoker</span>(<span class="dt">dataset =</span> dataset, <span class="dt">samplesheet =</span> samplesheet, <span class="dt">method =</span> <span class="st">"all"</span>)</code></pre></div>
-<pre><code>## =================================</code></pre>
-<pre><code>## &lt;&lt;&lt;&lt;&lt; Elliot Method Started &gt;&gt;&gt;&gt;&gt;</code></pre>
-<pre><code>## =================================</code></pre>
-<pre><code>## Dataset has 185 of 187 CpGs required for smoking status estimation.</code></pre>
-<pre><code>## cg23090529 is missing from the input dataset.cg25953130 is missing from the input dataset.</code></pre>
-<pre><code>## ====================================</code></pre>
-<pre><code>## &lt;&lt;&lt;&lt;&lt; Elliot Method Completed &gt;&gt;&gt;&gt;&gt;</code></pre>
-<pre><code>## ====================================</code></pre>
-<pre><code>## ================================</code></pre>
-<pre><code>## &lt;&lt;&lt;&lt;&lt; Zhang Method Started &gt;&gt;&gt;&gt;&gt;</code></pre>
-<pre><code>## =================================</code></pre>
-<pre><code>## Dataset has 4 of 4 CpGs required for Zhang et al method</code></pre>
-<pre><code>## ==================================</code></pre>
-<pre><code>## &lt;&lt;&lt;&lt;&lt; Zhang Method Completed &gt;&gt;&gt;&gt;&gt;</code></pre>
-<pre><code>## ==================================</code></pre>
-<pre><code>## ============================================</code></pre>
-<pre><code>## &lt;&lt;&lt;&lt;&lt; Multinomial LASSO Method Started &gt;&gt;&gt;&gt;&gt;</code></pre>
-<pre><code>## ============================================</code></pre>
-<pre><code>## Dataset has 121 of 121 CpGs required for smoking status estimation.
-## Dataset has 121 of 121 CpGs required for smoking status estimation.
-## Dataset has 121 of 121 CpGs required for smoking status estimation.</code></pre>
-<pre><code>## ============================================</code></pre>
-<pre><code>## &lt;&lt;&lt;&lt;&lt; Multinomial LASSO Method Completed &gt;&gt;&gt;&gt;&gt;</code></pre>
-<pre><code>## ============================================</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">result</code></pre></div>
-<pre><code>##                     SampleName smokingscore_EM smokingscore_ZM logCoeff_CS
-## 1 GSM1051533_7800246024_R03C02        4.500604       -4.715491   1.2704100
-## 2 GSM1051534_7800246024_R04C02       -1.502780       -9.335457  -1.2366770
-## 3 GSM1051538_7800246085_R02C01       -1.509839       -7.284763  -0.7931490
-## 4 GSM1051539_7800246085_R03C01       -4.419618       -7.734281  -1.2170426
-## 5 GSM1051584_7800246137_R01C01       -3.579253       -7.947451  -0.7366438
-## 6 GSM1051585_7800246137_R02C01       -7.181968       -9.250647  -1.5289943
-##   logCoeff_FS logCoeff_NS PredictedSmokingStatus   probs_CS  probs_FS
-## 1   0.7727283  -2.0431382         Current Smoker 0.60815219 0.3697191
-## 2   0.2627917   0.9738852           Never Smoker 0.06849244 0.3067988
-## 3   0.3563676   0.4367815           Never Smoker 0.13196689 0.4165755
-## 4   0.4712112   0.7458313           Never Smoker 0.07391101 0.3998604
-## 5   0.5099284   0.2267154          Former Smoker 0.14086722 0.4899924
-## 6   0.6705306   0.8584637           Never Smoker 0.04783198 0.4314792
-##     probs_NS PredictedSmokingStatus2
-## 1 0.02212873          Current Smoker
-## 2 0.62470877            Never Smoker
-## 3 0.45145764            Never Smoker
-## 4 0.52622856            Never Smoker
-## 5 0.36914035           Former Smoker
-## 6 0.52068878            Never Smoker</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">head</span>(result, <span class="dv">5</span>))</code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="left">SampleName</th>
+<th align="right">logCoeff_CS</th>
+<th align="right">logCoeff_FS</th>
+<th align="right">logCoeff_NS</th>
+<th align="left">PredictedSmokingStatus</th>
+<th align="right">probs_CS</th>
+<th align="right">probs_FS</th>
+<th align="right">probs_NS</th>
+<th align="left">PredictedSmokingStatus2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>GSM1051533_7800246024_R03C02</td>
+<td align="left">GSM1051533_7800246024_R03C02</td>
+<td align="right">1.2702918</td>
+<td align="right">0.7725532</td>
+<td align="right">-2.0428449</td>
+<td align="left">Current Smoker</td>
+<td align="right">0.6081594</td>
+<td align="right">0.3697025</td>
+<td align="right">0.0221381</td>
+<td align="left">Current Smoker</td>
+</tr>
+<tr class="even">
+<td>GSM1051534_7800246024_R04C02</td>
+<td align="left">GSM1051534_7800246024_R04C02</td>
+<td align="right">-1.2368503</td>
+<td align="right">0.2630556</td>
+<td align="right">0.9737947</td>
+<td align="left">Never Smoker</td>
+<td align="right">0.0684797</td>
+<td align="right">0.3068759</td>
+<td align="right">0.6246444</td>
+<td align="left">Never Smoker</td>
+</tr>
+<tr class="odd">
+<td>GSM1051538_7800246085_R02C01</td>
+<td align="left">GSM1051538_7800246085_R02C01</td>
+<td align="right">-0.7930341</td>
+<td align="right">0.3566457</td>
+<td align="right">0.4363884</td>
+<td align="left">Never Smoker</td>
+<td align="right">0.1319882</td>
+<td align="right">0.4167107</td>
+<td align="right">0.4513012</td>
+<td align="left">Never Smoker</td>
+</tr>
+<tr class="even">
+<td>GSM1051539_7800246085_R03C01</td>
+<td align="left">GSM1051539_7800246085_R03C01</td>
+<td align="right">-1.2171854</td>
+<td align="right">0.4711646</td>
+<td align="right">0.7460208</td>
+<td align="left">Never Smoker</td>
+<td align="right">0.0738952</td>
+<td align="right">0.3998136</td>
+<td align="right">0.5262912</td>
+<td align="left">Never Smoker</td>
+</tr>
+<tr class="odd">
+<td>GSM1051584_7800246137_R01C01</td>
+<td align="left">GSM1051584_7800246137_R01C01</td>
+<td align="right">-0.7365582</td>
+<td align="right">0.5093674</td>
+<td align="right">0.2271908</td>
+<td align="left">Former Smoker</td>
+<td align="right">0.1408916</td>
+<td align="right">0.4897603</td>
+<td align="right">0.3693481</td>
+<td align="left">Former Smoker</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div id="generate-results" class="section level1">
@@ -659,17 +800,17 @@ the highest probability.</p>
 <div id="please-note-that" class="section level4">
 <h4>Please note that</h4>
 <ul>
-<li>In the R environment, result object from <strong>epismoker</strong> function must be saved to the variable <strong>result</strong>.</li>
-<li>In order to create the <strong>Results</strong> folder, set the working directory path to the folder where you have permission to write.</li>
+<li><p>In the R environment, result object from <strong>epismoker</strong> function must be saved using variable names <strong>result_MLM</strong>, <strong>result_EM</strong>, <strong>result_ZM</strong> and <strong>result_All</strong> based on the option used. This enables generation of html report.</p></li>
+<li><p>In order to create the <strong>Results</strong> folder, set the working directory path to the folder where you have permission to write.</p></li>
 </ul>
 <p>In the example below result object from the <strong>all</strong> option of <strong>epismoker</strong> function has been saved to <strong>result</strong> variable, which will be passed onto generateReport function. On executing <strong>generateReport</strong> function, a <strong>Results</strong>
  folder will be created in the current working directory, with a html 
 file named “Results_comprehensive.html”. Result files generated from the
  example below can be found in the <strong>Results</strong> folder of the package.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">setwd</span>(<span class="kw">system.file</span>(<span class="dt">package =</span> <span class="st">"EpiSmokEr"</span>)) <span class="co"># set the directory where you want the result files to be saved</span>
-<span class="kw">generateReport</span>(<span class="dt">resObj =</span> result, <span class="dt">outputFileName =</span> <span class="st">"Results_comprehensive"</span>, <span class="dt">method =</span> <span class="st">"all"</span>)</code></pre></div>
+<span class="kw">generateReport</span>(<span class="dt">resObj =</span> result_All, <span class="dt">outputFileName =</span> <span class="st">"Results_comprehensive"</span>, <span class="dt">method =</span> <span class="st">"all"</span>)</code></pre></div>
 <pre><code>## ====================================================================================================================</code></pre>
-<pre><code>## Saving results as html and csv files to /home/sbollepa/R/x86_64-pc-linux-gnu-library/3.2/Results</code></pre>
+<pre><code>## Saving results as html and csv files to /home/sbollepa/R/x86_64-pc-linux-gnu-library/3.4/Results</code></pre>
 <pre><code>## ====================================================================================================================</code></pre>
 <pre><code>## 
 ## 
@@ -684,7 +825,7 @@ file named “Results_comprehensive.html”. Result files generated from the
 ## 
   |                                                                       
   |......................                                           |  33%
-## label: unnamed-chunk-14 (with options) 
+## label: unnamed-chunk-20 (with options) 
 ## List of 2
 ##  $ echo   : logi FALSE
 ##  $ results: chr "asis"
@@ -697,7 +838,7 @@ file named “Results_comprehensive.html”. Result files generated from the
 ## 
   |                                                                       
   |...........................................                      |  67%
-## label: unnamed-chunk-15 (with options) 
+## label: unnamed-chunk-21 (with options) 
 ## List of 2
 ##  $ echo   : logi FALSE
 ##  $ results: chr "asis"
@@ -710,13 +851,13 @@ file named “Results_comprehensive.html”. Result files generated from the
 ## 
   |                                                                       
   |.................................................................| 100%
-## label: unnamed-chunk-16 (with options) 
+## label: unnamed-chunk-22 (with options) 
 ## List of 1
 ##  $ results: chr "markup"</code></pre>
 <pre><code>## output file: all.knit.md</code></pre>
-<pre><code>## /usr/bin/pandoc +RTS -K512m -RTS all.utf8.md --to html --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash --output /home/sbollepa/R/x86_64-pc-linux-gnu-library/3.2/Results/Results_comprehensive.html --smart --email-obfuscation none --self-contained --standalone --section-divs --template /home/sbollepa/R/x86_64-pc-linux-gnu-library/3.2/rmarkdown/rmd/h/default.html --no-highlight --variable highlightjs=1 --variable 'theme:bootstrap' --include-in-header /tmp/RtmpBqyPhJ/rmarkdown-strecb4de744bb.html --mathjax --variable 'mathjax-url:https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'</code></pre>
+<pre><code>## /usr/lib/rstudio/bin/pandoc/pandoc +RTS -K512m -RTS all.utf8.md --to html4 --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash --output /home/sbollepa/R/x86_64-pc-linux-gnu-library/3.4/Results/Results_comprehensive.html --smart --email-obfuscation none --self-contained --standalone --section-divs --template /home/sbollepa/R/x86_64-pc-linux-gnu-library/3.4/rmarkdown/rmd/h/default.html --no-highlight --variable highlightjs=1 --variable 'theme:bootstrap' --include-in-header /tmp/Rtmpqqd1Z8/rmarkdown-str1f9556fdbf31.html --mathjax --variable 'mathjax-url:https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'</code></pre>
 <pre><code>## 
-## Output created: /home/sbollepa/R/x86_64-pc-linux-gnu-library/3.2/Results/Results_comprehensive.html</code></pre>
+## Output created: /home/sbollepa/R/x86_64-pc-linux-gnu-library/3.4/Results/Results_comprehensive.html</code></pre>
 </div>
 </div>
 <div id="references" class="section level1">
@@ -740,6 +881,11 @@ Associated Dna Methylation Patterns in South Asians and Europeans.” <em>Clinic
 Hesselberg, Arni Runarsson, Lovisa Reinius, et al. 2013. “Epigenome-Wide
  Association Data Implicate Dna Methylation as an Intermediary of 
 Genetic Risk in Rheumatoid Arthritis.” <em>Nature Biotechnology</em> 31: 142–47. doi:<a href="https://doi.org/doi:10.1038/nbt.2487">doi:10.1038/nbt.2487</a>.</p>
+</div>
+<div id="ref-tost">
+<p>Touleimat, Nizar, and Jörg Tost. 2012. “Complete Pipeline for 
+Infinium® Human Methylation 450k Beadchip Data Processing Using Subset 
+Quantile Normalization for Accurate Dna Methylation Estimation.” <em>Epigenomics</em> 4 (3): 325–41. doi:<a href="https://doi.org/10.2217/epi.12.21">10.2217/epi.12.21</a>.</p>
 </div>
 <div id="ref-zellinger">
 <p>Zeilinger, Sonja, Brigitte Kühnel, Norman Klopp, Hansjörg Baurecht, 
