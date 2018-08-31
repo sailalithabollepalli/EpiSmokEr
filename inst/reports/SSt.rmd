@@ -10,17 +10,19 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-# Results from Zhang Method (ZM)
+# Smoking Status Estimation
 Date: `r format(Sys.time(), '%d %B, %Y')` 
 
 ```{r echo=FALSE, results="asis"}
-out <- htmlTable::txtRound(result_ZM, 2, excl.cols=1)
-write.csv(out, file.path(outputDir, "EpiSmokEr_Results_ZhangMethod.csv"), row.names=FALSE)
-out = htmlTable::htmlTable(out, escape.html=FALSE, rnames=FALSE)
-print(out,type="html",useViewer= FALSE)
+out <- htmlTable::txtRound(result_SSt, 2, excl.cols=1)
+write.csv(out, file.path(outputDir, "EpiSmokEr_Results_SmokingStatus.csv"), row.names=FALSE)
+
+out <- suppressWarnings( htmlTable::htmlTable(out, rnames=FALSE,  escape.html = FALSE))
+print(out,type="html", useViewer= FALSE)
 ```
 
 ## R session information
 ```{r, results="markup"}
 sessionInfo()
 ```
+

@@ -3,7 +3,6 @@ An R Package for the estimation of smoking status based on whole blood 450K meth
 ## Features of **EpiSmokEr**
 - Can perform smoking score calculation starting from idat files.
 - Normalization of datasets using channel and colour specific quantile normalization.
-- Smoking score calculation using three methods.
 - Prediction of smoking status based on the whole blood methylation data.
 - Results provided in html and csv format.
 

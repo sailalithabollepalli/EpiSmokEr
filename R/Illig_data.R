@@ -1,6 +1,6 @@
 #' Illig_data
 #'
-#' Illig_data contains 187 CpGs required to calcualte smoking score based on Elliot et al approach
+#' Illig_data contains 187 CpGs required to calcualte smoking score (SSc) based on Elliot et al approach
 #'
 #' @docType data
 #'

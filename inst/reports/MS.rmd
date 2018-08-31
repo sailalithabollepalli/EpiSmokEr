@@ -10,19 +10,17 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-# Results from Multinomial LASSO Method (MLM)
+# Methylation Scores
 Date: `r format(Sys.time(), '%d %B, %Y')` 
 
 ```{r echo=FALSE, results="asis"}
-out <- htmlTable::txtRound(result_MLM, 2, excl.cols=1)
-write.csv(out, file.path(outputDir, "EpiSmokEr_Results_MLM.csv"), row.names=FALSE)
-
-out <- suppressWarnings( htmlTable::htmlTable(out, rnames=FALSE,  escape.html = FALSE))
-print(out,type="html", useViewer= FALSE)
+out <- htmlTable::txtRound(result_MS, 2, excl.cols=1)
+write.csv(out, file.path(outputDir, "EpiSmokEr_Results_MethylationScores.csv"), row.names=FALSE)
+out = htmlTable::htmlTable(out, escape.html=FALSE, rnames=FALSE)
+print(out,type="html",useViewer= FALSE)
 ```
 
 ## R session information
 ```{r, results="markup"}
 sessionInfo()
 ```
-

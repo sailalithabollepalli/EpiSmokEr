@@ -10,12 +10,12 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-# Results from Elliott Method (EM)
+# Smoking Scores (SSc)
 Date: `r format(Sys.time(), '%d %B, %Y')` 
 
 ```{r echo=FALSE, results="asis"}
-out <- htmlTable::txtRound(result_EM, 2, excl.cols=1)
-write.csv(out, file.path(outputDir, "EpiSmokEr_Results_ElliottMethod.csv"), row.names=FALSE)
+out <- htmlTable::txtRound(result_SSc, 2, excl.cols=1)
+write.csv(out, file.path(outputDir, "EpiSmokEr_Results_SmokingScores.csv"), row.names=FALSE)
 out = htmlTable::htmlTable(out, escape.html=FALSE, rnames=FALSE)
 print(out,type="html", useViewer= FALSE)
 ```

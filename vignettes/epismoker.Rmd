@@ -22,24 +22,24 @@ This vignette gives an overview of how to use the **EpiSmokEr** R package.
 ## Four options in EpiSmokEr
 **EpiSmokEr** provides four options to calculate smoking score and predicts smoking status from whole blood Infinium HumanMethylation450 data.
 
-1. **Multinomial LASSO method (MLM)** provides smoking probabilities for each individual and **predicts smoking status** of the individual. MLM uses weights of 121 CpGs selected by multinomial LASSO approach for each class of smoking status i.e current, former and never smokers. In addition to these 121 CpGs, sex and intercept terms are also used in the calculation.
-These coefficients selected by MLM can be viewed as follows:
+1. **Smoking Status (SSt)** provides smoking probabilities for each individual and **predicts smoking status** of the individual. This approach uses weights of 121 CpGs selected by multinomial LASSO approach for each class of smoking status i.e current, former and never smokers. In addition to these 121 CpGs, sex and intercept terms are also used in the calculation.
+These coefficients used by SSt approach can be viewed as follows:
 ```{r}
-load(system.file("extdata", "MLM_coefficients.rda", package= "EpiSmokEr"))
-knitr::kable(head(MLM_coefficients, caption = "121 CpGs and coefficients selected by Multinomial LASSO approach"))
+load(system.file("extdata", "SSt_coefficients.rda", package= "EpiSmokEr"))
+knitr::kable(head(SSt_coefficients, caption = "121 CpGs and coefficients selected by Multinomial LASSO approach"))
 ```
 
-2. **Elliott method (EM)** provides smoking score calculated based on the approach outlined in [@elliott]. Elliott *et al* computed smoking scores using 187 smoking-associated CpGs identified in an EWAS comparing current Vs never smokers [@zellinger]. For a detailed explanation of smoking score calculation please refer to [@elliott]. Briefly, weights and reference beta values are obtained from Zellinger *et al*. For each of the 187 CpG sites, the absolute difference between cohort beta value and reference beta value is calculated and then multiplied by the corresponding weight. A smoking score is then obtained by summation across all the 187 CpG site scores.
+2. **Smoking Score (SSc)** is calculated based on the approach outlined in [@elliott]. Elliott *et al* computed smoking scores using 187 smoking-associated CpGs identified in an EWAS comparing current Vs never smokers [@zellinger]. For a detailed explanation of smoking score calculation please refer to [@elliott]. Briefly, weights and reference beta values are obtained from Zellinger *et al*. The 187 CpG sites are divided into two groups based on their methylation levels in never smokers. For CpGs with decreased methylation, the cohort beta values are subtracted from the reference beta values. For CpGs with increased methylation reference beta values are subtracted from cohort beta values. Then beta values are multiplied by the corresponding weights. A smoking score is then obtained by summation across all the 187 CpG site scores.
 
-3. **Zhang method (ZM)** provides methylation score calculated using 4 CpGs.
-Zhang *et al * developed the methylation score for discriminating current smokers from never smokers, and former smokers from never smokers using a stepwise selection of logistic regression models [@zhang]. Weights of 4 CpGs provided by Zhang *et al* were used to obtain methylation scores.
+
+3. **Methylation Score (MS)** approach was proposed by Zhang *et al * to distinguish current smokers from never smokers, and former smokers from never smokers using a stepwise selection of logistic regression models [@zhang]. Weights of 4 CpGs provided by Zhang *et al* were used to obtain methylation scores.
 
 4. **all** a comprehensive approach which provides results from all the three methods described above.
 
 ## Features of **EpiSmokEr**
 - Can perform smoking score calculation starting from idat files.
 - Normalization of datasets using channel and colour specific quantile normalization.
-- Smoking score calculation using three methods.
+- Estimates Smoking Status and can provide Smoking Score and Methylation Scores.
 - Prediction of smoking status based on the whole blood methylation data.
 - Results provided in html and csv format.
 
@@ -74,9 +74,9 @@ library(rmarkdown)
 
 # Input Data
 ***
-To generate the smoking scores from the whole blood methylaion, EpiSmokEr simply requires methylation data as an input.
+To estimate smoking status and scores from the whole blood methylaion, EpiSmokEr simply requires methylation data as an input.
 Input data could be either raw methylation data in the form of idat files or a normalised methylation matrix in the beta scale ranging in between 0 and 1.
-For MLM method, a sample sheet with **sex** status is needed to complement the methylation data.
+For SSt method, a sample sheet with **sex** status is needed to complement the methylation data.
 
 To demonstrate the working of the EpiSmokEr we chose a peripheral blood leukocytes dataset from GEO [GSE42861](http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=gse42861)[@geo]. We use only 6 samples from this dataset to minimise the package size and running time.
 
@@ -92,12 +92,12 @@ We will now show 2 ways of providing input data to predict smoking status:
 ## A. From idat files
 Here input data are in the form of idat files. `minfi`[@minfi] package is used to read the idat files.
 **normaliseData** function has a suite of customised internal functions to normalise and calculate beta values from the idat files.
-Color and channel specific normalisation was performed on the training dataset used in the MLM approach. Quantiles from this training dataset are used to adjust the distribution of your input data comparable to the training dataset. Following the normalisation, beta values are calculated.
+Color and channel specific normalisation was performed on the training dataset used in the SSt approach. Quantiles from this training dataset are used to adjust the distribution of your input data comparable to the training dataset. Following the normalisation, beta values are calculated.
 
 ### Please note:
 - Sample sheet must be included in the same folder as the idat files.
 - Rownames of samplesheet must match the names of the samples i.e idat files, to facilitate matching of phenotype data with the corresponding methylation data.
-- For MLM method, sample sheet should include a column with gender information marked as **sex**, in the format of 1 and 2 representing men and women respectively.
+- For SSt method, sample sheet should include a column with gender information marked as **sex**, in the format of 1 and 2 representing men and women respectively.
 
 ```{r}
 rawdata <- loadData(idatPath = system.file("extdata", package = "EpiSmokEr"))
@@ -105,19 +105,19 @@ samplesheet <-read.csv(system.file("extdata", "samplesheet_GSE42861.csv", packag
 knitr::kable(head(samplesheet, 5))
 ```
 
-When raw methylation data is available (idat files) then it is highly recommended to use the same normalisation method implemented in the original article which proposed that specific smoking-score method. All the three smoking score methods (MLM, ZM and EM) we have considered here uses 3 different normalisation methods (QN, SQN and ILM). Therefore we provide three normalisation options to normalise the datasets accordingly and then calculate the smoking score following that specific method.
+When raw methylation data is available (idat files) then it is highly recommended to use the same normalisation method implemented in the original article which proposed that specific smoking-score method. All the three smoking score methods (SSt, MS and SSc) we have considered here uses 3 different normalisation methods (QN, SQN and ILM). Therefore we provide three normalisation options to normalise the datasets accordingly and then calculate the smoking score following that specific method.
 
-Quantiles saved from color, channel and probe based quantile normalisation implemented on the training dataset will be used to normalise data for MLM.
+Quantiles saved from color, channel and probe based quantile normalisation implemented on the training dataset will be used to normalise data for SSt.
 ```{r}
 dataset_QN <- normalizeData(RGset=rawdata, normMethod = "QN") 
 ```
 
-To use EM, dataset is normalised using subset quantile normalization [@tost]. 
+To use SSc, dataset is normalised using subset quantile normalization [@tost]. 
 ```{r}
 dataset_SQN <- normalizeData(RGset=rawdata, normMethod = "SQN")
 ```
 
-To use ZM, data were normalized to internal controls provided by Illumina (Illumina normalization) and no additional background correction was done.
+To use MS, data were normalized to internal controls provided by Illumina (Illumina normalization) and no additional background correction was done.
 ```{r}
 dataset_ILM <- normalizeData(RGset=rawdata, normMethod = "ILM")
 ```
@@ -141,26 +141,26 @@ Now the **dataset** object can be passed on to the **epismoker** function to cal
 Once we have normalised the methylation data, we can then proceed with smoking status estimation. 
 EpiSmokEr provides four options:
 
-### 1. Multinomial LASSO method (MLM)
-In this method weights of 121 CpGs selected by Multinomial LASSO approach, and sex and intercept terms are used in the calculation of smoking probabilities for each individual. We get smoking probabilities for the three smoking status classes, i.e current, former and never smokers. Predicted smoking status of an individual is the class having the highest probability. 
+### 1. Smoking Status (SSt) Prediction
+We derive the smoking probabilities, using the  weights from 121 CpGs selected by Multinomial LASSO approach, along with the sex and intercept terms. We get smoking probabilities for three smoking statuses, i.e current, former and never smokers. Predicted smoking status of an individual is the class having the highest probability. 
 ```{r}
-result_MLM <- epismoker(dataset=dataset_QN, samplesheet = samplesheet, method = "MLM")
-result_MLM
+result_SSt <- epismoker(dataset=dataset_QN, samplesheet = samplesheet, method = "SSt")
+result_SSt
 # PredictedSmokingStatus represents the smoking status class assigned to the individual based on the calculated smoking probabilities.
 ```
 
-### 2. Elliott method (EM)
+### 2. Smoking Score (SSc)
 In this method 187 CpGs are used to calculate smoking score as expained in [@elliott].
 ```{r}
-result_EM <- epismoker(dataset = dataset_SQN, method = "EM")
-result_EM
+result_SSc <- epismoker(dataset = dataset_SQN, method = "SSc")
+result_SSc
 ```
 
-### 3. Zhang method (ZM)
+### 3. Methylation Score (MS)
 In this method 4 CpGs are used to calculate methylation score as expained in [@zhang].
 ```{r}
-result_ZM <- epismoker(dataset = dataset_ILM,  method = "ZM")
-result_ZM
+result_MS <- epismoker(dataset = dataset_ILM,  method = "MS")
+result_MS
 ```
 
 ### 4. Compreshensive approach (all)
@@ -185,7 +185,7 @@ samplesheet <- read.csv(system.file("extdata", "samplesheet_GSE42861.csv", packa
 knitr::kable(head(samplesheet, 5))
 ```
 ```{r}
-result <- epismoker(dataset=dummyBetaData, samplesheet = samplesheet, method = "MLM")
+result <- epismoker(dataset=dummyBetaData, samplesheet = samplesheet, method = "SSt")
 knitr::kable(head(result, 5))
 ```
 
@@ -196,7 +196,7 @@ Results can be saved as html and csv files using **generateReport** function. A 
 **generateReport** takes **result object (resObj)** and **method** used in epismoker function. Users have to provide a name for the output html file. 
 
 #### Please note that
-* In the R environment, result object from **epismoker** function must be saved using variable names **result_MLM**, **result_EM**, **result_ZM** and **result_All** based on the option used. This enables generation of html report.
+* In the R environment, result object from **epismoker** function must be saved using variable names **result_SSt**, **result_SSc**, **result_MS** and **result_All** based on the option used. This enables generation of html report.
    
 * In order to create the **Results** folder, set the working directory path to the folder where you have permission to write.
 

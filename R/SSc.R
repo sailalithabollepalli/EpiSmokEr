@@ -2,7 +2,7 @@
 #' Smoking score calculation using Elliott Method.
 #'
 #' @description
-#' Estimates smoking score using Elliott Method.
+#' Estimates smoking score (SSc)using Elliott Method.
 #'
 #' @param dataset
 #' A data matrix of normalised methylation values in beta scale, with rows labelling the CpG probe ids and columns labelling the sample names.
@@ -10,7 +10,7 @@
 #' eg: dummyBetaData
 #'
 #' @param ref.Elliott
-#' This is used in "EM" and "all" methods. It is a dataframe with 187 CpGs and the effect sizes used to calculate the smoking score
+#' This is used in "SSc" and "all" methods. It is a dataframe with 187 CpGs and the effect sizes used to calculate the smoking score
 #' proposed by Elliott et al PMID: 24485148.
 #'
 #' @return
@@ -18,38 +18,38 @@
 #'
 #' @examples
 #' data(dummyBetaData)
-#' result <- epismoker(dataset = dummyBetaData, method = "EM")
-#' ## result contains smoking score calculated using EM.
+#' result <- epismoker(dataset = dummyBetaData, method = "SSc")
+#' ## result contains smoking score (SSc) calculated using Elliott et al approach.
 #' @export
 #'
-EM <- function(dataset, ref.Elliott = Illig_data)
+SSc <- function(dataset, ref.Elliott = Illig_data)
 {
   message("=================================")
-  message("<<<<< Elliot Method Started >>>>>")
+  message("<<<<< Smoking Score Calculation Started >>>>>")
   message("=================================")
   l <- dim(ref.Elliott)[1]
-  dataset_EM <- dataset
-  missingCpGs <- setdiff(ref.Elliott$cpgs, rownames(dataset_EM))
-  ref.Elliott <- subset(ref.Elliott, cpgs %in% rownames(dataset_EM))
+  dataset_SSc <- dataset
+  missingCpGs <- setdiff(ref.Elliott$cpgs, rownames(dataset_SSc))
+  ref.Elliott <- subset(ref.Elliott, cpgs %in% rownames(dataset_SSc))
   m <- dim(ref.Elliott)[1]
-  dataset_EM <-  dataset_EM[ref.Elliott$cpgs,]
+  dataset_SSc <-  dataset_SSc[ref.Elliott$cpgs,]
   message(sprintf("Dataset has %s of %s CpGs required for smoking status estimation.",m,l))
   if (l!= m) {message( paste(missingCpGs, "is missing from the input dataset."))}
-  stopifnot(rownames(dataset_EM) == ref.Elliott$cpgs)
+  stopifnot(rownames(dataset_SSc) == ref.Elliott$cpgs)
   # Take difference between the reference beta and input beta
-  dataset2 <- cbind(dataset_EM, ref.Elliott)
+  dataset2 <- cbind(dataset_SSc, ref.Elliott)
   betaDiff <- function(beta,effect, refBeta) {ifelse(effect >=0, beta-refBeta, refBeta - beta)}
-  betas <- apply(dataset_EM, 2, betaDiff, dataset2$all_effect, dataset2$reference_never_median_beta_all)
-  colnames(betas) <- colnames(dataset_EM)
-  rownames(betas) <- rownames(dataset_EM)
-  rm(dataset_EM)
+  betas <- apply(dataset_SSc, 2, betaDiff, dataset2$all_effect, dataset2$reference_never_median_beta_all)
+  colnames(betas) <- colnames(dataset_SSc)
+  rownames(betas) <- rownames(dataset_SSc)
+  rm(dataset_SSc)
   # For each sample, multiply betas with their respective weights and take sum of the products for all the available CpGs to make the smoking score.
   stopifnot(rownames(betas)== ref.Elliott$cpgs)
-  res_EM <- setNames(data.frame(colnames(betas),apply(betas,2,SmokingScore, dataset2$weights)), c("SampleName","smokingscore_EM"))
+  res_SSc <- setNames(data.frame(colnames(betas),apply(betas,2,SmokingScore, dataset2$weights)), c("SampleName","smokingScore"))
   message("====================================")
-  message("<<<<< Elliot Method Completed >>>>>")
+  message("<<<<< Smoking Score Calculation Completed >>>>>")
   message("====================================")
-  return(data.frame(res_EM))
+  return(data.frame(res_SSc))
 }
 
 SmokingScore <- function(betas, weights) {sum(t(betas) %*% weights)}
