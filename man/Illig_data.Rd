@@ -9,7 +9,7 @@
 data(Illig_data)
 }
 \description{
-Illig_data contains 187 CpGs required to calcualte smoking score based on Elliot et al approach
+Illig_data contains 187 CpGs required to calcualte smoking score (SSc) based on Elliot et al approach
 }
 \examples{
 data(Illig_data)

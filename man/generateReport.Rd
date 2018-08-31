@@ -10,7 +10,7 @@ generateReport(resObj, outputFileName, method)
 \item{resObj}{A result object produced from epismoker function}
 
 \item{method}{Smoking score method determined by user in the epismoker function to produce the result object.
-Users can choose one of these four methods ( "EM", "ZM", "MLM", "all") in the epismoker function.}
+Users can choose one of these four methods ( "SSc", "MS", "SSt", "all") in the epismoker function.}
 
 \item{ouputFile}{Name of the output file provided by the user}
 }
@@ -26,26 +26,26 @@ Generates a html and a csv file with results from epismoker function.
 }
 \examples{
 data(dummyBetaData)
-result <- epismoker(dataset = dummyBetaData, ref.Zhang = Zhangetal_cpgs, method = "ZM")
-generateReport(result, outputFileName = "results_ZM", method = "ZM")
+result <- epismoker(dataset = dummyBetaData, ref.Zhang = Zhangetal_cpgs, method = "MS")
+generateReport(result, outputFileName = "results_MS", method = "MS")
 ## result contains smoking score calculated using Zhang method-
-## A html file named "results_ZM.html" is generated in the Results folder.
+## A html file named "results_MS.html" is generated in the Results folder.
 ## A csv file saved to the Results folder.
 
 data(dummyBetaData)
-result <- epismoker(dataset = dummyBetaData, ref.Elliott = Illig_data, method = "EM")
-generateReport(result, outputFileName = "results_EM", method = "EM")
+result <- epismoker(dataset = dummyBetaData, ref.Elliott = Illig_data, method = "SSc")
+generateReport(result, outputFileName = "results_SSc", method = "SSc")
 ## result contains smoking score calculated using Elliott method-
-## A html file named "results_EM.html" is generated in the Results folder.
+## A html file named "results_SSc.html" is generated in the Results folder.
 ## A csv file saved to the Results folder.
 
 data(dummyBetaData)
 samplesheet <- read.csv( system.file("extdata", "samplesheet_GSE42861.csv", package= "EpiSmokEr"), header=TRUE, sep=",")
 data(CS_final_coefs, FS_final_coefs, NS_final_coefs)
-result <- epismoker(dataset = dummyBetaData, samplesheet = samplesheet, ref.CS = CS_final_coefs, ref.FS = FS_final_coefs, ref.NS = NS_final_coefs, method = "MLM")
-generateReport(result, outputFileName = "results_MLM", method = "MLM")
-## result contains predicted smoking probabilities and smoking status labels calculated using Multinomial LASSO method (MLM).
-## A html file named "results_MLM.html" is generated in the Results folder.
+result <- epismoker(dataset = dummyBetaData, samplesheet = samplesheet, ref.CS = CS_final_coefs, ref.FS = FS_final_coefs, ref.NS = NS_final_coefs, method = "SSt")
+generateReport(result, outputFileName = "results_SSt", method = "SSt")
+## result contains predicted smoking probabilities and smoking status labels calculated using Multinomial LASSO method (SSt).
+## A html file named "results_SSt.html" is generated in the Results folder.
 ## A csv file saved to the Results folder.
 
 data(dummyBetaData)
@@ -54,7 +54,7 @@ data(CS_final_coefs, FS_final_coefs, NS_final_coefs)
 result <- epismoker(dataset = dummyBetaData, samplesheet = samplesheet, ref.Zhang = Zhangetal_cpgs, ref.Elliott =  Illig_data,
                     ref.CS = CS_final_coefs, ref.FS = FS_final_coefs, ref.NS = NS_final_coefs, method = "all")
 generateReport(result, outputFileName = "Results_comprehensive", method = "all")
-## result contains smoking score calculated from all the three methods ( "EM", "ZM", "MLM").
+## result contains smoking score calculated from all the three methods ( "SSc", "MS", "SSt").
 ## A html file named "Results_comprehensive.html" is generated in the Results folder.
 ## A csv file saved to the Results folder.
 
