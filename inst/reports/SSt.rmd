@@ -1,0 +1,28 @@
+---
+title: "EpiSmokEr - Epigenetic Smoking status Estimator- R package"
+output:
+  rmarkdown::html_vignette:
+    toc: true
+fontsize: 16pt
+vignette: >
+  %\VignetteIndexEntry{EpiSmokEr - Epigenetic Smoking status Estimator- R package}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+# Smoking Status Estimation
+Date: `r format(Sys.time(), '%d %B, %Y')` 
+
+```{r echo=FALSE, results="asis"}
+out <- htmlTable::txtRound(result_SSt, 2, excl.cols=1)
+write.csv(out, file.path(outputDir, "EpiSmokEr_Results_SmokingStatus.csv"), row.names=FALSE)
+
+out <- suppressWarnings( htmlTable::htmlTable(out, rnames=FALSE,  escape.html = FALSE))
+print(out,type="html", useViewer= FALSE)
+```
+
+## R session information
+```{r, results="markup"}
+sessionInfo()
+```
+
