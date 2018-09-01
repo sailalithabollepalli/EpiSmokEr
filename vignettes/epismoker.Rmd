@@ -184,6 +184,7 @@ Samplesheet must contain the column **sex**, in the format of 1 and 2 representi
 samplesheet <- read.csv(system.file("extdata", "samplesheet_GSE42861.csv", package="EpiSmokEr"), header=TRUE, sep=",")
 knitr::kable(head(samplesheet, 5))
 ```
+
 ```{r}
 result <- epismoker(dataset=dummyBetaData, samplesheet = samplesheet, method = "SSt")
 knitr::kable(head(result, 5))

@@ -4,8 +4,8 @@
 \alias{all}
 \title{Smoking score calculated using MS, SSc and MLM methods.}
 \usage{
-all(dataset, dataset_QN, dataset_ILM, dataset_SQN, samplesheet, ref.Elliott,
-  ref.Zhang, ref.CS, ref.FS, ref.NS)
+all(dataset, dataset_QN, dataset_ILM, dataset_SQN, samplesheet,
+  ref.Elliott, ref.Zhang, ref.CS, ref.FS, ref.NS)
 }
 \arguments{
 \item{dataset}{A data matrix of normalised methylation values in beta scale, with rows labelling the CpG probe ids and columns labelling the sample names.

@@ -4,8 +4,8 @@
 \alias{SSt}
 \title{Estimates smoking probabilities and smoking status (SSt) using MLM method.}
 \usage{
-SSt(dataset, samplesheet, ref.CS = CS_final_coefs, ref.FS = FS_final_coefs,
-  ref.NS = NS_final_coefs)
+SSt(dataset, samplesheet, ref.CS = CS_final_coefs,
+  ref.FS = FS_final_coefs, ref.NS = NS_final_coefs)
 }
 \arguments{
 \item{dataset}{A data matrix of normalised methylation values in beta scale, with rows labelling the CpG probe ids and columns labelling the sample names.

@@ -21,6 +21,6 @@
 #' @examples
 #' data(dummyBetaData)
 #' data(Illig_data)
-#' result <- epismoker(dataset = dummyBetaData, ref.Elliott = Illig_data, method = "EM")
-#' ## result contains smoking score calculated using EM.
+#' result <- epismoker(dataset = dummyBetaData, ref.Elliott = Illig_data, method = "SSc")
+#' ## result contains smoking score calculated based on Elliott et al.
 "dummyBetaData"
