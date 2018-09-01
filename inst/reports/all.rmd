@@ -14,19 +14,24 @@ vignette: >
 Date: `r format(Sys.time(), '%d %B, %Y')` 
 
 ```{r echo=FALSE, results="asis"}
-out <- htmlTable::txtRound(result_All, 2, excl.cols=1)
+out <- htmlTable::txtRound(
+      result_All, 2, excl.cols=1)
 write.csv(out, file.path(outputDir, "EpiSmokEr_Results_all.csv"), row.names=FALSE)
 ```
 
 ```{r echo=FALSE, results="asis"}
-cols_2_clr <- c(7,11) 
+cols_2_clr <- 10
 out1 <- htmlTable::txtRound(result_All,2,excl.cols=1)
 for (col in cols_2_clr){
-  out1[, col] <- mapply(function(val) paste0("<span style='font-weight: 900; color: #0000CD'>",val,"</span>"),
-    val = out1[,col], USE.NAMES = FALSE)
+  out1[, col] <- mapply(function(val) paste0("<span style='font-weight: 900; color: #0000CD'>",val,"</span>"),val = out1[,col], USE.NAMES = FALSE)
 }
+<<<<<<< HEAD
+out <- suppressWarnings( htmlTable::htmlTable(out1, cgroup = c("","smokingScore","methylationScore","smokingStatus",rep(NA,6)),n.cgroup = c(rep(1,3),7,rep(FALSE,6)), rnames=FALSE, col.columns = c(rep("none",3),rep("#EFEFF0", 7)), align ='lccccc', padding.rgroup = "&nbsp;&nbsp;", 
+ escape.html = FALSE))
+=======
 out <- suppressWarnings( htmlTable::htmlTable(out1, cgroup = c("","smokingScore","methylationScore","smokingStatus",rep(NA,7)),n.cgroup = c(rep(1,3),8,rep(FALSE,7)), rnames=FALSE, col.columns = c(rep("none",3),rep("#EFEFF0", 8)),
  align="rrr|r", escape.html = FALSE))
+>>>>>>> 0dc4051db8d0dbe8252dfdc3c953c87887c2e355
 print(out,type="html", useViewer= FALSE)
 ```
 
