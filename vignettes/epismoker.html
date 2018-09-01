@@ -1,13 +1,16 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" class="gr__"><head>
 
-<meta charset="utf-8">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="generator" content="pandoc">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<meta name="author" content="Sailalitha Bollepalli">
+<meta name="author" content="Sailalitha Bollepalli" />
 
 
 <title>EpiSmokEr - Epigenetic Smoking status Estimator- R package</title>
@@ -55,113 +58,18 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 
 
-<link href="data:text/css;charset=utf-8,body%20%7B%0Abackground%2Dcolor%3A%20%23fff%3B%0Amargin%3A%201em%20auto%3B%0Amax%2Dwidth%3A%20700px%3B%0Aoverflow%3A%20visible%3B%0Apadding%2Dleft%3A%202em%3B%0Apadding%2Dright%3A%202em%3B%0Afont%2Dfamily%3A%20%22Open%20Sans%22%2C%20%22Helvetica%20Neue%22%2C%20Helvetica%2C%20Arial%2C%20sans%2Dserif%3B%0Afont%2Dsize%3A%2014px%3B%0Aline%2Dheight%3A%201%2E35%3B%0A%7D%0A%23header%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0A%23TOC%20%7B%0Aclear%3A%20both%3B%0Amargin%3A%200%200%2010px%2010px%3B%0Apadding%3A%204px%3B%0Awidth%3A%20400px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Aborder%2Dradius%3A%205px%3B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Afont%2Dsize%3A%2013px%3B%0Aline%2Dheight%3A%201%2E3%3B%0A%7D%0A%23TOC%20%2Etoctitle%20%7B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dsize%3A%2015px%3B%0Amargin%2Dleft%3A%205px%3B%0A%7D%0A%23TOC%20ul%20%7B%0Apadding%2Dleft%3A%2040px%3B%0Amargin%2Dleft%3A%20%2D1%2E5em%3B%0Amargin%2Dtop%3A%205px%3B%0Amargin%2Dbottom%3A%205px%3B%0A%7D%0A%23TOC%20ul%20ul%20%7B%0Amargin%2Dleft%3A%20%2D2em%3B%0A%7D%0A%23TOC%20li%20%7B%0Aline%2Dheight%3A%2016px%3B%0A%7D%0Atable%20%7B%0Amargin%3A%201em%20auto%3B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dcolor%3A%20%23DDDDDD%3B%0Aborder%2Dstyle%3A%20outset%3B%0Aborder%2Dcollapse%3A%20collapse%3B%0A%7D%0Atable%20th%20%7B%0Aborder%2Dwidth%3A%202px%3B%0Apadding%3A%205px%3B%0Aborder%2Dstyle%3A%20inset%3B%0A%7D%0Atable%20td%20%7B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dstyle%3A%20inset%3B%0Aline%2Dheight%3A%2018px%3B%0Apadding%3A%205px%205px%3B%0A%7D%0Atable%2C%20table%20th%2C%20table%20td%20%7B%0Aborder%2Dleft%2Dstyle%3A%20none%3B%0Aborder%2Dright%2Dstyle%3A%20none%3B%0A%7D%0Atable%20thead%2C%20table%20tr%2Eeven%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Ap%20%7B%0Amargin%3A%200%2E5em%200%3B%0A%7D%0Ablockquote%20%7B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Apadding%3A%200%2E25em%200%2E75em%3B%0A%7D%0Ahr%20%7B%0Aborder%2Dstyle%3A%20solid%3B%0Aborder%3A%20none%3B%0Aborder%2Dtop%3A%201px%20solid%20%23777%3B%0Amargin%3A%2028px%200%3B%0A%7D%0Adl%20%7B%0Amargin%2Dleft%3A%200%3B%0A%7D%0Adl%20dd%20%7B%0Amargin%2Dbottom%3A%2013px%3B%0Amargin%2Dleft%3A%2013px%3B%0A%7D%0Adl%20dt%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Aul%20%7B%0Amargin%2Dtop%3A%200%3B%0A%7D%0Aul%20li%20%7B%0Alist%2Dstyle%3A%20circle%20outside%3B%0A%7D%0Aul%20ul%20%7B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0Apre%2C%20code%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0Aborder%2Dradius%3A%203px%3B%0Acolor%3A%20%23333%3B%0Awhite%2Dspace%3A%20pre%2Dwrap%3B%20%0A%7D%0Apre%20%7B%0Aborder%2Dradius%3A%203px%3B%0Amargin%3A%205px%200px%2010px%200px%3B%0Apadding%3A%2010px%3B%0A%7D%0Apre%3Anot%28%5Bclass%5D%29%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Acode%20%7B%0Afont%2Dfamily%3A%20Consolas%2C%20Monaco%2C%20%27Courier%20New%27%2C%20monospace%3B%0Afont%2Dsize%3A%2085%25%3B%0A%7D%0Ap%20%3E%20code%2C%20li%20%3E%20code%20%7B%0Apadding%3A%202px%200px%3B%0A%7D%0Adiv%2Efigure%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0Aimg%20%7B%0Abackground%2Dcolor%3A%20%23FFFFFF%3B%0Apadding%3A%202px%3B%0Aborder%3A%201px%20solid%20%23DDDDDD%3B%0Aborder%2Dradius%3A%203px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Amargin%3A%200%205px%3B%0A%7D%0Ah1%20%7B%0Amargin%2Dtop%3A%200%3B%0Afont%2Dsize%3A%2035px%3B%0Aline%2Dheight%3A%2040px%3B%0A%7D%0Ah2%20%7B%0Aborder%2Dbottom%3A%204px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Apadding%2Dbottom%3A%202px%3B%0Afont%2Dsize%3A%20145%25%3B%0A%7D%0Ah3%20%7B%0Aborder%2Dbottom%3A%202px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Afont%2Dsize%3A%20120%25%3B%0A%7D%0Ah4%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23f7f7f7%3B%0Amargin%2Dleft%3A%208px%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Ah5%2C%20h6%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23ccc%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Aa%20%7B%0Acolor%3A%20%230033dd%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0Aa%3Ahover%20%7B%0Acolor%3A%20%236666ff%3B%20%7D%0Aa%3Avisited%20%7B%0Acolor%3A%20%23800080%3B%20%7D%0Aa%3Avisited%3Ahover%20%7B%0Acolor%3A%20%23BB00BB%3B%20%7D%0Aa%5Bhref%5E%3D%22http%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0Aa%5Bhref%5E%3D%22https%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0A%0Acode%20%3E%20span%2Ekw%20%7B%20color%3A%20%23555%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Edt%20%7B%20color%3A%20%23902000%3B%20%7D%20%0Acode%20%3E%20span%2Edv%20%7B%20color%3A%20%2340a070%3B%20%7D%20%0Acode%20%3E%20span%2Ebn%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Efl%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Ech%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Est%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Eco%20%7B%20color%3A%20%23888888%3B%20font%2Dstyle%3A%20italic%3B%20%7D%20%0Acode%20%3E%20span%2Eot%20%7B%20color%3A%20%23007020%3B%20%7D%20%0Acode%20%3E%20span%2Eal%20%7B%20color%3A%20%23ff0000%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Efu%20%7B%20color%3A%20%23900%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%20code%20%3E%20span%2Eer%20%7B%20color%3A%20%23a61717%3B%20background%2Dcolor%3A%20%23e3d2d2%3B%20%7D%20%0A" rel="stylesheet" type="text/css">
+<link href="data:text/css;charset=utf-8,body%20%7B%0Abackground%2Dcolor%3A%20%23fff%3B%0Amargin%3A%201em%20auto%3B%0Amax%2Dwidth%3A%20700px%3B%0Aoverflow%3A%20visible%3B%0Apadding%2Dleft%3A%202em%3B%0Apadding%2Dright%3A%202em%3B%0Afont%2Dfamily%3A%20%22Open%20Sans%22%2C%20%22Helvetica%20Neue%22%2C%20Helvetica%2C%20Arial%2C%20sans%2Dserif%3B%0Afont%2Dsize%3A%2014px%3B%0Aline%2Dheight%3A%201%2E35%3B%0A%7D%0A%23header%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0A%23TOC%20%7B%0Aclear%3A%20both%3B%0Amargin%3A%200%200%2010px%2010px%3B%0Apadding%3A%204px%3B%0Awidth%3A%20400px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Aborder%2Dradius%3A%205px%3B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Afont%2Dsize%3A%2013px%3B%0Aline%2Dheight%3A%201%2E3%3B%0A%7D%0A%23TOC%20%2Etoctitle%20%7B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dsize%3A%2015px%3B%0Amargin%2Dleft%3A%205px%3B%0A%7D%0A%23TOC%20ul%20%7B%0Apadding%2Dleft%3A%2040px%3B%0Amargin%2Dleft%3A%20%2D1%2E5em%3B%0Amargin%2Dtop%3A%205px%3B%0Amargin%2Dbottom%3A%205px%3B%0A%7D%0A%23TOC%20ul%20ul%20%7B%0Amargin%2Dleft%3A%20%2D2em%3B%0A%7D%0A%23TOC%20li%20%7B%0Aline%2Dheight%3A%2016px%3B%0A%7D%0Atable%20%7B%0Amargin%3A%201em%20auto%3B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dcolor%3A%20%23DDDDDD%3B%0Aborder%2Dstyle%3A%20outset%3B%0Aborder%2Dcollapse%3A%20collapse%3B%0A%7D%0Atable%20th%20%7B%0Aborder%2Dwidth%3A%202px%3B%0Apadding%3A%205px%3B%0Aborder%2Dstyle%3A%20inset%3B%0A%7D%0Atable%20td%20%7B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dstyle%3A%20inset%3B%0Aline%2Dheight%3A%2018px%3B%0Apadding%3A%205px%205px%3B%0A%7D%0Atable%2C%20table%20th%2C%20table%20td%20%7B%0Aborder%2Dleft%2Dstyle%3A%20none%3B%0Aborder%2Dright%2Dstyle%3A%20none%3B%0A%7D%0Atable%20thead%2C%20table%20tr%2Eeven%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Ap%20%7B%0Amargin%3A%200%2E5em%200%3B%0A%7D%0Ablockquote%20%7B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Apadding%3A%200%2E25em%200%2E75em%3B%0A%7D%0Ahr%20%7B%0Aborder%2Dstyle%3A%20solid%3B%0Aborder%3A%20none%3B%0Aborder%2Dtop%3A%201px%20solid%20%23777%3B%0Amargin%3A%2028px%200%3B%0A%7D%0Adl%20%7B%0Amargin%2Dleft%3A%200%3B%0A%7D%0Adl%20dd%20%7B%0Amargin%2Dbottom%3A%2013px%3B%0Amargin%2Dleft%3A%2013px%3B%0A%7D%0Adl%20dt%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Aul%20%7B%0Amargin%2Dtop%3A%200%3B%0A%7D%0Aul%20li%20%7B%0Alist%2Dstyle%3A%20circle%20outside%3B%0A%7D%0Aul%20ul%20%7B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0Apre%2C%20code%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0Aborder%2Dradius%3A%203px%3B%0Acolor%3A%20%23333%3B%0Awhite%2Dspace%3A%20pre%2Dwrap%3B%20%0A%7D%0Apre%20%7B%0Aborder%2Dradius%3A%203px%3B%0Amargin%3A%205px%200px%2010px%200px%3B%0Apadding%3A%2010px%3B%0A%7D%0Apre%3Anot%28%5Bclass%5D%29%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Acode%20%7B%0Afont%2Dfamily%3A%20Consolas%2C%20Monaco%2C%20%27Courier%20New%27%2C%20monospace%3B%0Afont%2Dsize%3A%2085%25%3B%0A%7D%0Ap%20%3E%20code%2C%20li%20%3E%20code%20%7B%0Apadding%3A%202px%200px%3B%0A%7D%0Adiv%2Efigure%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0Aimg%20%7B%0Abackground%2Dcolor%3A%20%23FFFFFF%3B%0Apadding%3A%202px%3B%0Aborder%3A%201px%20solid%20%23DDDDDD%3B%0Aborder%2Dradius%3A%203px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Amargin%3A%200%205px%3B%0A%7D%0Ah1%20%7B%0Amargin%2Dtop%3A%200%3B%0Afont%2Dsize%3A%2035px%3B%0Aline%2Dheight%3A%2040px%3B%0A%7D%0Ah2%20%7B%0Aborder%2Dbottom%3A%204px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Apadding%2Dbottom%3A%202px%3B%0Afont%2Dsize%3A%20145%25%3B%0A%7D%0Ah3%20%7B%0Aborder%2Dbottom%3A%202px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Afont%2Dsize%3A%20120%25%3B%0A%7D%0Ah4%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23f7f7f7%3B%0Amargin%2Dleft%3A%208px%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Ah5%2C%20h6%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23ccc%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Aa%20%7B%0Acolor%3A%20%230033dd%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0Aa%3Ahover%20%7B%0Acolor%3A%20%236666ff%3B%20%7D%0Aa%3Avisited%20%7B%0Acolor%3A%20%23800080%3B%20%7D%0Aa%3Avisited%3Ahover%20%7B%0Acolor%3A%20%23BB00BB%3B%20%7D%0Aa%5Bhref%5E%3D%22http%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0Aa%5Bhref%5E%3D%22https%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0A%0Acode%20%3E%20span%2Ekw%20%7B%20color%3A%20%23555%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Edt%20%7B%20color%3A%20%23902000%3B%20%7D%20%0Acode%20%3E%20span%2Edv%20%7B%20color%3A%20%2340a070%3B%20%7D%20%0Acode%20%3E%20span%2Ebn%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Efl%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Ech%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Est%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Eco%20%7B%20color%3A%20%23888888%3B%20font%2Dstyle%3A%20italic%3B%20%7D%20%0Acode%20%3E%20span%2Eot%20%7B%20color%3A%20%23007020%3B%20%7D%20%0Acode%20%3E%20span%2Eal%20%7B%20color%3A%20%23ff0000%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Efu%20%7B%20color%3A%20%23900%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%20code%20%3E%20span%2Eer%20%7B%20color%3A%20%23a61717%3B%20background%2Dcolor%3A%20%23e3d2d2%3B%20%7D%20%0A" rel="stylesheet" type="text/css" />
 
-<script type="text/javascript" src="epismoker_files/MathJax.js"></script><style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
-.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
-.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
-.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
-.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
-</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
-#MathJax_About.MathJax_MousePost {outline: none}
-.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 5px 0px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; -khtml-border-radius: 5px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
-.MathJax_MenuItem {padding: 1px 2em; background: transparent}
-.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
-.MathJax_MenuActive .MathJax_MenuArrow {color: white}
-.MathJax_MenuArrow.RTL {left: .5em; right: auto}
-.MathJax_MenuCheck {position: absolute; left: .7em}
-.MathJax_MenuCheck.RTL {right: .7em; left: auto}
-.MathJax_MenuRadioCheck {position: absolute; left: .7em}
-.MathJax_MenuRadioCheck.RTL {right: .7em; left: auto}
-.MathJax_MenuLabel {padding: 1px 2em 3px 1.33em; font-style: italic}
-.MathJax_MenuRule {border-top: 1px solid #DDDDDD; margin: 4px 3px}
-.MathJax_MenuDisabled {color: GrayText}
-.MathJax_MenuActive {background-color: #606872; color: white}
-.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
-.MathJax_ContextMenu:focus {outline: none}
-.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
-#MathJax_AboutClose {top: .2em; right: .2em}
-.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
-.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
-.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
-.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
-.MathJax_MenuClose:hover span {background-color: #CCC!important}
-.MathJax_MenuClose:hover:focus {outline: none}
-</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
-</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
-.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
-</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
-#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
-#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
-#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
-</style><style type="text/css">.MathJax_Preview {color: #888}
-#MathJax_Message {position: fixed; left: 1px; bottom: 2px; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
-#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
-.MathJax_Error {color: #CC0000; font-style: italic}
-</style><style type="text/css">.MJXp-script {font-size: .8em}
-.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
-.MJXp-bold {font-weight: bold}
-.MJXp-italic {font-style: italic}
-.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
-.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
-.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
-.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
-.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
-.MJXp-largeop {font-size: 150%}
-.MJXp-largeop.MJXp-int {vertical-align: -.2em}
-.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
-.MJXp-display {display: block; text-align: center; margin: 1em 0}
-.MJXp-math span {display: inline-block}
-.MJXp-box {display: block!important; text-align: center}
-.MJXp-box:after {content: " "}
-.MJXp-rule {display: block!important; margin-top: .1em}
-.MJXp-char {display: block!important}
-.MJXp-mo {margin: 0 .15em}
-.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
-.MJXp-denom {display: inline-table!important; width: 100%}
-.MJXp-denom > * {display: table-row!important}
-.MJXp-surd {vertical-align: top}
-.MJXp-surd > * {display: block!important}
-.MJXp-script-box > *  {display: table!important; height: 50%}
-.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
-.MJXp-script-box > *:last-child > * {vertical-align: bottom}
-.MJXp-script-box > * > * > * {display: block!important}
-.MJXp-mphantom {visibility: hidden}
-.MJXp-munderover {display: inline-table!important}
-.MJXp-over {display: inline-block!important; text-align: center}
-.MJXp-over > * {display: block!important}
-.MJXp-munderover > * {display: table-row!important}
-.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
-.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
-.MJXp-mtr {display: table-row!important}
-.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
-.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
-.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
-.MJXp-mlabeledtr {display: table-row!important}
-.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
-.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
-.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
-.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
-.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
-.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
-.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
-.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
-.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
-.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
-.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
-.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
-.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
-.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
-</style></head>
+</head>
 
-<body data-gr-c-s-loaded="true"><div id="MathJax_Message" style="display: none;"></div>
+<body>
 
 
 
 
 <h1 class="title toc-ignore">EpiSmokEr - Epigenetic Smoking status Estimator- R package</h1>
 <h4 class="author"><em>Sailalitha Bollepalli</em></h4>
-<h4 class="date"><em>Last updated on: 2018-05-25</em></h4>
+<h4 class="date"><em>Last updated on: 2018-09-01</em></h4>
 
 
 <div id="TOC">
@@ -175,9 +83,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><a href="#smoking-score-calculation-and-predicton-of-smoking-status">Smoking Score calculation and predicton of smoking status</a><ul>
 <li><a href="#a.-from-idat-files">A. From idat files</a><ul>
 <li><a href="#please-note">Please note:</a></li>
-<li><a href="#multinomial-lasso-method-mlm">1. Multinomial LASSO method (MLM)</a></li>
-<li><a href="#elliott-method-em">2. Elliott method (EM)</a></li>
-<li><a href="#zhang-method-zm">3. Zhang method (ZM)</a></li>
+<li><a href="#smoking-status-sst-prediction">1. Smoking Status (SSt) Prediction</a></li>
+<li><a href="#smoking-score-ssc">2. Smoking Score (SSc)</a></li>
+<li><a href="#methylation-score-ms">3. Methylation Score (MS)</a></li>
 <li><a href="#compreshensive-approach-all">4. Compreshensive approach (all)</a></li>
 </ul></li>
 <li><a href="#b.-from-methylation-matrix">B. From methylation matrix</a></li>
@@ -189,27 +97,17 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <div id="introduction" class="section level1">
 <h1>Introduction</h1>
-<hr>
-<p>Several independent studies have reported the high impact of smoking 
-on DNA methylation with current, never and former smokers exhibiting 
-different methylation profiles. Recently, usage of DNA methylation as a 
-proxy measure to estimate smoking status has been proposed <span class="citation">(Elliott et al. 2014)</span>. <strong>EpiSmokEr</strong> serves as a comprehensive package with four options to estimate smoking status based on methylation data.</p>
+<hr />
+<p>Several independent studies have reported the high impact of smoking on DNA methylation with current, never and former smokers exhibiting different methylation profiles. Recently, usage of DNA methylation as a proxy measure to estimate smoking status has been proposed <span class="citation">(Elliott et al. 2014)</span>. <strong>EpiSmokEr</strong> serves as a comprehensive package with four options to estimate smoking status based on methylation data.</p>
 <p>This vignette gives an overview of how to use the <strong>EpiSmokEr</strong> R package.</p>
 <div id="four-options-in-epismoker" class="section level2">
 <h2>Four options in EpiSmokEr</h2>
-<p><strong>EpiSmokEr</strong> provides four options to calculate smoking
- score and predicts smoking status from whole blood Infinium 
-HumanMethylation450 data.</p>
+<p><strong>EpiSmokEr</strong> provides four options to calculate smoking score and predicts smoking status from whole blood Infinium HumanMethylation450 data.</p>
 <ol style="list-style-type: decimal">
-<li><strong>Multinomial LASSO method (MLM)</strong> provides smoking probabilities for each individual and <strong>predicts smoking status</strong>
- of the individual. MLM uses weights of 121 CpGs selected by multinomial
- LASSO approach for each class of smoking status i.e current, former and
- never smokers. In addition to these 121 CpGs, sex and intercept terms 
-are also used in the calculation. These coefficients selected by MLM can
- be viewed as follows:</li>
+<li><strong>Smoking Status (SSt)</strong> provides smoking probabilities for each individual and <strong>predicts smoking status</strong> of the individual. This approach uses weights of 121 CpGs selected by multinomial LASSO approach for each class of smoking status i.e current, former and never smokers. In addition to these 121 CpGs, sex and intercept terms are also used in the calculation. These coefficients used by SSt approach can be viewed as follows:</li>
 </ol>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>(<span class="kw">system.file</span>(<span class="st">"extdata"</span>, <span class="st">"MLM_coefficients.rda"</span>, <span class="dt">package=</span> <span class="st">"EpiSmokEr"</span>))
-knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">head</span>(MLM_coefficients, <span class="dt">caption =</span> <span class="st">"121 CpGs and coefficients selected by Multinomial LASSO approach"</span>))</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>(<span class="kw">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;SSt_coefficients.rda&quot;</span>, <span class="dt">package=</span> <span class="st">&quot;EpiSmokEr&quot;</span>))
+knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">head</span>(SSt_coefficients, <span class="dt">caption =</span> <span class="st">&quot;121 CpGs and coefficients selected by Multinomial LASSO approach&quot;</span>))</code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -259,15 +157,8 @@ knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">he
 </tbody>
 </table>
 <ol start="2" style="list-style-type: decimal">
-<li><p><strong>Elliott method (EM)</strong> provides smoking score calculated based on the approach outlined in <span class="citation">(Elliott et al. 2014)</span>. Elliott <em>et al</em> computed smoking scores using 187 smoking-associated CpGs identified in an EWAS comparing current Vs never smokers <span class="citation">(Zeilinger et al. 2013)</span>. For a detailed explanation of smoking score calculation please refer to <span class="citation">(Elliott et al. 2014)</span>. Briefly, weights and reference beta values are obtained from Zellinger <em>et al</em>.
- For each of the 187 CpG sites, the absolute difference between cohort 
-beta value and reference beta value is calculated and then multiplied by
- the corresponding weight. A smoking score is then obtained by summation
- across all the 187 CpG site scores.</p></li>
-<li><p><strong>Zhang method (ZM)</strong> provides methylation score calculated using 4 CpGs. Zhang <em>et al </em>
- developed the methylation score for discriminating current smokers from
- never smokers, and former smokers from never smokers using a stepwise 
-selection of logistic regression models <span class="citation">(Zhang et al. 2016)</span>. Weights of 4 CpGs provided by Zhang <em>et al</em> were used to obtain methylation scores.</p></li>
+<li><p><strong>Smoking Score (SSc)</strong> is calculated based on the approach outlined in <span class="citation">(Elliott et al. 2014)</span>. Elliott <em>et al</em> computed smoking scores using 187 smoking-associated CpGs identified in an EWAS comparing current Vs never smokers <span class="citation">(Zeilinger et al. 2013)</span>. For a detailed explanation of smoking score calculation please refer to <span class="citation">(Elliott et al. 2014)</span>. Briefly, weights and reference beta values are obtained from Zellinger <em>et al</em>. The 187 CpG sites are divided into two groups based on their methylation levels in never smokers. For CpGs with decreased methylation, the cohort beta values are subtracted from the reference beta values. For CpGs with increased methylation reference beta values are subtracted from cohort beta values. Then beta values are multiplied by the corresponding weights. A smoking score is then obtained by summation across all the 187 CpG site scores.</p></li>
+<li><p><strong>Methylation Score (MS)</strong> approach was proposed by Zhang <em>et al </em> to distinguish current smokers from never smokers, and former smokers from never smokers using a stepwise selection of logistic regression models <span class="citation">(Zhang et al. 2016)</span>. Weights of 4 CpGs provided by Zhang <em>et al</em> were used to obtain methylation scores.</p></li>
 <li><p><strong>all</strong> a comprehensive approach which provides results from all the three methods described above.</p></li>
 </ol>
 </div>
@@ -276,7 +167,7 @@ selection of logistic regression models <span class="citation">(Zhang et al. 201
 <ul>
 <li>Can perform smoking score calculation starting from idat files.</li>
 <li>Normalization of datasets using channel and colour specific quantile normalization.</li>
-<li>Smoking score calculation using three methods.</li>
+<li>Estimates Smoking Status and can provide Smoking Score and Methylation Scores.</li>
 <li>Prediction of smoking status based on the whole blood methylation data.</li>
 <li>Results provided in html and csv format.</li>
 </ul>
@@ -284,12 +175,12 @@ selection of logistic regression models <span class="citation">(Zhang et al. 201
 </div>
 <div id="installation" class="section level1">
 <h1>Installation</h1>
-<hr>
+<hr />
 <p>To install EpiSmokEr, start R and then type the following commands:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">source</span>(<span class="st">"http://bioconductor.org/biocLite.R"</span>)
-<span class="kw">install.packages</span>(<span class="st">"devtools"</span>) <span class="co"># if you don't have the package, run install.packages("devtools")</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">source</span>(<span class="st">&quot;http://bioconductor.org/biocLite.R&quot;</span>)
+<span class="kw">install.packages</span>(<span class="st">&quot;devtools&quot;</span>) <span class="co"># if you don't have the package, run install.packages(&quot;devtools&quot;)</span>
 <span class="kw">library</span>(devtools)
-<span class="kw">install_github</span>(<span class="st">"sailalithabollepalli/EpiSmokEr"</span>)</code></pre></div>
+<span class="kw">install_github</span>(<span class="st">&quot;sailalithabollepalli/EpiSmokEr&quot;</span>)</code></pre></div>
 <p><strong>EpiSmokEr</strong> depends on the following packages:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(IlluminaHumanMethylation450kmanifest)
 <span class="kw">library</span>(IlluminaHumanMethylation450kanno.ilmn12.hg19)
@@ -308,51 +199,38 @@ selection of logistic regression models <span class="citation">(Zhang et al. 201
 </div>
 <div id="input-data" class="section level1">
 <h1>Input Data</h1>
-<hr>
-<p>To generate the smoking scores from the whole blood methylaion, 
-EpiSmokEr simply requires methylation data as an input. Input data could
- be either raw methylation data in the form of idat files or a 
-normalised methylation matrix in the beta scale ranging in between 0 and
- 1. For MLM method, a sample sheet with <strong>sex</strong> status is needed to complement the methylation data.</p>
+<hr />
+<p>To estimate smoking status and scores from the whole blood methylaion, EpiSmokEr simply requires methylation data as an input. Input data could be either raw methylation data in the form of idat files or a normalised methylation matrix in the beta scale ranging in between 0 and 1. For SSt method, a sample sheet with <strong>sex</strong> status is needed to complement the methylation data.</p>
 <p>To demonstrate the working of the EpiSmokEr we chose a peripheral blood leukocytes dataset from GEO <a href="http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=gse42861">GSE42861</a><span class="citation">(Liu et al. 2013)</span>. We use only 6 samples from this dataset to minimise the package size and running time.</p>
 <div id="following-data-objects-are-provided-along-with-the-package-and-are-used-in-the-examples-below." class="section level4">
 <h4>Following data objects are provided along with the package and are used in the examples below.</h4>
 <ul>
 <li>Raw data: idat files of 6 subjects from GSE42861.</li>
-<li>Methylation matrix: A subset of 1000 CpG probes from the normalised 
-methylation matrix (which contained all the CpGs required by EpiSmokEr).</li>
+<li>Methylation matrix: A subset of 1000 CpG probes from the normalised methylation matrix (which contained all the CpGs required by EpiSmokEr).</li>
 <li>A sample sheet with gender information</li>
 </ul>
 </div>
 </div>
 <div id="smoking-score-calculation-and-predicton-of-smoking-status" class="section level1">
 <h1>Smoking Score calculation and predicton of smoking status</h1>
-<hr>
+<hr />
 <p>We will now show 2 ways of providing input data to predict smoking status:</p>
 <div id="a.-from-idat-files" class="section level2">
 <h2>A. From idat files</h2>
-<p>Here input data are in the form of idat files. <code>minfi</code><span class="citation">(Aryee et al. 2014)</span> package is used to read the idat files. <strong>normaliseData</strong>
- function has a suite of customised internal functions to normalise and 
-calculate beta values from the idat files. Color and channel specific 
-normalisation was performed on the training dataset used in the MLM 
-approach. Quantiles from this training dataset are used to adjust the 
-distribution of your input data comparable to the training dataset. 
-Following the normalisation, beta values are calculated.</p>
+<p>Here input data are in the form of idat files. <code>minfi</code><span class="citation">(Aryee et al. 2014)</span> package is used to read the idat files. <strong>normaliseData</strong> function has a suite of customised internal functions to normalise and calculate beta values from the idat files. Color and channel specific normalisation was performed on the training dataset used in the SSt approach. Quantiles from this training dataset are used to adjust the distribution of your input data comparable to the training dataset. Following the normalisation, beta values are calculated.</p>
 <div id="please-note" class="section level3">
 <h3>Please note:</h3>
 <ul>
 <li>Sample sheet must be included in the same folder as the idat files.</li>
-<li>Rownames of samplesheet must match the names of the samples i.e idat
- files, to facilitate matching of phenotype data with the corresponding 
-methylation data.</li>
-<li>For MLM method, sample sheet should include a column with gender information marked as <strong>sex</strong>, in the format of 1 and 2 representing men and women respectively.</li>
+<li>Rownames of samplesheet must match the names of the samples i.e idat files, to facilitate matching of phenotype data with the corresponding methylation data.</li>
+<li>For SSt method, sample sheet should include a column with gender information marked as <strong>sex</strong>, in the format of 1 and 2 representing men and women respectively.</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">rawdata &lt;-<span class="st"> </span><span class="kw">loadData</span>(<span class="dt">idatPath =</span> <span class="kw">system.file</span>(<span class="st">"extdata"</span>, <span class="dt">package =</span> <span class="st">"EpiSmokEr"</span>))</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">rawdata &lt;-<span class="st"> </span><span class="kw">loadData</span>(<span class="dt">idatPath =</span> <span class="kw">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;EpiSmokEr&quot;</span>))</code></pre></div>
 <pre><code>## Loading idat files.</code></pre>
 <pre><code>## [read.metharray.sheet] Found the following CSV files:</code></pre>
-<pre><code>## [1] "/home/sbollepa/R/x86_64-pc-linux-gnu-library/3.4/EpiSmokEr/extdata/samplesheet_GSE42861.csv"</code></pre>
+<pre><code>## [1] &quot;C:/Users/sairam/Documents/R/win-library/3.5/EpiSmokEr/extdata/samplesheet_GSE42861.csv&quot;</code></pre>
 <pre><code>## Dataset has 6 samples.</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">samplesheet &lt;-<span class="kw">read.csv</span>(<span class="kw">system.file</span>(<span class="st">"extdata"</span>, <span class="st">"samplesheet_GSE42861.csv"</span>, <span class="dt">package=</span><span class="st">"EpiSmokEr"</span>), <span class="dt">header=</span><span class="ot">TRUE</span>, <span class="dt">sep=</span><span class="st">","</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">samplesheet &lt;-<span class="kw">read.csv</span>(<span class="kw">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;samplesheet_GSE42861.csv&quot;</span>, <span class="dt">package=</span><span class="st">&quot;EpiSmokEr&quot;</span>), <span class="dt">header=</span><span class="ot">TRUE</span>, <span class="dt">sep=</span><span class="st">&quot;,&quot;</span>)
 knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">head</span>(samplesheet, <span class="dv">5</span>))</code></pre></div>
 <table>
 <thead>
@@ -414,209 +292,185 @@ knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">he
 </tr>
 </tbody>
 </table>
-<p>When raw methylation data is available (idat files) then it is highly
- recommended to use the same normalisation method implemented in the 
-original article which proposed that specific smoking-score method. All 
-the three smoking score methods (MLM, ZM and EM) we have considered here
- uses 3 different normalisation methods (QN, SQN and ILM). Therefore we 
-provide three normalisation options to normalise the datasets 
-accordingly and then calculate the smoking score following that specific
- method.</p>
-<p>Quantiles saved from color, channel and probe based quantile 
-normalisation implemented on the training dataset will be used to 
-normalise data for MLM.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dataset_QN &lt;-<span class="st"> </span><span class="kw">normalizeData</span>(<span class="dt">RGset=</span>rawdata, <span class="dt">normMethod =</span> <span class="st">"QN"</span>) </code></pre></div>
+<p>When raw methylation data is available (idat files) then it is highly recommended to use the same normalisation method implemented in the original article which proposed that specific smoking-score method. All the three smoking score methods (SSt, MS and SSc) we have considered here uses 3 different normalisation methods (QN, SQN and ILM). Therefore we provide three normalisation options to normalise the datasets accordingly and then calculate the smoking score following that specific method.</p>
+<p>Quantiles saved from color, channel and probe based quantile normalisation implemented on the training dataset will be used to normalise data for SSt.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dataset_QN &lt;-<span class="st"> </span><span class="kw">normalizeData</span>(<span class="dt">RGset=</span>rawdata, <span class="dt">normMethod =</span> <span class="st">&quot;QN&quot;</span>) </code></pre></div>
 <pre><code>## Loading RGset object.</code></pre>
 <pre><code>## Dataset has 6 samples.</code></pre>
-<p>To use EM, dataset is normalised using subset quantile normalization <span class="citation">(Touleimat and Tost 2012)</span>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dataset_SQN &lt;-<span class="st"> </span><span class="kw">normalizeData</span>(<span class="dt">RGset=</span>rawdata, <span class="dt">normMethod =</span> <span class="st">"SQN"</span>)</code></pre></div>
+<p>To use SSc, dataset is normalised using subset quantile normalization <span class="citation">(Touleimat and Tost 2012)</span>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dataset_SQN &lt;-<span class="st"> </span><span class="kw">normalizeData</span>(<span class="dt">RGset=</span>rawdata, <span class="dt">normMethod =</span> <span class="st">&quot;SQN&quot;</span>)</code></pre></div>
 <pre><code>## Loading RGset object.</code></pre>
 <pre><code>## Dataset has 6 samples.</code></pre>
+<pre><code>## Performing Subset Quantile Normalisation.</code></pre>
 <pre><code>## [preprocessQuantile] Mapping to genome.</code></pre>
 <pre><code>## [preprocessQuantile] Fixing outliers.</code></pre>
 <pre><code>## [preprocessQuantile] Quantile normalizing.</code></pre>
-<p>To use ZM, data were normalized to internal controls provided by 
-Illumina (Illumina normalization) and no additional background 
-correction was done.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dataset_ILM &lt;-<span class="st"> </span><span class="kw">normalizeData</span>(<span class="dt">RGset=</span>rawdata, <span class="dt">normMethod =</span> <span class="st">"ILM"</span>)</code></pre></div>
+<p>To use MS, data were normalized to internal controls provided by Illumina (Illumina normalization) and no additional background correction was done.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dataset_ILM &lt;-<span class="st"> </span><span class="kw">normalizeData</span>(<span class="dt">RGset=</span>rawdata, <span class="dt">normMethod =</span> <span class="st">&quot;ILM&quot;</span>)</code></pre></div>
 <pre><code>## Loading RGset object.</code></pre>
 <pre><code>## Dataset has 6 samples.</code></pre>
+<pre><code>## Performing Illumina Normalisation.</code></pre>
 <p>All the three normalisation methods can be performed using option “ALL”. However, the result <strong>dataset_ALL</strong> is saved as a list.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dataset_ALL &lt;-<span class="st"> </span><span class="kw">normalizeData</span>(<span class="dt">RGset=</span>rawdata, <span class="dt">normMethod =</span> <span class="st">"ALL"</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dataset_ALL &lt;-<span class="st"> </span><span class="kw">normalizeData</span>(<span class="dt">RGset=</span>rawdata, <span class="dt">normMethod =</span> <span class="st">&quot;ALL&quot;</span>)</code></pre></div>
 <pre><code>## Loading RGset object.</code></pre>
 <pre><code>## Dataset has 6 samples.</code></pre>
+<pre><code>## Performing Subset Quantile Normalisation.</code></pre>
 <pre><code>## [preprocessQuantile] Mapping to genome.</code></pre>
 <pre><code>## [preprocessQuantile] Fixing outliers.</code></pre>
 <pre><code>## [preprocessQuantile] Quantile normalizing.</code></pre>
+<pre><code>## Performing Illumina Normalisation.</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(dataset_ALL)</code></pre></div>
 <pre><code>## List of 3
 ##  $ dataset_QN : num [1:452088, 1:6] 0.206 0.469 0.811 0.859 0.886 ...
-##   ..- attr(*, "dimnames")=List of 2
-##   .. ..$ : chr [1:452088] "cg00000165" "cg00000363" "cg00001364" "cg00001446" ...
-##   .. ..$ : chr [1:6] "GSM1051533_7800246024_R03C02" "GSM1051534_7800246024_R04C02" "GSM1051538_7800246085_R02C01" "GSM1051539_7800246085_R03C01" ...
+##   ..- attr(*, &quot;dimnames&quot;)=List of 2
+##   .. ..$ : chr [1:452088] &quot;cg00000165&quot; &quot;cg00000363&quot; &quot;cg00001364&quot; &quot;cg00001446&quot; ...
+##   .. ..$ : chr [1:6] &quot;GSM1051533_7800246024_R03C02&quot; &quot;GSM1051534_7800246024_R04C02&quot; &quot;GSM1051538_7800246085_R02C01&quot; &quot;GSM1051539_7800246085_R03C01&quot; ...
 ##  $ dataset_ILM: num [1:485512, 1:6] 0.8349 0.304 0.8729 0.0317 0.8256 ...
-##   ..- attr(*, "dimnames")=List of 2
-##   .. ..$ : chr [1:485512] "cg00050873" "cg00212031" "cg00213748" "cg00214611" ...
-##   .. ..$ : chr [1:6] "GSM1051533_7800246024_R03C02" "GSM1051534_7800246024_R04C02" "GSM1051538_7800246085_R02C01" "GSM1051539_7800246085_R03C01" ...
+##   ..- attr(*, &quot;dimnames&quot;)=List of 2
+##   .. ..$ : chr [1:485512] &quot;cg00050873&quot; &quot;cg00212031&quot; &quot;cg00213748&quot; &quot;cg00214611&quot; ...
+##   .. ..$ : chr [1:6] &quot;GSM1051533_7800246024_R03C02&quot; &quot;GSM1051534_7800246024_R04C02&quot; &quot;GSM1051538_7800246085_R02C01&quot; &quot;GSM1051539_7800246085_R03C01&quot; ...
 ##  $ dataset_SQN: num [1:485512, 1:6] 0.772 0.471 0.109 0.265 0.132 ...
-##   ..- attr(*, "dimnames")=List of 2
-##   .. ..$ : chr [1:485512] "cg13869341" "cg14008030" "cg12045430" "cg20826792" ...
-##   .. ..$ : chr [1:6] "GSM1051533_7800246024_R03C02" "GSM1051534_7800246024_R04C02" "GSM1051538_7800246085_R02C01" "GSM1051539_7800246085_R03C01" ...</code></pre>
+##   ..- attr(*, &quot;dimnames&quot;)=List of 2
+##   .. ..$ : chr [1:485512] &quot;cg13869341&quot; &quot;cg14008030&quot; &quot;cg12045430&quot; &quot;cg20826792&quot; ...
+##   .. ..$ : chr [1:6] &quot;GSM1051533_7800246024_R03C02&quot; &quot;GSM1051534_7800246024_R04C02&quot; &quot;GSM1051538_7800246085_R02C01&quot; &quot;GSM1051539_7800246085_R03C01&quot; ...</code></pre>
 <p>Individual normalised datasets can be obtained from <strong>dataset_ALL</strong> as follows:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dataset_QN &lt;-<span class="st"> </span>dataset_ALL<span class="op">$</span>dataset_QN
 dataset_ILM &lt;-<span class="st"> </span>dataset_ALL<span class="op">$</span>dataset_ILM
 dataset_SQN &lt;-<span class="st"> </span>dataset_ALL<span class="op">$</span>dataset_SQN</code></pre></div>
 <p>Now the <strong>dataset</strong> object can be passed on to the <strong>epismoker</strong> function to calculate smoking score and smoking status using four options available.</p>
-<p>Once we have normalised the methylation data, we can then proceed 
-with smoking status estimation. EpiSmokEr provides four options:</p>
+<p>Once we have normalised the methylation data, we can then proceed with smoking status estimation. EpiSmokEr provides four options:</p>
 </div>
-<div id="multinomial-lasso-method-mlm" class="section level3">
-<h3>1. Multinomial LASSO method (MLM)</h3>
-<p>In this method weights of 121 CpGs selected by Multinomial LASSO 
-approach, and sex and intercept terms are used in the calculation of 
-smoking probabilities for each individual. We get smoking probabilities 
-for the three smoking status classes, i.e current, former and never 
-smokers. Predicted smoking status of an individual is the class having 
-the highest probability.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">result_MLM &lt;-<span class="st"> </span><span class="kw">epismoker</span>(<span class="dt">dataset=</span>dataset_QN, <span class="dt">samplesheet =</span> samplesheet, <span class="dt">method =</span> <span class="st">"MLM"</span>)</code></pre></div>
+<div id="smoking-status-sst-prediction" class="section level3">
+<h3>1. Smoking Status (SSt) Prediction</h3>
+<p>We derive the smoking probabilities, using the weights from 121 CpGs selected by Multinomial LASSO approach, along with the sex and intercept terms. We get smoking probabilities for three smoking statuses, i.e current, former and never smokers. Predicted smoking status of an individual is the class having the highest probability.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">result_SSt &lt;-<span class="st"> </span><span class="kw">epismoker</span>(<span class="dt">dataset=</span>dataset_QN, <span class="dt">samplesheet =</span> samplesheet, <span class="dt">method =</span> <span class="st">&quot;SSt&quot;</span>)</code></pre></div>
 <pre><code>## ============================================</code></pre>
-<pre><code>## &lt;&lt;&lt;&lt;&lt; Multinomial LASSO Method Started &gt;&gt;&gt;&gt;&gt;</code></pre>
+<pre><code>## &lt;&lt;&lt;&lt;&lt; Predicting Smoking Statuses &gt;&gt;&gt;&gt;&gt;</code></pre>
 <pre><code>## ============================================</code></pre>
 <pre><code>## Dataset has 121 of 121 CpGs required for smoking status estimation.
 ## Dataset has 121 of 121 CpGs required for smoking status estimation.
 ## Dataset has 121 of 121 CpGs required for smoking status estimation.</code></pre>
 <pre><code>## ============================================</code></pre>
-<pre><code>## &lt;&lt;&lt;&lt;&lt; Multinomial LASSO Method Completed &gt;&gt;&gt;&gt;&gt;</code></pre>
+<pre><code>## &lt;&lt;&lt;&lt;&lt; Prediction of Smoking Statuses Completed &gt;&gt;&gt;&gt;&gt;</code></pre>
 <pre><code>## ============================================</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">result_MLM</code></pre></div>
-<pre><code>##                                                SampleName logCoeff_CS
-## GSM1051533_7800246024_R03C02 GSM1051533_7800246024_R03C02   1.2703029
-## GSM1051534_7800246024_R04C02 GSM1051534_7800246024_R04C02  -1.2369244
-## GSM1051538_7800246085_R02C01 GSM1051538_7800246085_R02C01  -0.7931725
-## GSM1051539_7800246085_R03C01 GSM1051539_7800246085_R03C01  -1.2172066
-## GSM1051584_7800246137_R01C01 GSM1051584_7800246137_R01C01  -0.7368372
-## GSM1051585_7800246137_R02C01 GSM1051585_7800246137_R02C01  -1.5291671
-##                              logCoeff_FS logCoeff_NS
-## GSM1051533_7800246024_R03C02   0.7725372  -2.0428401
-## GSM1051534_7800246024_R04C02   0.2630344   0.9738900
-## GSM1051538_7800246085_R02C01   0.3566026   0.4365699
-## GSM1051539_7800246085_R03C01   0.4711146   0.7460920
-## GSM1051584_7800246137_R01C01   0.5099384   0.2268987
-## GSM1051585_7800246137_R02C01   0.6708411   0.8583260
-##                              PredictedSmokingStatus   probs_CS  probs_FS
-## GSM1051533_7800246024_R03C02         Current Smoker 0.60816562 0.3696962
-## GSM1051534_7800246024_R04C02           Never Smoker 0.06847135 0.3068547
-## GSM1051538_7800246085_R02C01           Never Smoker 0.13196388 0.4166737
-## GSM1051539_7800246085_R03C01           Never Smoker 0.07389249 0.3997872
-## GSM1051584_7800246137_R01C01          Former Smoker 0.14083359 0.4899751
-## GSM1051585_7800246137_R02C01           Never Smoker 0.04782113 0.4315899
-##                                probs_NS PredictedSmokingStatus2
-## GSM1051533_7800246024_R03C02 0.02213819          Current Smoker
-## GSM1051534_7800246024_R04C02 0.62467399            Never Smoker
-## GSM1051538_7800246085_R02C01 0.45136243            Never Smoker
-## GSM1051539_7800246085_R03C01 0.52632026            Never Smoker
-## GSM1051584_7800246137_R01C01 0.36919129           Former Smoker
-## GSM1051585_7800246137_R02C01 0.52058894            Never Smoker</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">result_SSt</code></pre></div>
+<pre><code>##                                                SampleName logOdds_CS
+## GSM1051533_7800246024_R03C02 GSM1051533_7800246024_R03C02  1.2702463
+## GSM1051534_7800246024_R04C02 GSM1051534_7800246024_R04C02 -1.2369648
+## GSM1051538_7800246085_R02C01 GSM1051538_7800246085_R02C01 -0.7931685
+## GSM1051539_7800246085_R03C01 GSM1051539_7800246085_R03C01 -1.2175070
+## GSM1051584_7800246137_R01C01 GSM1051584_7800246137_R01C01 -0.7364596
+## GSM1051585_7800246137_R02C01 GSM1051585_7800246137_R02C01 -1.5291249
+##                              logOdds_FS logOdds_NS   probs_CS  probs_FS
+## GSM1051533_7800246024_R03C02  0.7726038 -2.0428501 0.60813729 0.3697245
+## GSM1051534_7800246024_R04C02  0.2631190  0.9738458 0.06846889 0.3068820
+## GSM1051538_7800246085_R02C01  0.3565658  0.4366027 0.13196440 0.4166583
+## GSM1051539_7800246085_R03C01  0.4712640  0.7462431 0.07386166 0.3998002
+## GSM1051584_7800246137_R01C01  0.5094571  0.2270025 0.14090711 0.4898100
+## GSM1051585_7800246137_R02C01  0.6709051  0.8582198 0.04782438 0.4316286
+##                                probs_NS PredictedSmokingStatus
+## GSM1051533_7800246024_R03C02 0.02213819         Current Smoker
+## GSM1051534_7800246024_R04C02 0.62464911           Never Smoker
+## GSM1051538_7800246085_R02C01 0.45137726           Never Smoker
+## GSM1051539_7800246085_R03C01 0.52633818           Never Smoker
+## GSM1051584_7800246137_R01C01 0.36928289          Former Smoker
+## GSM1051585_7800246137_R02C01 0.52054702           Never Smoker</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># PredictedSmokingStatus represents the smoking status class assigned to the individual based on the calculated smoking probabilities.</span></code></pre></div>
 </div>
-<div id="elliott-method-em" class="section level3">
-<h3>2. Elliott method (EM)</h3>
+<div id="smoking-score-ssc" class="section level3">
+<h3>2. Smoking Score (SSc)</h3>
 <p>In this method 187 CpGs are used to calculate smoking score as expained in <span class="citation">(Elliott et al. 2014)</span>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">result_EM &lt;-<span class="st"> </span><span class="kw">epismoker</span>(<span class="dt">dataset =</span> dataset_SQN, <span class="dt">method =</span> <span class="st">"EM"</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">result_SSc &lt;-<span class="st"> </span><span class="kw">epismoker</span>(<span class="dt">dataset =</span> dataset_SQN, <span class="dt">method =</span> <span class="st">&quot;SSc&quot;</span>)</code></pre></div>
 <pre><code>## =================================</code></pre>
-<pre><code>## &lt;&lt;&lt;&lt;&lt; Elliot Method Started &gt;&gt;&gt;&gt;&gt;</code></pre>
+<pre><code>## &lt;&lt;&lt;&lt;&lt; Smoking Score Calculation Started &gt;&gt;&gt;&gt;&gt;</code></pre>
 <pre><code>## =================================</code></pre>
 <pre><code>## Dataset has 187 of 187 CpGs required for smoking status estimation.</code></pre>
 <pre><code>## ====================================</code></pre>
-<pre><code>## &lt;&lt;&lt;&lt;&lt; Elliot Method Completed &gt;&gt;&gt;&gt;&gt;</code></pre>
+<pre><code>## &lt;&lt;&lt;&lt;&lt; Smoking Score Calculation Completed &gt;&gt;&gt;&gt;&gt;</code></pre>
 <pre><code>## ====================================</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">result_EM</code></pre></div>
-<pre><code>##                                                SampleName smokingscore_EM
-## GSM1051533_7800246024_R03C02 GSM1051533_7800246024_R03C02       7.5861170
-## GSM1051534_7800246024_R04C02 GSM1051534_7800246024_R04C02       1.1805043
-## GSM1051538_7800246085_R02C01 GSM1051538_7800246085_R02C01       1.1677897
-## GSM1051539_7800246085_R03C01 GSM1051539_7800246085_R03C01      -2.0578117
-## GSM1051584_7800246137_R01C01 GSM1051584_7800246137_R01C01      -0.2134197
-## GSM1051585_7800246137_R02C01 GSM1051585_7800246137_R02C01      -4.7081811</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">result_SSc</code></pre></div>
+<pre><code>##                                                SampleName smokingScore
+## GSM1051533_7800246024_R03C02 GSM1051533_7800246024_R03C02    7.5861170
+## GSM1051534_7800246024_R04C02 GSM1051534_7800246024_R04C02    1.1805043
+## GSM1051538_7800246085_R02C01 GSM1051538_7800246085_R02C01    1.1677897
+## GSM1051539_7800246085_R03C01 GSM1051539_7800246085_R03C01   -2.0578117
+## GSM1051584_7800246137_R01C01 GSM1051584_7800246137_R01C01   -0.2134197
+## GSM1051585_7800246137_R02C01 GSM1051585_7800246137_R02C01   -4.7081811</code></pre>
 </div>
-<div id="zhang-method-zm" class="section level3">
-<h3>3. Zhang method (ZM)</h3>
+<div id="methylation-score-ms" class="section level3">
+<h3>3. Methylation Score (MS)</h3>
 <p>In this method 4 CpGs are used to calculate methylation score as expained in <span class="citation">(Zhang et al. 2016)</span>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">result_ZM &lt;-<span class="st"> </span><span class="kw">epismoker</span>(<span class="dt">dataset =</span> dataset_ILM,  <span class="dt">method =</span> <span class="st">"ZM"</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">result_MS &lt;-<span class="st"> </span><span class="kw">epismoker</span>(<span class="dt">dataset =</span> dataset_ILM,  <span class="dt">method =</span> <span class="st">&quot;MS&quot;</span>)</code></pre></div>
 <pre><code>## ================================</code></pre>
-<pre><code>## &lt;&lt;&lt;&lt;&lt; Zhang Method Started &gt;&gt;&gt;&gt;&gt;</code></pre>
+<pre><code>## &lt;&lt;&lt;&lt;&lt; Methylation Score Calculation Started &gt;&gt;&gt;&gt;&gt;</code></pre>
 <pre><code>## =================================</code></pre>
 <pre><code>## Dataset has 4 of 4 CpGs required for Zhang et al method</code></pre>
 <pre><code>## ==================================</code></pre>
-<pre><code>## &lt;&lt;&lt;&lt;&lt; Zhang Method Completed &gt;&gt;&gt;&gt;&gt;</code></pre>
+<pre><code>## &lt;&lt;&lt;&lt;&lt; Methylation Score Calculation Completed &gt;&gt;&gt;&gt;&gt;</code></pre>
 <pre><code>## ==================================</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">result_ZM</code></pre></div>
-<pre><code>##                                                SampleName smokingscore_ZM
-## GSM1051533_7800246024_R03C02 GSM1051533_7800246024_R03C02       -4.284498
-## GSM1051534_7800246024_R04C02 GSM1051534_7800246024_R04C02       -8.993818
-## GSM1051538_7800246085_R02C01 GSM1051538_7800246085_R02C01       -6.732453
-## GSM1051539_7800246085_R03C01 GSM1051539_7800246085_R03C01       -7.180410
-## GSM1051584_7800246137_R01C01 GSM1051584_7800246137_R01C01       -7.068201
-## GSM1051585_7800246137_R02C01 GSM1051585_7800246137_R02C01       -8.731180</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">result_MS</code></pre></div>
+<pre><code>##                                                SampleName methylationScore
+## GSM1051533_7800246024_R03C02 GSM1051533_7800246024_R03C02        -4.284498
+## GSM1051534_7800246024_R04C02 GSM1051534_7800246024_R04C02        -8.993818
+## GSM1051538_7800246085_R02C01 GSM1051538_7800246085_R02C01        -6.732453
+## GSM1051539_7800246085_R03C01 GSM1051539_7800246085_R03C01        -7.180410
+## GSM1051584_7800246137_R01C01 GSM1051584_7800246137_R01C01        -7.068201
+## GSM1051585_7800246137_R02C01 GSM1051585_7800246137_R02C01        -8.731180</code></pre>
 </div>
 <div id="compreshensive-approach-all" class="section level3">
 <h3>4. Compreshensive approach (all)</h3>
 <p>All three methods are run in this option and results are integrated into a single result object.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">result_All &lt;-<span class="st"> </span><span class="kw">epismoker</span>(<span class="dt">dataset_QN=</span>dataset_QN, <span class="dt">dataset_ILM=</span>dataset_ILM, <span class="dt">dataset_SQN=</span>dataset_SQN, <span class="dt">samplesheet =</span> samplesheet, <span class="dt">method =</span> <span class="st">"all"</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">result_All &lt;-<span class="st"> </span><span class="kw">epismoker</span>(<span class="dt">dataset_QN=</span>dataset_QN, <span class="dt">dataset_ILM=</span>dataset_ILM, <span class="dt">dataset_SQN=</span>dataset_SQN, <span class="dt">samplesheet =</span> samplesheet, <span class="dt">method =</span> <span class="st">&quot;all&quot;</span>)</code></pre></div>
 <pre><code>## =================================</code></pre>
-<pre><code>## &lt;&lt;&lt;&lt;&lt; Elliot Method Started &gt;&gt;&gt;&gt;&gt;</code></pre>
+<pre><code>## &lt;&lt;&lt;&lt;&lt; Smoking Score Calculation Started &gt;&gt;&gt;&gt;&gt;</code></pre>
 <pre><code>## =================================</code></pre>
 <pre><code>## Dataset has 187 of 187 CpGs required for smoking status estimation.</code></pre>
 <pre><code>## ====================================</code></pre>
-<pre><code>## &lt;&lt;&lt;&lt;&lt; Elliot Method Completed &gt;&gt;&gt;&gt;&gt;</code></pre>
+<pre><code>## &lt;&lt;&lt;&lt;&lt; Smoking Score Calculation Completed &gt;&gt;&gt;&gt;&gt;</code></pre>
 <pre><code>## ====================================</code></pre>
 <pre><code>## ================================</code></pre>
-<pre><code>## &lt;&lt;&lt;&lt;&lt; Zhang Method Started &gt;&gt;&gt;&gt;&gt;</code></pre>
+<pre><code>## &lt;&lt;&lt;&lt;&lt; Methylation Score Calculation Started &gt;&gt;&gt;&gt;&gt;</code></pre>
 <pre><code>## =================================</code></pre>
 <pre><code>## Dataset has 4 of 4 CpGs required for Zhang et al method</code></pre>
 <pre><code>## ==================================</code></pre>
-<pre><code>## &lt;&lt;&lt;&lt;&lt; Zhang Method Completed &gt;&gt;&gt;&gt;&gt;</code></pre>
+<pre><code>## &lt;&lt;&lt;&lt;&lt; Methylation Score Calculation Completed &gt;&gt;&gt;&gt;&gt;</code></pre>
 <pre><code>## ==================================</code></pre>
 <pre><code>## ============================================</code></pre>
-<pre><code>## &lt;&lt;&lt;&lt;&lt; Multinomial LASSO Method Started &gt;&gt;&gt;&gt;&gt;</code></pre>
+<pre><code>## &lt;&lt;&lt;&lt;&lt; Predicting Smoking Statuses &gt;&gt;&gt;&gt;&gt;</code></pre>
 <pre><code>## ============================================</code></pre>
 <pre><code>## Dataset has 121 of 121 CpGs required for smoking status estimation.
 ## Dataset has 121 of 121 CpGs required for smoking status estimation.
 ## Dataset has 121 of 121 CpGs required for smoking status estimation.</code></pre>
 <pre><code>## ============================================</code></pre>
-<pre><code>## &lt;&lt;&lt;&lt;&lt; Multinomial LASSO Method Completed &gt;&gt;&gt;&gt;&gt;</code></pre>
+<pre><code>## &lt;&lt;&lt;&lt;&lt; Prediction of Smoking Statuses Completed &gt;&gt;&gt;&gt;&gt;</code></pre>
 <pre><code>## ============================================</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">result_All</code></pre></div>
-<pre><code>##                     SampleName smokingscore_EM smokingscore_ZM logCoeff_CS
-## 1 GSM1051533_7800246024_R03C02       7.5861170       -4.284498   1.2703029
-## 2 GSM1051534_7800246024_R04C02       1.1805043       -8.993818  -1.2369244
-## 3 GSM1051538_7800246085_R02C01       1.1677897       -6.732453  -0.7931725
-## 4 GSM1051539_7800246085_R03C01      -2.0578117       -7.180410  -1.2172066
-## 5 GSM1051584_7800246137_R01C01      -0.2134197       -7.068201  -0.7368372
-## 6 GSM1051585_7800246137_R02C01      -4.7081811       -8.731180  -1.5291671
-##   logCoeff_FS logCoeff_NS PredictedSmokingStatus   probs_CS  probs_FS
-## 1   0.7725372  -2.0428401         Current Smoker 0.60816562 0.3696962
-## 2   0.2630344   0.9738900           Never Smoker 0.06847135 0.3068547
-## 3   0.3566026   0.4365699           Never Smoker 0.13196388 0.4166737
-## 4   0.4711146   0.7460920           Never Smoker 0.07389249 0.3997872
-## 5   0.5099384   0.2268987          Former Smoker 0.14083359 0.4899751
-## 6   0.6708411   0.8583260           Never Smoker 0.04782113 0.4315899
-##     probs_NS PredictedSmokingStatus2
-## 1 0.02213819          Current Smoker
-## 2 0.62467399            Never Smoker
-## 3 0.45136243            Never Smoker
-## 4 0.52632026            Never Smoker
-## 5 0.36919129           Former Smoker
-## 6 0.52058894            Never Smoker</code></pre>
+<pre><code>##                     SampleName smokingScore methylationScore logOdds_CS
+## 1 GSM1051533_7800246024_R03C02    7.5861170        -4.284498  1.2702463
+## 2 GSM1051534_7800246024_R04C02    1.1805043        -8.993818 -1.2369648
+## 3 GSM1051538_7800246085_R02C01    1.1677897        -6.732453 -0.7931685
+## 4 GSM1051539_7800246085_R03C01   -2.0578117        -7.180410 -1.2175070
+## 5 GSM1051584_7800246137_R01C01   -0.2134197        -7.068201 -0.7364596
+## 6 GSM1051585_7800246137_R02C01   -4.7081811        -8.731180 -1.5291249
+##   logOdds_FS logOdds_NS   probs_CS  probs_FS   probs_NS
+## 1  0.7726038 -2.0428501 0.60813729 0.3697245 0.02213819
+## 2  0.2631190  0.9738458 0.06846889 0.3068820 0.62464911
+## 3  0.3565658  0.4366027 0.13196440 0.4166583 0.45137726
+## 4  0.4712640  0.7462431 0.07386166 0.3998002 0.52633818
+## 5  0.5094571  0.2270025 0.14090711 0.4898100 0.36928289
+## 6  0.6709051  0.8582198 0.04782438 0.4316286 0.52054702
+##   PredictedSmokingStatus
+## 1         Current Smoker
+## 2           Never Smoker
+## 3           Never Smoker
+## 4           Never Smoker
+## 5          Former Smoker
+## 6           Never Smoker</code></pre>
 </div>
 </div>
 <div id="b.-from-methylation-matrix" class="section level2">
 <h2>B. From methylation matrix</h2>
-<p>A data matrix of normalised methylation values in beta scale, with 
-rows labelling the CpG probe ids and columns labelling the sample names,
- can also be used as an input to EpiSmokEr. Here we use the methylation 
-matrix from the same 6 samples to demonstrate how methylation matrix can
- be used as input.</p>
+<p>A data matrix of normalised methylation values in beta scale, with rows labelling the CpG probe ids and columns labelling the sample names, can also be used as an input to EpiSmokEr. Here we use the methylation matrix from the same 6 samples to demonstrate how methylation matrix can be used as input.</p>
 <p>Methylation matrix looks likes this. Methylation values are in beta scale ranging betweeen 0 and 1.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(dummyBetaData)</code></pre></div>
 <pre><code>##            GSM1051533_7800246024_R03C02 GSM1051534_7800246024_R04C02
@@ -701,15 +555,15 @@ matrix from the same 6 samples to demonstrate how methylation matrix can
 </tr>
 </tbody>
 </table>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">result &lt;-<span class="st"> </span><span class="kw">epismoker</span>(<span class="dt">dataset=</span>dummyBetaData, <span class="dt">samplesheet =</span> samplesheet, <span class="dt">method =</span> <span class="st">"MLM"</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">result &lt;-<span class="st"> </span><span class="kw">epismoker</span>(<span class="dt">dataset=</span>dummyBetaData, <span class="dt">samplesheet =</span> samplesheet, <span class="dt">method =</span> <span class="st">&quot;SSt&quot;</span>)</code></pre></div>
 <pre><code>## ============================================</code></pre>
-<pre><code>## &lt;&lt;&lt;&lt;&lt; Multinomial LASSO Method Started &gt;&gt;&gt;&gt;&gt;</code></pre>
+<pre><code>## &lt;&lt;&lt;&lt;&lt; Predicting Smoking Statuses &gt;&gt;&gt;&gt;&gt;</code></pre>
 <pre><code>## ============================================</code></pre>
 <pre><code>## Dataset has 121 of 121 CpGs required for smoking status estimation.
 ## Dataset has 121 of 121 CpGs required for smoking status estimation.
 ## Dataset has 121 of 121 CpGs required for smoking status estimation.</code></pre>
 <pre><code>## ============================================</code></pre>
-<pre><code>## &lt;&lt;&lt;&lt;&lt; Multinomial LASSO Method Completed &gt;&gt;&gt;&gt;&gt;</code></pre>
+<pre><code>## &lt;&lt;&lt;&lt;&lt; Prediction of Smoking Statuses Completed &gt;&gt;&gt;&gt;&gt;</code></pre>
 <pre><code>## ============================================</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">knitr<span class="op">::</span><span class="kw">kable</span>(<span class="kw">head</span>(result, <span class="dv">5</span>))</code></pre></div>
 <table>
@@ -717,14 +571,13 @@ matrix from the same 6 samples to demonstrate how methylation matrix can
 <tr class="header">
 <th></th>
 <th align="left">SampleName</th>
-<th align="right">logCoeff_CS</th>
-<th align="right">logCoeff_FS</th>
-<th align="right">logCoeff_NS</th>
-<th align="left">PredictedSmokingStatus</th>
+<th align="right">logOdds_CS</th>
+<th align="right">logOdds_FS</th>
+<th align="right">logOdds_NS</th>
 <th align="right">probs_CS</th>
 <th align="right">probs_FS</th>
 <th align="right">probs_NS</th>
-<th align="left">PredictedSmokingStatus2</th>
+<th align="left">PredictedSmokingStatus</th>
 </tr>
 </thead>
 <tbody>
@@ -734,7 +587,6 @@ matrix from the same 6 samples to demonstrate how methylation matrix can
 <td align="right">1.2702918</td>
 <td align="right">0.7725532</td>
 <td align="right">-2.0428449</td>
-<td align="left">Current Smoker</td>
 <td align="right">0.6081594</td>
 <td align="right">0.3697025</td>
 <td align="right">0.0221381</td>
@@ -746,7 +598,6 @@ matrix from the same 6 samples to demonstrate how methylation matrix can
 <td align="right">-1.2368503</td>
 <td align="right">0.2630556</td>
 <td align="right">0.9737947</td>
-<td align="left">Never Smoker</td>
 <td align="right">0.0684797</td>
 <td align="right">0.3068759</td>
 <td align="right">0.6246444</td>
@@ -758,7 +609,6 @@ matrix from the same 6 samples to demonstrate how methylation matrix can
 <td align="right">-0.7930341</td>
 <td align="right">0.3566457</td>
 <td align="right">0.4363884</td>
-<td align="left">Never Smoker</td>
 <td align="right">0.1319882</td>
 <td align="right">0.4167107</td>
 <td align="right">0.4513012</td>
@@ -770,7 +620,6 @@ matrix from the same 6 samples to demonstrate how methylation matrix can
 <td align="right">-1.2171854</td>
 <td align="right">0.4711646</td>
 <td align="right">0.7460208</td>
-<td align="left">Never Smoker</td>
 <td align="right">0.0738952</td>
 <td align="right">0.3998136</td>
 <td align="right">0.5262912</td>
@@ -782,7 +631,6 @@ matrix from the same 6 samples to demonstrate how methylation matrix can
 <td align="right">-0.7365582</td>
 <td align="right">0.5093674</td>
 <td align="right">0.2271908</td>
-<td align="left">Former Smoker</td>
 <td align="right">0.1408916</td>
 <td align="right">0.4897603</td>
 <td align="right">0.3693481</td>
@@ -794,23 +642,20 @@ matrix from the same 6 samples to demonstrate how methylation matrix can
 </div>
 <div id="generate-results" class="section level1">
 <h1>Generate Results</h1>
-<hr>
+<hr />
 <p>Results can be saved as html and csv files using <strong>generateReport</strong> function. A <strong>Results</strong> folder will be created in the <strong>current working directory</strong>. If <strong>Results</strong> folder already exists, result files will be appended to this folder.</p>
 <p><strong>generateReport</strong> takes <strong>result object (resObj)</strong> and <strong>method</strong> used in epismoker function. Users have to provide a name for the output html file.</p>
 <div id="please-note-that" class="section level4">
 <h4>Please note that</h4>
 <ul>
-<li><p>In the R environment, result object from <strong>epismoker</strong> function must be saved using variable names <strong>result_MLM</strong>, <strong>result_EM</strong>, <strong>result_ZM</strong> and <strong>result_All</strong> based on the option used. This enables generation of html report.</p></li>
+<li><p>In the R environment, result object from <strong>epismoker</strong> function must be saved using variable names <strong>result_SSt</strong>, <strong>result_SSc</strong>, <strong>result_MS</strong> and <strong>result_All</strong> based on the option used. This enables generation of html report.</p></li>
 <li><p>In order to create the <strong>Results</strong> folder, set the working directory path to the folder where you have permission to write.</p></li>
 </ul>
-<p>In the example below result object from the <strong>all</strong> option of <strong>epismoker</strong> function has been saved to <strong>result</strong> variable, which will be passed onto generateReport function. On executing <strong>generateReport</strong> function, a <strong>Results</strong>
- folder will be created in the current working directory, with a html 
-file named “Results_comprehensive.html”. Result files generated from the
- example below can be found in the <strong>Results</strong> folder of the package.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">setwd</span>(<span class="kw">system.file</span>(<span class="dt">package =</span> <span class="st">"EpiSmokEr"</span>)) <span class="co"># set the directory where you want the result files to be saved</span>
-<span class="kw">generateReport</span>(<span class="dt">resObj =</span> result_All, <span class="dt">outputFileName =</span> <span class="st">"Results_comprehensive"</span>, <span class="dt">method =</span> <span class="st">"all"</span>)</code></pre></div>
+<p>In the example below result object from the <strong>all</strong> option of <strong>epismoker</strong> function has been saved to <strong>result</strong> variable, which will be passed onto generateReport function. On executing <strong>generateReport</strong> function, a <strong>Results</strong> folder will be created in the current working directory, with a html file named “Results_comprehensive.html”. Result files generated from the example below can be found in the <strong>Results</strong> folder of the package.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">setwd</span>(<span class="kw">system.file</span>(<span class="dt">package =</span> <span class="st">&quot;EpiSmokEr&quot;</span>)) <span class="co"># set the directory where you want the result files to be saved</span>
+<span class="kw">generateReport</span>(<span class="dt">resObj =</span> result_All, <span class="dt">outputFileName =</span> <span class="st">&quot;Results_comprehensive&quot;</span>, <span class="dt">method =</span> <span class="st">&quot;all&quot;</span>)</code></pre></div>
 <pre><code>## ====================================================================================================================</code></pre>
-<pre><code>## Saving results as html and csv files to /home/sbollepa/R/x86_64-pc-linux-gnu-library/3.4/Results</code></pre>
+<pre><code>## Saving results as html and csv files to C:\Users\sairam\Documents\R\win-library\3.5\Results</code></pre>
 <pre><code>## ====================================================================================================================</code></pre>
 <pre><code>## 
 ## 
@@ -828,7 +673,7 @@ file named “Results_comprehensive.html”. Result files generated from the
 ## label: unnamed-chunk-20 (with options) 
 ## List of 2
 ##  $ echo   : logi FALSE
-##  $ results: chr "asis"
+##  $ results: chr &quot;asis&quot;
 ## 
 ## 
   |                                                                       
@@ -841,7 +686,7 @@ file named “Results_comprehensive.html”. Result files generated from the
 ## label: unnamed-chunk-21 (with options) 
 ## List of 2
 ##  $ echo   : logi FALSE
-##  $ results: chr "asis"
+##  $ results: chr &quot;asis&quot;
 ## 
 ## 
   |                                                                       
@@ -853,49 +698,34 @@ file named “Results_comprehensive.html”. Result files generated from the
   |.................................................................| 100%
 ## label: unnamed-chunk-22 (with options) 
 ## List of 1
-##  $ results: chr "markup"</code></pre>
+##  $ results: chr &quot;markup&quot;</code></pre>
 <pre><code>## output file: all.knit.md</code></pre>
-<pre><code>## /usr/lib/rstudio/bin/pandoc/pandoc +RTS -K512m -RTS all.utf8.md --to html4 --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash --output /home/sbollepa/R/x86_64-pc-linux-gnu-library/3.4/Results/Results_comprehensive.html --smart --email-obfuscation none --self-contained --standalone --section-divs --template /home/sbollepa/R/x86_64-pc-linux-gnu-library/3.4/rmarkdown/rmd/h/default.html --no-highlight --variable highlightjs=1 --variable 'theme:bootstrap' --include-in-header /tmp/Rtmpqqd1Z8/rmarkdown-str1f9556fdbf31.html --mathjax --variable 'mathjax-url:https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'</code></pre>
+<pre><code>## &quot;C:/Program Files/RStudio/bin/pandoc/pandoc&quot; +RTS -K512m -RTS all.utf8.md --to html4 --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash --output pandoc2ff01c73588e.html --smart --email-obfuscation none --self-contained --standalone --section-divs --template &quot;C:\Users\sairam\Documents\R\win-library\3.5\rmarkdown\rmd\h\default.html&quot; --no-highlight --variable highlightjs=1 --variable &quot;theme:bootstrap&quot; --include-in-header &quot;C:\Users\sairam\AppData\Local\Temp\RtmpmcwAcO\rmarkdown-str2ff04dcc389b.html&quot; --mathjax --variable &quot;mathjax-url:https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&quot;</code></pre>
 <pre><code>## 
-## Output created: /home/sbollepa/R/x86_64-pc-linux-gnu-library/3.4/Results/Results_comprehensive.html</code></pre>
+## Output created: C:/Users/sairam/Documents/R/win-library/3.5/Results/Results_comprehensive.html</code></pre>
 </div>
 </div>
 <div id="references" class="section level1">
 <h1>References</h1>
-<hr>
+<hr />
 <div id="refs" class="references">
 <div id="ref-minfi">
-<p>Aryee, Martin J, Andrew E Jaffe, Hector Corrada-Bravo, Christine 
-Ladd-Acosta, Andrew P Feinberg, Kasper D Hansen, and Rafael A Irizarry. 
-2014. “Minfi: A Flexible and Comprehensive Bioconductor Package for the 
-Analysis of Infinium Dna Methylation Microarrays.” <em>Bioinformatics</em> 30 (10): 1363–9. doi:<a href="https://doi.org/10.1093/bioinformatics/btu049">10.1093/bioinformatics/btu049</a>.</p>
+<p>Aryee, Martin J, Andrew E Jaffe, Hector Corrada-Bravo, Christine Ladd-Acosta, Andrew P Feinberg, Kasper D Hansen, and Rafael A Irizarry. 2014. “Minfi: A Flexible and Comprehensive Bioconductor Package for the Analysis of Infinium Dna Methylation Microarrays.” <em>Bioinformatics</em> 30 (10): 1363–9. doi:<a href="https://doi.org/10.1093/bioinformatics/btu049">10.1093/bioinformatics/btu049</a>.</p>
 </div>
 <div id="ref-elliott">
-<p>Elliott, Hannah R, Therese Tillin, Wendy L McArdle, Karen Ho, Aparna 
-Duggirala, Tim M Frayling, George Davey Smith, Alun D Hughes, Nish 
-Chaturvedi, and Caroline L Relton. 2014. “Differences in Smoking 
-Associated Dna Methylation Patterns in South Asians and Europeans.” <em>Clinical Epigenetics</em> 6 (1). doi:<a href="https://doi.org/10.1186/1868-7083-6-4">10.1186/1868-7083-6-4</a>.</p>
+<p>Elliott, Hannah R, Therese Tillin, Wendy L McArdle, Karen Ho, Aparna Duggirala, Tim M Frayling, George Davey Smith, Alun D Hughes, Nish Chaturvedi, and Caroline L Relton. 2014. “Differences in Smoking Associated Dna Methylation Patterns in South Asians and Europeans.” <em>Clinical Epigenetics</em> 6 (1). doi:<a href="https://doi.org/10.1186/1868-7083-6-4">10.1186/1868-7083-6-4</a>.</p>
 </div>
 <div id="ref-geo">
-<p>Liu, Yun, Martin J Aryee, Leonid Padyukov, Daniele M Fallin, Espen 
-Hesselberg, Arni Runarsson, Lovisa Reinius, et al. 2013. “Epigenome-Wide
- Association Data Implicate Dna Methylation as an Intermediary of 
-Genetic Risk in Rheumatoid Arthritis.” <em>Nature Biotechnology</em> 31: 142–47. doi:<a href="https://doi.org/doi:10.1038/nbt.2487">doi:10.1038/nbt.2487</a>.</p>
+<p>Liu, Yun, Martin J Aryee, Leonid Padyukov, Daniele M Fallin, Espen Hesselberg, Arni Runarsson, Lovisa Reinius, et al. 2013. “Epigenome-Wide Association Data Implicate Dna Methylation as an Intermediary of Genetic Risk in Rheumatoid Arthritis.” <em>Nature Biotechnology</em> 31: 142–47. doi:<a href="https://doi.org/doi:10.1038/nbt.2487">doi:10.1038/nbt.2487</a>.</p>
 </div>
 <div id="ref-tost">
-<p>Touleimat, Nizar, and Jörg Tost. 2012. “Complete Pipeline for 
-Infinium® Human Methylation 450k Beadchip Data Processing Using Subset 
-Quantile Normalization for Accurate Dna Methylation Estimation.” <em>Epigenomics</em> 4 (3): 325–41. doi:<a href="https://doi.org/10.2217/epi.12.21">10.2217/epi.12.21</a>.</p>
+<p>Touleimat, Nizar, and Jörg Tost. 2012. “Complete Pipeline for Infinium® Human Methylation 450k Beadchip Data Processing Using Subset Quantile Normalization for Accurate Dna Methylation Estimation.” <em>Epigenomics</em> 4 (3): 325–41. doi:<a href="https://doi.org/10.2217/epi.12.21">10.2217/epi.12.21</a>.</p>
 </div>
 <div id="ref-zellinger">
-<p>Zeilinger, Sonja, Brigitte Kühnel, Norman Klopp, Hansjörg Baurecht, 
-Anja Kleinschmidt, Christian Gieger, Stephan Weidinger, et al. 2013. 
-“Tobacco Smoking Leads to Extensive Genome-Wide Changes in Dna 
-Methylation.” <em>PLOS ONE</em> 8 (5). Public Library of Science: 1–14. doi:<a href="https://doi.org/10.1371/journal.pone.0063812">10.1371/journal.pone.0063812</a>.</p>
+<p>Zeilinger, Sonja, Brigitte Kühnel, Norman Klopp, Hansjörg Baurecht, Anja Kleinschmidt, Christian Gieger, Stephan Weidinger, et al. 2013. “Tobacco Smoking Leads to Extensive Genome-Wide Changes in Dna Methylation.” <em>PLOS ONE</em> 8 (5). Public Library of Science: 1–14. doi:<a href="https://doi.org/10.1371/journal.pone.0063812">10.1371/journal.pone.0063812</a>.</p>
 </div>
 <div id="ref-zhang">
-<p>Zhang, Yan, Ines Florath, Kai-Uwe Saum, and Hermann Brenner. 2016. 
-“Self-Reported Smoking, Serum Cotinine, and Blood Dna Methylation.” <em>Environmental Research</em> 146. doi:<a href="https://doi.org/10.1016/j.envres.2016.01.026">10.1016/j.envres.2016.01.026</a>.</p>
+<p>Zhang, Yan, Ines Florath, Kai-Uwe Saum, and Hermann Brenner. 2016. “Self-Reported Smoking, Serum Cotinine, and Blood Dna Methylation.” <em>Environmental Research</em> 146. doi:<a href="https://doi.org/10.1016/j.envres.2016.01.026">10.1016/j.envres.2016.01.026</a>.</p>
 </div>
 </div>
 </div>
@@ -912,6 +742,5 @@ Methylation.” <em>PLOS ONE</em> 8 (5). Public Library of Science: 1–14. doi:
   })();
 </script>
 
-
-
-</body></html>
+</body>
+</html>
